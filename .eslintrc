@@ -1,0 +1,56 @@
+{
+    "extends": [
+        "react-app",
+        "react-app/jest"
+    ],
+    "rules": {
+        "no-console": "warn",
+        // использовать одинарные кавычки, 
+        // двойные кавычки будут вызывать ошибку
+        "quotes": [
+            "error",
+            "single"
+        ],
+        // кавычки в JSX, только двойные  
+        "jsx-quotes": [
+            "error",
+            "prefer-double"
+        ],
+        // максимальная длина кода в строке
+        "max-len": [
+            "error",
+            {
+                "code": 140
+            }
+        ],
+        // отсутствие запятой в объекте
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ],
+        // Наличие точки с запятой
+        "semi": [
+            "warn",
+            "always"
+        ],
+        // конролирует порядок написания импортов в модулях
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index",
+                    "object",
+                    "type"
+                ],
+                // конролирует чтобы группы импортов в модулях 
+                // разделялись пустой строкой
+                "newlines-between": "always-and-inside-groups"
+            }
+        ]
+    }
+}
