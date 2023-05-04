@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {Container} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material';
 
@@ -17,6 +17,12 @@ const Main = styled.div`
 
 
 const Layout = () => {
+    
+    useEffect(()=>{      
+        const isTheme =  localStorage.getItem('themeMui');
+        if(isTheme===null) localStorage.setItem('themeMui', 'light');
+       
+    }, []);
 
       return (
         <>

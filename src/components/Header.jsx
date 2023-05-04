@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
-import {Box, AppBar, CssBaseline, Button, Switch, 
+import {Box, AppBar, CssBaseline, Button, Switch, Link, 
         Container, Typography, CardMedia, FormControlLabel} from '@mui/material';
+       // import Button from '@material-ui/core/Button'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { blueGrey, grey } from '@mui/material/colors';
 
@@ -23,7 +24,7 @@ export const Header = () => {
     // const [theme, setTheme] = useState(!localStorage.getItem('themeMui') 
     //                                    ? 'light' : localStorage.getItem('themeMui'));
 
-    const [theme, setTheme] = useState('dark');
+    // const [theme, setTheme] = useState('dark');
     const navItems = [{id: 1, navItem: 'Главная', path: '/'},
                       {id: 2, navItem: 'Каталог', path: '/catalog'},
                       {id: 3,navItem: 'Контакты', path: '/contacts'}];
@@ -31,41 +32,17 @@ export const Header = () => {
 
     
     const handleChange = (event) => {
-        setChecked(event.target.checked);     
-        // !localStorage.getItem('themeMui') ? 'light' : localStorage.getItem('themeMui')  
-    };
-
-
+        setChecked(event.target.checked);            
+        checked ? localStorage.setItem('themeMui', 'light')  : localStorage.setItem('themeMui', 'dark');
+        }; 
     
   
-    // const ThemeMui = () =>createTheme({
-    //     palette: {
-    //         mode:  theme,  
-    //         primary: {
-    //         main: '#b8b8bf',
-    //         },
-    //         secondary: {
-    //         main: '#f50057',
-    //         },
-    //       },
-    //     } );
-
-    
-  
-  
-    useEffect(()=>{      
-        setTheme(theme==='light' ? 'dark' : 'light')
-    }, [checked]);
-
     return (
         <div>
-            <ThemeProvider theme={ThemeMui(theme)}>
+            <ThemeProvider theme={ThemeMui(localStorage.getItem('themeMui'))}>
             <Box sx={{ display: 'flex', flexDirection: 'row', mb:2 }}>
               <CssBaseline sx={{  }}/>    
-                <AppBar component="nav" position="static" sx={{ pt: 1, pb: 1 }}>
-                {/* <AppBar component="nav" position="static" sx={{ pt: 1, pb: 1, 
-                                              bgcolor: '#dbd8d8',          
-                                              }}> */}
+                <AppBar component="nav" position="static" sx={{ pt: 1, pb: 1 }}>               
                     <Container maxWidth="lg" sx={{ display: 'flex', 
                                                    flexDirection: 'row',
                                                    alignItems: 'center',
@@ -85,32 +62,31 @@ export const Header = () => {
                                                letterSpacing: 6,
                                                textTransform: 'uppercase',                                               
                                             }} >Кино
-                            </Typography>
-                            {/* <Typography  sx={{ fontSize: 22,
-                                               fontWeight: 'bold', 
-                                               letterSpacing: 6,
-                                               textTransform: 'uppercase',
-                                               color: '#303891',
-                                            }} >Кино
-                            </Typography> */}
+                            </Typography>                           
                         </Box>                                   
-                        <Box color="custom" sx={{ display: { xs: 'none',                                         
+                        <Box sx={{ display: { xs: 'none',                                         
                                               sm: 'block' }}}>
-                                {navItems.map((item) => (                                    
-                                    <NavLinkStl key={item.id} to={item.path}>
-                                        <Button >  
-                                            <Typography  sx={{ fontSize: 16,
-                                                fontWeight: 500,  
-                                                color: '#303891',
-                                                }} >{item.navItem} 
-                                            </Typography> 
-                                        </Button>                                    
-                                        {/* <Button sx={{ color: '#303891',
-                                                      fontWeight: 500,
-                                                      fontSize: 14 }}>
-                                           {item.navItem} 
-                                        </Button>                                     */}
-                                    </NavLinkStl>
+                                {navItems.map((item) => (    
+                                 
+                                    <Button  key={item.id} component={NavLink} to={item.path} >
+                                         <Typography  key={item.id} component={NavLink} to={item.path}color="nav" sx={{ fontSize: 16}} >
+                                            {item.navItem}
+                                        </Typography>
+                                    </Button>
+                                  
+                                    
+
+                                    // <NavLinkStl  to={item.path}>
+                                    //     <Button >  
+                                    //         <Typography  sx={{ fontSize: 16,
+                                    //             fontWeight: 500,  
+                                    //             color: '#303891',
+                                    //             }} >{item.navItem} 
+                                    //         </Typography> 
+                                    //     </Button>                                                
+                                    // </NavLinkStl>
+
+
                                 ))}
                         </Box>
                         <Box sx={{ display: 'inline-flex'}}>
