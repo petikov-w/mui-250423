@@ -68,25 +68,13 @@ export const Header = () => {
                                               sm: 'block' }}}>
                                 {navItems.map((item) => (    
                                  
-                                    <Button  key={item.id} component={NavLink} to={item.path} >
-                                         <Typography  key={item.id} component={NavLink} to={item.path}color="nav" sx={{ fontSize: 16}} >
+                                <Button  color="secondary" key={item.id} component={NavLink} 
+                                                                       to={item.path} >                                       
+                                        <Typography color="primary.contrastText" sx={{ fontSize: 16,
+                                                                          fontWeight: 'bold'}} >
                                             {item.navItem}
                                         </Typography>
-                                    </Button>
-                                  
-                                    
-
-                                    // <NavLinkStl  to={item.path}>
-                                    //     <Button >  
-                                    //         <Typography  sx={{ fontSize: 16,
-                                    //             fontWeight: 500,  
-                                    //             color: '#303891',
-                                    //             }} >{item.navItem} 
-                                    //         </Typography> 
-                                    //     </Button>                                                
-                                    // </NavLinkStl>
-
-
+                                </Button>    
                                 ))}
                         </Box>
                         <Box sx={{ display: 'inline-flex'}}>

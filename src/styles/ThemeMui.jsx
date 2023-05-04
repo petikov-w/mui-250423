@@ -1,4 +1,4 @@
-import { green, orange } from '@mui/material/colors';
+// import { grey, orange } from '@mui/material/colors';
 import {createTheme } from '@mui/material/styles';
 
 
@@ -6,12 +6,16 @@ export const ThemeMui = (theme) => createTheme({
     palette: {
         mode: theme,
         primary: {   
-            main: orange[300],        
-            light: orange[500],            
-            dark: green[800],
-           // contrastText: grey[900],
+            main: '#ffa500 ', 
+            contrastText: '#5f5959',      
+            dark: '#713333',
+            light: '#ce1b1b',
         },
-       
+        secondary: {   
+            main: '#885e09 ', 
+            contrastText: '#7d5656',      
+            
+        },
     },
 });
 
