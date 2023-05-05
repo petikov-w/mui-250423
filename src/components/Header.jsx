@@ -41,7 +41,7 @@ export const Header = () => {
         <div>
             <ThemeProvider theme={ThemeMui(localStorage.getItem('themeMui'))}>
             <Box sx={{ display: 'flex', flexDirection: 'row', mb:2 }}>
-              <CssBaseline sx={{  }}/>    
+              <CssBaseline />    
                 <AppBar component="nav" position="static" sx={{ pt: 1, pb: 1 }}>               
                     <Container maxWidth="lg" sx={{ display: 'flex', 
                                                    flexDirection: 'row',

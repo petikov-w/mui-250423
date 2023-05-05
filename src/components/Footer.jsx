@@ -1,33 +1,28 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from '@emotion/react';
 
-import {Box, Container, Typography, CardMedia, Link} from '@mui/material';
+import {Box, Container, Typography, CardMedia, CssBaseline, Link, AppBar, Toolbar} from '@mui/material';
 
 import imageCinema from '../images/cinema_sm.png';
 import { ThemeMui } from '../styles/ThemeMui';
 
 
 
-export const Copyright = styled.a.attrs({
-    href: 'https://kroxdev.ru',
-    target: '_blank',
- })`
-    text-decoration: none;   
-   `;
 
 export const Footer = () => {
+    useEffect(()=>{
+            console.log('themeMui :>> ', localStorage.getItem('themeMui'));
+
+    }, [localStorage.getItem('themeMui')]);
+
+    
     return (
        <>
-         <ThemeProvider theme={ThemeMui(localStorage.getItem('themeMui'))}>
-            <Box  sx={{ display: 'flex', 
-                       flexDirection: 'row',
-                       pt: 1, pb: 1, 
-                    //    bgcolor: '#dbd8d8',
-                       }}>
-                {/* <CssBaseline />     */}
-               
-                    <Container maxWidth="lg" sx={{ display: 'flex', 
+     <ThemeProvider theme={ThemeMui(localStorage.getItem('themeMui'))}>
+
+        <AppBar position="fixed" component="footer"  sx={{ top: 'auto', bottom: 0}}>
+            <Toolbar>
+                 <Container maxWidth="lg" sx={{ display: 'flex', 
                                                    flexDirection: 'row',
                                                    alignItems: 'center',
                                                    justifyContent: 'space-between',
@@ -61,8 +56,12 @@ export const Footer = () => {
                         </Box>                         
                         
                     </Container>    
+            </Toolbar>
+             
+                   
                 
-            </Box>
+           
+            </AppBar>
          </ThemeProvider>
             
        </>

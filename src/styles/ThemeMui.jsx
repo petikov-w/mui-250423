@@ -13,7 +13,7 @@ export const ThemeMui = (theme) => createTheme({
         },
         secondary: {   
             main: '#885e09 ', 
-            contrastText: '#7d5656',      
+            contrastText: '#d15a5a',      
             
         },
     },
