@@ -5,7 +5,8 @@ import { ThemeProvider } from '@mui/material';
 
 import { ThemeMui } from '../styles/ThemeMui';
 
-import { Header } from './Header';
+import { Header_v2 } from './Header_v2';
+// import { Header } from './Header';
 import { Footer } from './Footer';
 import { MyContext } from './Context';
 
@@ -18,7 +19,7 @@ const Layout = () => {
       <>    
         <MyContext.Provider value={{theme, setTheme}} >
             <ThemeProvider theme={ThemeMui(theme)}>            
-                <Header />     
+                <Header_v2 />     
                 <Container maxWidth="lg">
                   <Outlet />   
                 </Container>   
