@@ -1,45 +1,39 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState, useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 
-import styled from 'styled-components';
-import {Box, AppBar, CssBaseline, Button, Switch, Link, 
+import {Box, AppBar, CssBaseline, Button, Switch, 
         Container, Typography, CardMedia, FormControlLabel} from '@mui/material';
-       // import Button from '@material-ui/core/Button'
+       
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blueGrey, grey } from '@mui/material/colors';
 
 import { ThemeMui } from '../styles/ThemeMui';
 
 import imageCinema from '../images/cinema_sm.png';
 
-const NavLinkStl = styled(NavLink)`
- padding: 1rem 0.9rem;
- text-decoration: none;
- cursor: pointer; 
-`;  
+import { MyContext } from './Context';
+
+
 
 export const Header = () => {
     
-
-    // const [theme, setTheme] = useState(!localStorage.getItem('themeMui') 
-    //                                    ? 'light' : localStorage.getItem('themeMui'));
-
-    // const [theme, setTheme] = useState('dark');
+    const {theme, setTheme} = useContext(MyContext);
+   
     const navItems = [{id: 1, navItem: 'Главная', path: '/'},
                       {id: 2, navItem: 'Каталог', path: '/catalog'},
                       {id: 3,navItem: 'Контакты', path: '/contacts'}];
+
     const [checked, setChecked] = useState(false);
 
     
     const handleChange = (event) => {
         setChecked(event.target.checked);            
-        checked ? localStorage.setItem('themeMui', 'light')  : localStorage.setItem('themeMui', 'dark');
+        checked ? setTheme('light')  : setTheme('dark');
         }; 
     
   
     return (
         <div>
-            <ThemeProvider theme={ThemeMui(localStorage.getItem('themeMui'))}>
+            <ThemeProvider theme={ThemeMui(theme)}>
             <Box sx={{ display: 'flex', flexDirection: 'row', mb:2 }}>
               <CssBaseline />    
                 <AppBar component="nav" position="static" sx={{ pt: 1, pb: 1 }}>               
@@ -88,9 +82,7 @@ export const Header = () => {
                     </Container>    
                 </AppBar>  
             </Box>
-
-            </ThemeProvider>
-           
+            </ThemeProvider>           
         </div>
     );
 };
