@@ -17,7 +17,6 @@ export const Footer = () => {
     <>
      <ThemeProvider theme={ThemeMui(theme)}>
         <AppBar position="fixed" component="footer"  sx={{ top: 'auto', bottom: 0}}>
-            <Toolbar>
                  <Container maxWidth="lg" sx={{ display: 'flex', 
                                                    flexDirection: 'row',
                                                    alignItems: 'center',
@@ -50,7 +49,6 @@ export const Footer = () => {
                             </Typography>                            
                         </Box>                       
                  </Container>    
-            </Toolbar>             
         </AppBar>
      </ThemeProvider>            
     </>      
