@@ -31,9 +31,9 @@ const TypographyLinkStl = styled(Typography)`
 `;
 
 const TypographyLITStl = styled(Typography)`
-    font-weight : 600;
+    font-weight : 500;
     font-size: 18px;   
-
+    //color: #649f59;
     :hover {
       color: #649f59;  
     }
@@ -70,9 +70,10 @@ export const Header_v2 = (props) => {
                 {navItems.map((item) => (
                   <ListItem key={item.id}  component={NavLink} 
                                           to={item.path} disablePadding>
-                    <ListItemButton sx={{ textAlign: 'center' }}>
+                    <ListItemButton color="inherit" sx={{ textAlign: 'center' }}>
                       <TypographyLITStl>
-                         <ListItemText primary={item.navItem} />
+                         <ListItemText disableTypography primary={item.navItem} />
+                         {/* <ListItemText  primary={item.navItem} /> */}
                       </TypographyLITStl>  
                       
                     </ListItemButton>
@@ -152,11 +153,10 @@ export const Header_v2 = (props) => {
                         </Box>        
                     </Container>   
                 </AppBar>  
-                <Box color="primary" component="nav">
+                <Box component="nav">
                     <Drawer
-                    container={container}
-                    
-                    variant="temporary"
+                    container={container}                    
+                    // variant="temporary"
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{
