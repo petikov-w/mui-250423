@@ -2,42 +2,17 @@ import React, { useState, useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 
 import {Box, AppBar, CssBaseline, Switch, Link,
-        Container, Typography, CardMedia, FormControlLabel, Stack, styled, 
+        Container, Typography, CardMedia, FormControlLabel, Stack,  
         List, ListItem, ListItemButton, ListItemText, Divider, Drawer} from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-        
-       
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
+import { TypographyNavLinkStl } from '../styles/Nav.styled'; 
 import { ThemeMui } from '../styles/ThemeMui';
-
 import imageCinema from '../images/cinema_sm.png';
 
 import { MyContext } from './Context';
-
-
-const LinkStl = styled(Link)`
-    text-decoration: none;   
-`;
-
-const TypographyLinkStl = styled(Typography)`
-    font-weight : 500;
-    font-size: 18px;   
-
-    :hover {
-      color: #649f59;  
-    }
-`;
-
-const TypographyLITStl = styled(Typography)`
-    font-weight : 500;
-    font-size: 18px;   
-    //color: #649f59;
-    :hover {
-      color: #649f59;  
-    }
-`;
 
 const drawerWidth = 240;
 
@@ -49,7 +24,8 @@ export const Header_v2 = (props) => {
     
     const {theme, setTheme} = useContext(MyContext);
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [checked, setChecked] = useState(false);    
+    const [checked, setChecked] = useState(false);  
+
     const { window } = props;
     const handleDrawerToggle = () => {
       setMobileOpen((prevState) => !prevState);
@@ -59,6 +35,8 @@ export const Header_v2 = (props) => {
         setChecked(event.target.checked);            
         checked ? setTheme('light')  : setTheme('dark');
         }; 
+
+      
     
         const drawer = (
             <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -71,11 +49,9 @@ export const Header_v2 = (props) => {
                   <ListItem key={item.id}  component={NavLink} 
                                           to={item.path} disablePadding>
                     <ListItemButton color="inherit" sx={{ textAlign: 'center' }}>
-                      <TypographyLITStl>
-                         <ListItemText disableTypography primary={item.navItem} />
-                         {/* <ListItemText  primary={item.navItem} /> */}
-                      </TypographyLITStl>  
-                      
+                      <TypographyNavLinkStl color2={theme}>
+                         <ListItemText  primary={item.navItem} />
+                      </TypographyNavLinkStl>      
                     </ListItemButton>
                   </ListItem>
                 ))}
@@ -83,10 +59,7 @@ export const Header_v2 = (props) => {
             </Box>
           );
 
-                                            
-        //   <LinkStl color="inherit" key={item.id} component={NavLink} 
-        //   to={item.path}>     
-        
+          
           const container = window !== undefined ? () => window().document.body : undefined;    
   
     return (
@@ -99,8 +72,7 @@ export const Header_v2 = (props) => {
                                                      flexDirection: 'row',
                                                      alignItems: 'center',
                                                      justifyContent: 'space-between',
-                                                   }}>               
-                       
+                                                   }}>     
                        <IconButton
                             size="small"
                             edge="start"
@@ -110,7 +82,8 @@ export const Header_v2 = (props) => {
                             sx={{ display: { xs: 'inline', sm: 'inline', md: 'none'} }} 
                             >
                             <MenuIcon />
-                        </IconButton>                            
+                        </IconButton>       
+                        <Link color="inherit" underline="none" component={NavLink} to={'/'}>                     
                         <Box sx={{ display: 'flex', 
                                    flexDirection: 'row',
                                    alignItems: 'center'}}>
@@ -127,18 +100,20 @@ export const Header_v2 = (props) => {
                                             }} >Кино
                             </Typography>                           
                         </Box> 
-
+                      </Link>
 
                     
                         <Stack sx={{ display: { xs: 'none', sm: 'none', md: 'flex'}}} direction="row" spacing={4}  > 
                                 {navItems.map((item) => (                                      
                                                                    
-                                     <LinkStl color="inherit" key={item.id} component={NavLink} 
+                                    //  <LinkStl color="inherit" key={item.id} component={NavLink} 
+                                    //                                     to={item.path}>                                     
+                                     <Link color="inherit" underline="none" key={item.id} component={NavLink} 
                                                                         to={item.path}>                                     
-                                    <TypographyLinkStl>
-                                        {item.navItem}
-                                    </TypographyLinkStl>
-                                    </LinkStl>    
+                                        <TypographyNavLinkStl>
+                                            {item.navItem}
+                                        </TypographyNavLinkStl>
+                                    </Link>    
                                 ))}
 
                         </Stack>                    
