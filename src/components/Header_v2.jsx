@@ -65,9 +65,10 @@ export const Header_v2 = (props) => {
     return (
         <>
             <ThemeProvider theme={ThemeMui(theme)}>
-            <Box sx={{ display: 'flex', flexDirection: 'row', mb:2 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row'}}>
               <CssBaseline />    
-                <AppBar component="nav" position="static" sx={{ pt: 1, pb: 1 }}>           
+                {/* <AppBar component="nav" position="static" sx={{ pt: 1, pb: 1 }}>            */}
+                <AppBar component="nav" position="fixed" sx={{ pt: 1, pb: 1 }}>           
                       <Container maxWidth="lg" sx={{ display: 'flex', 
                                                      flexDirection: 'row',
                                                      alignItems: 'center',

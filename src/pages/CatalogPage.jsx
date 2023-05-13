@@ -1,11 +1,13 @@
 // import { Helmet } from 'react-helmet';
 import { useState, useEffect } from 'react';
 import { Link as NavLink, useSearchParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+//import { Helmet } from 'react-helmet';
+import { Container } from '@mui/material';
 
-import Stack from '@mui/material/Stack';
-import {Pagination, PaginationItem} from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+//import Stack from '@mui/material/Stack';
+//import {Pagination, PaginationItem} from '@mui/material';
+//import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {Cards} from '../components/Cards';
 
 // import { theme } from '../components/styles/Pagination.styled';
 // import { Cards } from '../components/Cards';
@@ -33,6 +35,7 @@ export const CatalogPage = (props) => {
     console.log('films :>> ', films);
     return (
         <>
+        <Container maxWidth="lg">
             {/* <Helmet>
                 <title>Cinema Box - Каталог</title>
             </Helmet> */}
@@ -63,9 +66,9 @@ export const CatalogPage = (props) => {
                 
             </Stack>*/}
 
-            {/* {films.length ? (<Cards films={films} />) 
-                                    : (<h3>Загрузка...</h3>)}     */}
-
+            {films.length ? (<Cards films={films} />) 
+                                    : (<h3>Загрузка...</h3>)}    
+            </Container>
 
         </>
            
