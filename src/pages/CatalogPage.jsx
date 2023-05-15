@@ -39,8 +39,7 @@ export const CatalogPage = (props) => {
             {/* <Helmet>
                 <title>Cinema Box - Каталог</title>
             </Helmet> */}
-                <h2>Каталог</h2>
-                <p>Это страница каталога</p>         
+                {/* <h2>Каталог</h2>                */}
 
                 {/* <Stack spacing={2}>
               <ThemeProvider theme={theme}>
