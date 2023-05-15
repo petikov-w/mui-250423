@@ -1,6 +1,8 @@
 import { Card as CardFilm, CardContent, CardMedia, Typography, Paper } from '@mui/material';
 import styled from 'styled-components';
 
+import {CardLink} from '../styles/Link.styled.js'
+
 const CardStl = styled(CardMedia)`
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   /* background: url("../images/cinema_sm.png"); */
@@ -27,14 +29,20 @@ export const Card = (props, bg) => {
           {/* <CardStl elevation={6} sx={{ maxWidth: 340, borderRadius: 2}}> */}
              {/* <CardFilm sx={{ maxWidth: 345 }}> */}
                 {/* <CardActionArea> <<<-------- Заменить на ссылку (Link) */} 
-                    <CardStl
-                    elevation={6}
+
+                {/* =========================================================================== */}
+
+                <CardLink to={`/films/${filmId}`}>
+                   <CardStl
                     component="img"                    
-                    height="auto"
+                    // height="auto"
                     image={posterUrl}                    
                     alt="poster"
                     sx={{ borderRadius: 2}}
                     />
+                </CardLink>
+                
+                {/* =========================================================================== */}   
                     {/* <CardContent>
                     <Typography gutterBottom variant="body2" component="div">
                         {nameRu}

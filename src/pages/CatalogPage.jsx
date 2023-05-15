@@ -5,7 +5,8 @@ import { Link as NavLink, useSearchParams } from 'react-router-dom';
 import { Container } from '@mui/material';
 
 //import Stack from '@mui/material/Stack';
-//import {Pagination, PaginationItem} from '@mui/material';
+import {Stack, Pagination, PaginationItem} from '@mui/material';
+
 //import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Cards} from '../components/Cards';
 
@@ -18,10 +19,11 @@ export const CatalogPage = (props) => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [films, setFilms] = useState([]);
-    const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
+    const [page, setPage] = useState(1); // текущая страница
+    // const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
     const [pagesCount, setPagesCount ] = useState(0);
    
-    const handleChange = (event, p) => { setPage(p); };
+    const handleChange = (event, p) => { setPage(p); console.log('page:>> ', page); };
 
    
    useEffect(()=>{api_query(page).then((data) => {setFilms(data.films)
@@ -30,7 +32,10 @@ export const CatalogPage = (props) => {
 
    useEffect(()=>{api_query(page).then((data) => {setFilms(data.films)
                                                   setPagesCount(data.pagesCount)
+                                                  
+
                                                   });}, [page]);
+                                                 
 
     console.log('films :>> ', films);
     return (
@@ -41,8 +46,8 @@ export const CatalogPage = (props) => {
             </Helmet> */}
                 {/* <h2>Каталог</h2>                */}
 
-                {/* <Stack spacing={2}>
-              <ThemeProvider theme={theme}>
+                <Stack spacing={2}>
+              {/* <ThemeProvider theme={theme}> */}
                 <Pagination count={pagesCount} 
                             color="primary"                               
                             page={page}  
@@ -51,19 +56,19 @@ export const CatalogPage = (props) => {
                                  marginX: 'auto',
                                  color: 'text.primary',
                             }}
-                            renderItem={
-                                (item) =>(  
-                                  <PaginationItem                                     
-                                     component={NavLink}
-                                     to={`/films?page=${item.page}`}
-                                     {...item}
-                                     />   
-                                )
-                            }
+                            // renderItem={
+                            //     (item) =>(  
+                            //       <PaginationItem                                     
+                            //          component={NavLink}
+                            //          to={`/films?page=${item.page}`}
+                            //          {...item}
+                            //          />   
+                            //     )
+                            // }
                 />               
-              </ThemeProvider> 
+              {/* </ThemeProvider>  */}
                 
-            </Stack>*/}
+            </Stack>
 
             {films.length ? (<Cards films={films} />) 
                                     : (<h3>Загрузка...</h3>)}    

@@ -3,6 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import { HomePage } from './pages/HomePage';
 import { CatalogPage } from './pages/CatalogPage';
 import { ContactPage } from './pages/ContactPage';
+import { SinglePage } from './pages/SinglePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Layout } from './components/Layout';
 
@@ -17,6 +18,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="catalog" element={<CatalogPage />} />
           <Route path="contacts" element={<ContactPage />} />
+          <Route path="films/:id" element={<SinglePage />} />
           <Route path="*" element={<NotFoundPage />} />
       </Route>
   ));
