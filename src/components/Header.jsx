@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import {Box, AppBar, CssBaseline, Button, Switch, 
         Container, Typography, CardMedia, FormControlLabel} from '@mui/material';
        
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 import { ThemeMui } from '../styles/ThemeMui';
 
@@ -19,8 +19,9 @@ export const Header = () => {
     const {theme, setTheme} = useContext(MyContext);
    
     const navItems = [{id: 1, navItem: 'Главная', path: '/'},
-                      {id: 2, navItem: 'Каталог', path: '/catalog'},
+                      {id: 2, navItem: 'Каталог', path: '/films?page=1'},
                       {id: 3,navItem: 'Контакты', path: '/contacts'}];
+                    //   <NavLink to="/films?page=1">Каталог</NavLink> 
 
     const [checked, setChecked] = useState(false);
 

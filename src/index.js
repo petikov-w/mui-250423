@@ -1,8 +1,8 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Global } from './styles/Globals';
+// import { Global } from './styles/Globals';
 
 import './index.css';
 import App from './App';

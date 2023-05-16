@@ -17,7 +17,7 @@ import { MyContext } from './Context';
 const drawerWidth = 240;
 
 const navItems = [{id: 1, navItem: 'Главная', path: '/'},
-                      {id: 2, navItem: 'Каталог', path: '/catalog'},
+                      {id: 2, navItem: 'Каталог', path: '/films?page=1'},
                       {id: 3,navItem: 'Контакты', path: '/contacts'}];
 
 export const Header_v2 = (props) => {

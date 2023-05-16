@@ -1,13 +1,10 @@
-import { Card as CardFilm, CardContent, CardMedia, Typography, Paper } from '@mui/material';
+import { CardMedia} from '@mui/material';
 import styled from 'styled-components';
 
-import {CardLink} from '../styles/Link.styled.js'
+import {CardLink} from '../styles/Link.styled.js';
 
 const CardStl = styled(CardMedia)`
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  /* background: url("../images/cinema_sm.png"); */
-  /* background-image: url(${props => props.bg}); */
-  //background-image: url("mdn_logo_only_color.png");
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2); 
 :hover {  
     transition: 0.8s;
     transform: scale(1.1);     
@@ -17,13 +14,9 @@ const CardStl = styled(CardMedia)`
 
 
 export const Card = (props, bg) => {
-    const {filmId, nameRu, year, posterUrl} = props;
-    const SSS = {
-      name: nameRu,
-      year: year,
-    };
-   
-    // console.log('++-->>>>>  ', filmId);
+    // const {filmId, nameRu, year, posterUrl} = props;
+    const {filmId, posterUrl} = props;
+       
     return (
         <>
           {/* <CardStl elevation={6} sx={{ maxWidth: 340, borderRadius: 2}}> */}
