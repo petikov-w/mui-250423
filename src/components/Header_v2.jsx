@@ -17,8 +17,8 @@ import { MyContext } from './Context';
 const drawerWidth = 240;
 
 const navItems = [{id: 1, navItem: 'Главная', path: '/'},
-                      {id: 2, navItem: 'Каталог', path: '/films?page=1'},
-                      {id: 3,navItem: 'Контакты', path: '/contacts'}];
+                  {id: 2, navItem: 'Каталог', path: '/films?page=1'},
+                  {id: 3, navItem: 'Контакты', path: '/contacts'}];
 
 export const Header_v2 = (props) => {
     
@@ -50,7 +50,7 @@ export const Header_v2 = (props) => {
                                           to={item.path} disablePadding>
                     <ListItemButton color="inherit" sx={{ textAlign: 'center' }}>
                       <TypographyNavLinkStl color2={theme}>
-                         <ListItemText  primary={item.navItem} />
+                         {item.navItem} 
                       </TypographyNavLinkStl>      
                     </ListItemButton>
                   </ListItem>
@@ -88,7 +88,8 @@ export const Header_v2 = (props) => {
                         <Box sx={{ display: 'flex', 
                                    flexDirection: 'row',
                                    alignItems: 'center'}}>
-                            <CardMedia sx={{ mr: 2 }} component="img"
+                            <CardMedia sx={{ mr: 2 }} 
+                                    component="img"
                                     height="60"
                                     width= "60"
                                     image={imageCinema}

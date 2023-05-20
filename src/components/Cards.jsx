@@ -1,27 +1,23 @@
-import styled from 'styled-components';
+import {Grid } from '@mui/material';
 
 import { Card } from './Card';
-
-
-const CardsWrapper = styled.div`          
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
-    grid-gap: 0.8rem;
-    justify-content: space-between;
-    margin-left: -25px;
-
-    @media (max-width: 500px) {
-        justify-content: center;
-    }
-`;
 
 export const Cards = (props) => {
   const { films } = props;
   return (
-      <CardsWrapper>
-        {films.map((film) => (
-          <Card key={film.filmId} {...film} />
-        ))}
-      </CardsWrapper>
+        <Grid container spacing={4} >                   
+            {films.map((film, index) => (
+             <Grid item key={index} xs={12} sm={4} md={3}> 
+                <Card key={index} {...film} />
+                {/* <Card key={film.filmId} {...film} /> */}
+             </Grid> 
+            ))}                   
+        </Grid>
   );
 };
+
+// {Array.from(Array(6)).map((_, index) => (
+//   <Grid item xs={2} sm={4} md={4} key={index}>
+//     <Item>xs=2</Item>
+//   </Grid>
+// ))}

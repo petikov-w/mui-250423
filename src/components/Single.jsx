@@ -1,17 +1,22 @@
 import React from 'react';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Box,  Button, Typography, CardMedia, Stack} from '@mui/material';
+
+import { useTheme } from 'styled-components';
+
+import { ThemeMui } from '../styles/ThemeMui';
 //import { green } from '@mui/material/colors';
 
 export const Single = (props) => {
     
+    const saTheme = useTheme(ThemeMui);
     const {film} = props;
    const navigate = useNavigate();
     const goBack = () => navigate(-1);   
     // const preLoader = '';
     const preLoader = <h3>Загрузка...</h3>;
     
-    const loc = useLocation();
+    //const loc = useLocation();
     localStorage.setItem('isSingle', true);
 
     return (
@@ -44,10 +49,12 @@ export const Single = (props) => {
                      </Typography>
                      <Typography paragraph sx={{fontSize: '14px', fontWeight: '600'}}>
                         Год производства: 
-                        <Typography component="span" sx={{fontSize: 'inherit', 
+                        <Typography component="span"  sx={{fontSize: 'inherit', 
                                                           fontWeight: 'inherit',
                                                           ml: 2, 
-                                                          color: '#47e83f'}}>
+                                                          color: '#47e83f',
+                                                        //   color: 'saTheme.color.primary',
+                                                          }}>
                                                          {film.year}
                         </Typography>
                      </Typography>

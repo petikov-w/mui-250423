@@ -36,6 +36,7 @@ export const CatalogPage = (props) => {
                 <Pagination count={pagesCount} 
                             color="primary"                               
                             page={page}  
+                            // siblingCount={0}
                             onChange={handleChange}
                             sx={{marginY: 3,
                                  marginX: 'auto',

@@ -20,20 +20,21 @@ const Main = styled.div`
 const Layout = () => {
     
     const [theme, setTheme] = useState('light');    
+    
 
       return (
       <>    
-        <MyContext.Provider value={{theme, setTheme}} >
-            <ThemeProvider theme={ThemeMui(theme)}>            
+        <MyContext.Provider value={{theme, setTheme}} >   
+            <ThemeProvider theme={ThemeMui(theme)}>   
                 <Header_v2 />     
-                <Main>
-                   <Container maxWidth="lg" sx={{ mt: 12, mb: 5 }}>                
-                  <Outlet />   
-                   </Container>   
-                </Main>               
-                <Footer />   
+                 <Container maxWidth="1300px" sx={{ mt: 12, mb: 5 }}>   
+                <Main>                               
+                  <Outlet />                         
+                </Main>           
+                </Container>
+                <Footer />                    
             </ThemeProvider>
-        </MyContext.Provider>
+       </MyContext.Provider>
     </>
     );
 };

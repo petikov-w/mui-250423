@@ -4,7 +4,7 @@ export const ThemeMui = (theme) => createTheme({
     palette: {
         mode: theme,
         primary: {              
-            main: '#ffa500 ', 
+            main: '#ffa500',    
           
         },
         secondary: {   
