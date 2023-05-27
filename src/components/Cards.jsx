@@ -9,7 +9,6 @@ export const Cards = (props) => {
             {films.map((film, index) => (
              <Grid item key={index} xs={12} sm={4} md={3} lg={2.4}> 
                 <Card key={index} {...film} />
-                {/* <Card key={film.filmId} {...film} /> */}
              </Grid> 
             ))}                   
         </Grid>
