@@ -28,19 +28,18 @@ export const CatalogPage = (props) => {
 
     return (
         <>
-        <Container maxWidth="lg">
+        {/* <Container maxWidth="lg"> */}
             {/* <Helmet>
                 <title>Cinema Box - Каталог</title>
             </Helmet> */}
             <Stack spacing={2}>
                 <Pagination count={pagesCount} 
-                            color="primary"                               
+                            color="pagination"                             
                             page={page}  
                             // siblingCount={0}
                             onChange={handleChange}
                             sx={{marginY: 3,
                                  marginX: 'auto',
-                                 color: 'text.primary',
                             }}
                             renderItem={
                                 (item) =>(                                    
@@ -56,7 +55,7 @@ export const CatalogPage = (props) => {
             </Stack>
             {films.length ? (<Cards films={films} />) 
                                     : (<h3>Загрузка...</h3>)}    
-            </Container>
+            {/* </Container> */}
 
         </>
            

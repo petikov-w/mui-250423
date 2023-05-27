@@ -25,7 +25,7 @@ export const Card = (props, bg) => {
                   height="350"
                   image={posterUrl}                    
                   alt="poster"
-                  sx={{ borderRadius: 2, objectFit: 'fill', maxWidt: '220px'}}
+                  sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px',maxWidth: '230px'}}
                 />
             </CardLink>          
                 

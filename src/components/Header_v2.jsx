@@ -74,7 +74,7 @@ export const Header_v2 = (props) => {
                                                      alignItems: 'center',
                                                      justifyContent: 'space-between',
                                                    }}>     
-                       <IconButton
+                      <IconButton
                             size="small"
                             edge="start"
                             color="inherit"
@@ -83,8 +83,8 @@ export const Header_v2 = (props) => {
                             sx={{ display: { xs: 'inline', sm: 'inline', md: 'none'} }} 
                             >
                             <MenuIcon />
-                        </IconButton>       
-                        <Link color="inherit" underline="none" component={NavLink} to={'/'}>                     
+                      </IconButton>       
+                      <Link color="inherit" underline="none" component={NavLink} to={'/'}>                     
                         <Box sx={{ display: 'flex', 
                                    flexDirection: 'row',
                                    alignItems: 'center'}}>
@@ -95,39 +95,30 @@ export const Header_v2 = (props) => {
                                     image={imageCinema}
                                     alt="cinema" >                                
                             </CardMedia>
-                            <Typography  sx={{ fontSize: 22,
-                                            fontWeight: 'bold', 
-                                            letterSpacing: 6,
-                                            textTransform: 'uppercase',                                               
-                                            }} >Кино
-                            </Typography>                           
+                            <Typography  variant="logo_header" >Кино</Typography>      
                         </Box> 
                       </Link>
+                   
+                      <Stack sx={{ display: { xs: 'none', sm: 'none', md: 'flex'}, ml:-16}} direction="row" spacing={4}  > 
+                              {navItems.map((item) => (                                   
+                                  <Link color="inherit" underline="none" key={item.id} component={NavLink} 
+                                                                      to={item.path}>                                     
+                                      <TypographyNavLinkStl>
+                                          {item.navItem}
+                                      </TypographyNavLinkStl>
+                                  </Link>    
+                              ))}
 
-                    
-                        <Stack sx={{ display: { xs: 'none', sm: 'none', md: 'flex'}}} direction="row" spacing={4}  > 
-                                {navItems.map((item) => (                                      
-                                                                   
-                                    //  <LinkStl color="inherit" key={item.id} component={NavLink} 
-                                    //                                     to={item.path}>                                     
-                                     <Link color="inherit" underline="none" key={item.id} component={NavLink} 
-                                                                        to={item.path}>                                     
-                                        <TypographyNavLinkStl>
-                                            {item.navItem}
-                                        </TypographyNavLinkStl>
-                                    </Link>    
-                                ))}
+                      </Stack>                    
 
-                        </Stack>                    
-
-                        <Box sx={{ mr: -3, display: 'inline-flex'}}>
-                            <FormControlLabel  
-                                    control={<Switch size="small" 
-                                    color="default"
-                                    checked={checked}
-                                    onChange={handleChange} /> }>                                 
-                            </FormControlLabel>                            
-                        </Box>        
+                      <Box sx={{ mr: -3, display: 'inline-flex'}}>
+                          <FormControlLabel  
+                                  control={<Switch size="small" 
+                                  color="default"
+                                  checked={checked}
+                                  onChange={handleChange} /> }>                                 
+                          </FormControlLabel>                            
+                      </Box>        
                     </Container>   
                 </AppBar>  
                 <Box component="nav">

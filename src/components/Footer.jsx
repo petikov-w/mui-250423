@@ -36,13 +36,15 @@ export const Footer = () => {
                                         image={imageCinema}
                                         alt="cinema" >                                
                                 </CardMedia>
-                                <Typography  sx={{ fontSize: 18,
+                                <Typography variant="logo_footer" >Кино</Typography>
+                            
+                                {/* <Typography  sx={{ fontSize: 18,
                                                 fontWeight: 'bold', 
                                                 letterSpacing: 6,
                                                 textTransform: 'uppercase',
                                                 }} >Кино
                                 </Typography>
-                            
+                             */}
                          </Box>         
                         </Link> 
                         <Box>

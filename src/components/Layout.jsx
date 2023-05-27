@@ -27,7 +27,7 @@ const Layout = () => {
         <MyContext.Provider value={{theme, setTheme}} >   
             <ThemeProvider theme={ThemeMui(theme)}>   
                 <Header_v2 />     
-                 <Container maxWidth="1300px" sx={{ mt: 12, mb: 5 }}>   
+                 <Container maxWidth="lg"  sx={{ mt: 12, mb: 5 }}>   
                 <Main>                               
                   <Outlet />                         
                 </Main>           

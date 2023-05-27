@@ -44,9 +44,12 @@ export const Single = (props) => {
                      <Typography  sx={{fontSize: '20px', fontWeight: '800'}}>
                         Краткое содержание:
                      </Typography>
-                     <Typography paragraph sx={{fontSize: '14px'}}>
+                     <Typography paragraph variant="subtitle1">
                         {film.description} 
                      </Typography>
+                     {/* <Typography paragraph sx={{fontSize: '14px'}}>
+                        {film.description} 
+                     </Typography> */}
                      <Typography paragraph sx={{fontSize: '14px', fontWeight: '600'}}>
                         Год производства: 
                         <Typography component="span"  sx={{fontSize: 'inherit', 
