@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link as NavLink, useSearchParams} from 'react-router-dom';
 
-import {Stack, Container, Pagination, PaginationItem} from '@mui/material';
+import {Stack, Container, Pagination, PaginationItem, Typography} from '@mui/material';
 
 import {Cards} from '../components/Cards';
 import {api_query} from '../components/Api';
@@ -33,7 +33,7 @@ export const CatalogPage = (props) => {
                 <title>Cinema Box - Каталог</title>
             </Helmet> */}
             <Stack spacing={2}>
-                <Pagination count={pagesCount} 
+                    <Pagination count={pagesCount} 
                             color="pagination"                             
                             page={page}  
                             // siblingCount={0}
@@ -51,7 +51,7 @@ export const CatalogPage = (props) => {
                                      />   
                                 )
                             }
-                />               
+                />                               
             </Stack>
             {films.length ? (<Cards films={films} />) 
                                     : (<h3>Загрузка...</h3>)}    

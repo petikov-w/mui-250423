@@ -1,4 +1,4 @@
-import { Palette } from '@mui/icons-material';
+// import { Palette } from '@mui/icons-material';
 import {createTheme } from '@mui/material/styles';
 
 export const ThemeMui = (theme) => createTheme({
@@ -9,7 +9,7 @@ export const ThemeMui = (theme) => createTheme({
         },
         pagination: {                
             main: theme==='light' ? '#ffa500' : '#a39c9c', 
-            contrastText: theme==='light' ? '#1c0dba' : '#ffffff', 
+            contrastText: theme==='light' ? '#1c0dba' : '#ffffff',            
         },      
     },
     typography: {

@@ -1,7 +1,10 @@
-import {Card as Card2, CardMedia} from '@mui/material';
+import {CardMedia} from '@mui/material';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import {CardLink} from '../styles/Link.styled.js';
+const CardLink = styled(Link)`
+  cursor: pointer; 
+`;  
 
 const CardStl = styled(CardMedia)`
   box-shadow: 4px 4px 16px 0px rgba(34, 60, 80, 0.2); 
@@ -17,8 +20,7 @@ export const Card = (props, bg) => {
     const {filmId, posterUrl} = props;
        
     return (
-        <> 
-        
+        <>         
            <CardLink to={`/films/${filmId}`}>           
                 <CardStl
                   component="img"                    
@@ -28,8 +30,6 @@ export const Card = (props, bg) => {
                   sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px',maxWidth: '230px'}}
                 />
             </CardLink>          
-                
-                    
         </>     
     );
   };
