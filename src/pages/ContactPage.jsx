@@ -9,21 +9,13 @@ export const ContactPage = () => {
 
     const [genres, setGenres] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [filterGenres, setFilterGenres] = useState([]);
-    // const [chips, setChips] = useState(['Chip 1', 'Chip 2', 'Chip 3']);
+    const [filterGenres, setFilterGenres] = useState([]);    
     const handleDelete = (chipToDelete) => {
-    //   setChips(genres => genres.filter(genres => genres.genre !== chipToDelete))
-    console.log('chipToDelete :>> ', chipToDelete.id);
+        setFilterGenres(genres => filterGenres.filter(genres => genres.genre !== chipToDelete.genre));
+    // console.log('chipToDelete :>> ', chipToDelete.id);
     };
 
-    // const requiredGenres = ['драма','боевик','мультфильм','военный','документальный'];
     const filteredGenres = genres.filter((item) => requiredGenres.includes(item.genre));
-
-    // const handleDelete = () => {
-    //     alert('Авария !!!'); 
-    // };
-
-
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_FILTERS}`, {
             headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}`}})       
@@ -36,19 +28,22 @@ export const ContactPage = () => {
        const filter = genres.filter((item) => requiredGenres.includes(item.genre));
        setFilterGenres(filter);
     }, [genres]);
+
+    useEffect(() => {
+        console.log('filterGenres :>> ', filterGenres);         
+     }, [filterGenres]);
     
-    console.log('genres :>> ', genres);
+    // console.log('genres :>> ', genres);
     // console.log('countries :>> ', countries);
-    console.log('filteredGenres :>> ', filteredGenres);    
+    // console.log('filteredGenres :>> ', filteredGenres);    
 
     return (
         <>
             {/* <Helmet>
                 <title>Cinema Box - Контакты</title>
             </Helmet> */}
-                {/* <h2>Контакты</h2>
-                <p>Это страница контактов</p>            */}
-            
+            {/* <h2>Контакты</h2>
+            <p>Это страница контактов</p>            */}            
            
                {/* ======================================================== */}
                <Grid container spacing={1}  direction="row" justifyContent="center">
@@ -60,16 +55,7 @@ export const ContactPage = () => {
                </Grid>
               
                {/* ======================================================== */}
-
-
-
-
-
-
-       
-
-        </>
-           
+        </>           
     );
 };
 
