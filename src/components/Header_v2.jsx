@@ -16,9 +16,11 @@ import { MyContext } from './Context';
 
 const drawerWidth = 240;
 
-const navItems = [{id: 1, navItem: 'Главная', path: '/'},
-                  {id: 2, navItem: 'Каталог', path: '/films?page=1'},
-                  {id: 3, navItem: 'Контакты', path: '/contacts'}];
+const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/'},
+                  {id: 2, navItem: 'Топ фильмов', path: '/films?page=1'},
+                  {id: 3, navItem: 'Сериалы', path: '/serials'},
+                  {id: 4, navItem: 'Мультфильмы', path: '/mults'},
+                ];
 
 export const Header_v2 = (props) => {
     

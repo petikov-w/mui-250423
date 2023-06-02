@@ -1,13 +1,13 @@
+// import { Helmet } from 'react-helmet';
 import { useState, useEffect } from 'react';
 import { Link as NavLink, useSearchParams} from 'react-router-dom';
 
-import {Stack, Container, Pagination, PaginationItem, Typography} from '@mui/material';
+import {Stack, Pagination, PaginationItem} from '@mui/material';
 
 import {Cards} from '../components/Cards';
 import {api_query} from '../components/Api';
 
- 
-export const CatalogPage = (props) => {     
+export const TopPage = (props) => { 
 
     const [searchParams] = useSearchParams();
     const [films, setFilms] = useState([]); 
@@ -25,14 +25,13 @@ export const CatalogPage = (props) => {
                                                   setPagesCount(data.pagesCount);                                                         
                                                   });}, [page]);
                                                  
-
+    
     return (
         <>
-        {/* <Container maxWidth="lg"> */}
             {/* <Helmet>
-                <title>Cinema Box - Каталог</title>
+                <title>Cinema Box - Главная</title>
             </Helmet> */}
-            <Stack spacing={2}>
+              <Stack spacing={2}>
                     <Pagination count={pagesCount} 
                             color="pagination"                             
                             page={page}  
@@ -54,9 +53,7 @@ export const CatalogPage = (props) => {
                 />                               
             </Stack>
             {films.length ? (<Cards films={films} />) 
-                                    : (<h3>Загрузка...</h3>)}    
-            {/* </Container> */}
-
+                                    : (<h3>Загрузка...</h3>)}         
         </>
            
     );

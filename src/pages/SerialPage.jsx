@@ -1,14 +1,14 @@
 // import { Helmet } from 'react-helmet';
 
-export const HomePage = () => { 
+export const SerialPage = () => { 
     
     return (
         <>
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}
-                <h2>Главная</h2>
-                <p>Это главная страница сайта</p>           
+                <h2>Сериалы</h2>
+                <p>Это страница сериалов</p>           
         </>
            
     );
