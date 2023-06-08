@@ -15,6 +15,7 @@ export const Single = (props) => {
     const goBack = () => navigate(-1);   
     // const preLoader = '';
     const preLoader = <h3>Загрузка...</h3>;
+    const no_description = 'Описание отсутствует';
     
     //const loc = useLocation();
     localStorage.setItem('isSingle', true);
@@ -45,11 +46,9 @@ export const Single = (props) => {
                         Краткое содержание:
                      </Typography>
                      <Typography paragraph variant="subtitle1">
-                        {film.description} 
+                       { film.description === null ? (no_description) : (film.description)}
                      </Typography>
-                     {/* <Typography paragraph sx={{fontSize: '14px'}}>
-                        {film.description} 
-                     </Typography> */}
+                   
                      <Typography paragraph sx={{fontSize: '14px', fontWeight: '600'}}>
                         Год производства: 
                         <Typography component="span"  sx={{fontSize: 'inherit', 

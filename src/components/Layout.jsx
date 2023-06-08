@@ -12,7 +12,7 @@ import { Footer } from './Footer';
 import { MyContext } from './Context';
 
 const Main = styled.div` 
-     min-height: calc(95vh - 85px - 22px);
+     min-height: calc(91.3vh - 85px - 22px);
      padding-top: 1.5rem 0;    
 `;
 
