@@ -10,27 +10,52 @@ const CardBox = styled(Box)`
       transition: 0.8s;
       transform: scale(1.1);     
       box-shadow: none;
+      /* background-color: rgb(139, 129, 129, 0.7); */
   }
 `;
 
 const BoxZ = styled(Box)`
-    padding: 0 10px;
+    /* padding: 0 10px; */
     position: absolute;
-    border-radius: 15px;
-    z-index: 10;
-    bottom: 0;
+    border-radius: 8px;
+    /*  */
+    /* z-index: 10; */
+    top: 0;
     left: 0; 
-    background-color: rgb(139, 129, 129, 0.7);
-    /* display: none; */
-  :hover {    
-      /* transition: 0.8s; */
-      transform: translate(30%, -30%);     
-      display: inline;
+    width: 100%;
+    height:100%;
+  
+   
+  :hover {       
+       
+       /* background-color:rgba(0, 0, 0, 0.7); */
+       
   }
 `;
 
+const TypographyStl = styled(Typography)` 
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start; 
+    /* padding-left: 0 20px; */
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    opacity: 0;                                     
+    transition: all 0.3s ease-in-out;
+  :hover {       
+      opacity: 1;   
+      background-color:rgba(0, 0, 0, 0.7);
+    }     
+`;
 
-
+const BoxStl = styled(Box)` 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start; 
+`;
 // const FilmLength = styled(Box)`
 //     background-color: #ada8a8;      
 //     padding: 0 10px;
@@ -42,7 +67,7 @@ const BoxZ = styled(Box)`
 // `;
 
 export const CardU = (props, bg) => {
-    const {filmId, kinopoiskId, posterUrl, rating} = props;
+    const {filmId, kinopoiskId, posterUrl, rating, filmLength} = props;
     let linkFilm = '';
 
     if (props.typePage === 'top') {
@@ -56,9 +81,9 @@ export const CardU = (props, bg) => {
     return (
         <>         
            <Link to={linkFilm} sx={{cursor: 'pointer'}}>    
-           <Box sx={{ position: 'relative' }}>
-            <CardBox >
-            {/* <CardBox sx={{ position: 'relative', zIndex: 1 }}> */}
+           {/* <Box sx={{ position: 'relative' }}> */}
+            {/* <CardBox > */}
+            <CardBox sx={{ position: 'relative', zIndex: 1, borderRadius: 2 }}>
                   <CardMedia                  
                     component="img"                    
                     height="350"
@@ -67,10 +92,18 @@ export const CardU = (props, bg) => {
                     sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px' ,maxWidth: '230px', 
                           boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
                   />
-                  <BoxZ>Ghbdtn</BoxZ>
-                  { props.typePage === 'top' ? ( <Rating rating={rating} /> ) : ('')}                 
+                   <BoxZ>                 
+                    <TypographyStl>
+                      <BoxStl>
+                         <Typography variant="s1" sx={{pl: 3}}>Рейтинг: {rating}</Typography>
+                         <Typography variant="s1" sx={{pl: 3, pb: 2}}>Время: {filmLength}</Typography> 
+                      </BoxStl>
+                    </TypographyStl>
+
+                  </BoxZ> 
+                  {/* { props.typePage === 'top' ? ( <Rating rating={rating} /> ) : ('')}                  */}
              </CardBox>     
-           </Box>
+           {/* </Box> */}
              
                                
             </Link>          

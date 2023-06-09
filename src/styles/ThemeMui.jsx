@@ -23,6 +23,17 @@ export const ThemeMui = (theme) => createTheme({
           color: 'white',
          // color: theme==='light' ? '#332d2d' : '#a39c9c' ,
         },
+        s1: {
+          fontSize: 13,
+          fontWeight: 500,
+          color: 'white',
+        },
+        s2: {
+          fontSize: 16,
+          fontWeight: 800,
+          color: 'green',
+        },
+
         logo_header: {
             fontSize: 22,
             color: theme==='light' ? '#7a5ad1' : '#a39c9c' ,
