@@ -92,15 +92,16 @@ export const CardU = (props, bg) => {
                     sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px' ,maxWidth: '230px', 
                           boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
                   />
-                   <BoxZ>                 
-                    <TypographyStl>
-                      <BoxStl>
-                         <Typography variant="s1" sx={{pl: 3}}>Рейтинг: {rating}</Typography>
-                         <Typography variant="s1" sx={{pl: 3, pb: 2}}>Время: {filmLength}</Typography> 
-                      </BoxStl>
-                    </TypographyStl>
-
-                  </BoxZ> 
+                   { props.typePage === 'top' ? ( 
+                      <BoxZ>                 
+                        <TypographyStl>
+                          <BoxStl>
+                            <Typography variant="s1" sx={{pl: 3}}>Рейтинг: {rating}</Typography>
+                            <Typography variant="s1" sx={{pl: 3, pb: 2}}>Время: {filmLength}</Typography> 
+                          </BoxStl>
+                        </TypographyStl>
+                      </BoxZ> ) : ('')}
+                  
                   {/* { props.typePage === 'top' ? ( <Rating rating={rating} /> ) : ('')}                  */}
              </CardBox>     
            {/* </Box> */}

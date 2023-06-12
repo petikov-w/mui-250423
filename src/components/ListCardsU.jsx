@@ -13,20 +13,42 @@ export const ListCardsU = (props) => {
     const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
     const [pagesCount, setPagesCount ] = useState(0); // общее количество страниц
     const handleChange = (event, p) => { setPage(p); };
+    let ssd = '';
+
+    if (props.typePage === 'top') { ssd = `${process.env.REACT_APP_API_TOP_PAGE}` + page};
+    if (props.typePage === 'premier') { ssd = `${process.env.REACT_APP_API_PREMIERS}`};      
+    if (props.typePage === 'serial') { ssd = `${process.env.REACT_APP_API_SERIALS}`};      
 
   
-    useEffect(()=>{fetch(props.typePage === 'premier' ? `${process.env.REACT_APP_API_PREMIERS}` 
-                                                        : `${process.env.REACT_APP_API_TOP_PAGE}` + page
-        , {headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}` },
-    }).then((responce) => responce.json()).then((data) => {  if (props.typePage === 'top') {
+    useEffect(()=>{fetch( ssd , {headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}` },
+    }).then((responce) => responce.json()).then((data) => {  if (props.typePage === 'top') {  
                                                                     setFilms(data.films);
                                                                     setPagesCount(data.pagesCount);  
                                                                 }
+                                                                if (props.typePage === 'serial') {
+                                                                    setFilms(data.items); 
+                                                                    setPagesCount(data.totalPages); 
+                                                                }    
                                                                 if (props.typePage === 'premier') {
                                                                     setFilms(data.items); 
                                                                 }    
                                                                 console.log('data :>> ', data);       
                                                     });}, [page]);
+
+    console.log('page :>> ', page);                                                
+
+    // useEffect(()=>{fetch(props.typePage === 'premier' ? `${process.env.REACT_APP_API_PREMIERS}` 
+    //                                                     : `${process.env.REACT_APP_API_TOP_PAGE}` + page
+    //     , {headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}` },
+    // }).then((responce) => responce.json()).then((data) => {  if (props.typePage === 'top') {
+    //                                                                 setFilms(data.films);
+    //                                                                 setPagesCount(data.pagesCount);  
+    //                                                             }
+    //                                                             if (props.typePage === 'premier') {
+    //                                                                 setFilms(data.items); 
+    //                                                             }    
+    //                                                             console.log('data :>> ', data);       
+    //                                                 });}, [page]);
 
                                                     
 
@@ -36,7 +58,7 @@ export const ListCardsU = (props) => {
                 <title>Cinema Box - Главная</title>
             </Helmet> */}
             
-            { props.typePage === 'top' 
+            { props.typePage === 'top' || props.typePage === 'serial'
                    ? ( 
                         <Stack spacing={2}>
                             <Pagination count={pagesCount} 

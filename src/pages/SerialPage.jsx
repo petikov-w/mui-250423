@@ -11,7 +11,7 @@ export const SerialPage = () => {
             </Helmet> */}
                 {/* <h2>Сериалы</h2>
                 <p>Это страница сериалов</p>       */}
-                 <ListCardsU query={query} typePage="top"/>      
+                 <ListCardsU query={query} typePage="serial"/>      
         </>
            
     );
