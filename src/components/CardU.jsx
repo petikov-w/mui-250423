@@ -74,7 +74,7 @@ export const CardU = (props, bg) => {
         linkFilm = `/films/${filmId}`;
     }
 
-    if (props.typePage === 'premier') {
+    if (props.typePage === 'premier' || props.typePage === 'serial' || props.typePage === 'mult' ) {
         linkFilm = `/films/${kinopoiskId}`;
     }
        
