@@ -82,7 +82,8 @@ export const ListCardsU = (props) => {
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}
-            
+            {sf}    
+
             { props.typePage === 'top' || props.typePage === 'serial' || props.typePage === 'mult'
                    ? ( 
                         <Stack spacing={2}>
@@ -108,7 +109,6 @@ export const ListCardsU = (props) => {
                         </Stack>
                      )
                    : ('')}   
-            {sf}    
         </>
            
     );
