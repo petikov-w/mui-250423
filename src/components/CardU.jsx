@@ -67,14 +67,14 @@ const BoxStl = styled(Box)`
 // `;
 
 export const CardU = (props, bg) => {
-    const {filmId, kinopoiskId, posterUrl, rating, filmLength} = props;
+    const {filmId, kinopoiskId, posterUrl, rating, filmLength, typePage} = props;
     let linkFilm = '';
 
-    if (props.typePage === 'top') {
+    if (typePage === 'top') {
         linkFilm = `/films/${filmId}`;
     }
 
-    if (props.typePage === 'premier' || props.typePage === 'serial' || props.typePage === 'mult' ) {
+    if (typePage === 'premier' || typePage === 'serial' || typePage === 'mult' ) {
         linkFilm = `/films/${kinopoiskId}`;
     }
        
@@ -92,7 +92,7 @@ export const CardU = (props, bg) => {
                     sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px' ,maxWidth: '230px', 
                           boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
                   />
-                   { props.typePage === 'top' ? ( 
+                   { typePage === 'top' ? ( 
                       <BoxZ>                 
                         <TypographyStl>
                           <BoxStl>

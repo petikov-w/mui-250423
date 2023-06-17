@@ -1,19 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link as NavLink, useSearchParams} from 'react-router-dom';
 
 import {Stack, Pagination, PaginationItem} from '@mui/material';
 
 import { CardsU } from './CardsU';
+
+import {Genre} from './Context';
 // import {api_query} from '../components/Api';
 
 const requiredGenres = ['драма','боевик','мультфильм','военный','документальный'];
+const allowedPagesShowPagination = ['top','serial','mult'];
+// const allowedPages = ['','','','',''];
+
 
 export const ListCardsU = (props) => { 
+
+    const { typePage, path } = props;
+
 
     const [searchParams] = useSearchParams();
     const [films, setFilms] = useState([]); 
     const [serials, setSerials] = useState([]); 
     const [mults, setMults] = useState([]); 
+    // const [genre, setGenre] = useContext(Genre);
 
     const [genres, setGenres] = useState([]);
     const [countries, setCountries] = useState([]);
@@ -24,12 +33,15 @@ export const ListCardsU = (props) => {
     const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
     const [pagesCount, setPagesCount ] = useState(0); // общее количество страниц
     const handleChange = (event, p) => { setPage(p); };
+
+    // console.log('genre544 :>> ', genre);
+
     let ssd = '';
 
-    if (props.typePage === 'top') { ssd = `${process.env.REACT_APP_API_TOP_PAGE}` + page};
-    if (props.typePage === 'premier') { ssd = `${process.env.REACT_APP_API_PREMIERS}`};      
-    if (props.typePage === 'serial') { ssd = `${process.env.REACT_APP_API_SERIALS}` + page};      
-    if (props.typePage === 'mult') { ssd = `${process.env.REACT_APP_API_MULTS}` + page};      
+    if (typePage === 'top') { ssd = `${process.env.REACT_APP_API_TOP_PAGE}` + page};
+    if (typePage === 'premier') { ssd = `${process.env.REACT_APP_API_PREMIERS}`};      
+    if (typePage === 'serial') { ssd = `${process.env.REACT_APP_API_SERIALS}` + page};      
+    if (typePage === 'mult') { ssd = `${process.env.REACT_APP_API_MULTS}` + page};      
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_FILTERS}`, {
@@ -40,41 +52,41 @@ export const ListCardsU = (props) => {
     }, []);
   
     useEffect(()=>{fetch( ssd , {headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}` },
-    }).then((responce) => responce.json()).then((data) => {  if (props.typePage === 'top') {  
+    }).then((responce) => responce.json()).then((data) => {  if (typePage === 'top') {  
                                                                     setFilms(data.films);
                                                                     setPagesCount(data.pagesCount);  
                                                                 }
-                                                                if (props.typePage === 'serial') {
+                                                                if (typePage === 'serial') {
                                                                     setSerials(data.items); 
                                                                     setPagesCount(data.totalPages); 
                                                                 }    
-                                                                if (props.typePage === 'mult') {
+                                                                if (typePage === 'mult') {
                                                                     setMults(data.items); 
                                                                     setPagesCount(data.totalPages); 
                                                                 }    
-                                                                if (props.typePage === 'premier') {
+                                                                if (typePage === 'premier') {
                                                                     setFilms(data.items); 
                                                                 }    
-                                                                console.log('data :>> ', data);       
+                                                              //  console.log('data :>> ', data);       
                                                     });}, [page]);
 
     // console.log('page :>> ', page);       
-      console.log('genres :>> ', genres);
-    console.log('countries :>> ', countries);
-    console.log('filteredGenres :>> ', filteredGenres);                                            
+    // console.log('genres :>> ', genres);
+    // console.log('countries :>> ', countries);
+    // console.log('filteredGenres :>> ', filteredGenres);                                            
 
-      let sf;
+    let sf;
  
-    if (props.typePage === 'top' || props.typePage === 'premier') {
-       sf = films.length ? (<CardsU films={films} typePage={props.typePage} />) : (<h3>Загрузка...</h3>); 
+    if (typePage === 'top' || typePage === 'premier') {
+       sf = films.length ? (<CardsU films={films} typePage={typePage} genres={filteredGenres}/>) : (<h3>Загрузка...</h3>); 
     }       
           
-    if (props.typePage === 'serial') {
-       sf = serials.length ? (<CardsU films={serials} typePage={props.typePage} />) : (<h3>Загрузка...</h3>); 
+    if (typePage === 'serial') {
+       sf = serials.length ? (<CardsU films={serials} typePage={typePage} genres={genres}/>) : (<h3>Загрузка...</h3>); 
     }                                      
                         
-    if (props.typePage === 'mult') {
-        sf = mults.length ? (<CardsU films={mults} typePage={props.typePage} />) : (<h3>Загрузка...</h3>); 
+    if (typePage === 'mult') {
+        sf = mults.length ? (<CardsU films={mults} typePage={typePage} genres={genres}/>) : (<h3>Загрузка...</h3>); 
      }            
 
     return (
@@ -84,7 +96,7 @@ export const ListCardsU = (props) => {
             </Helmet> */}
             {sf}    
 
-            { props.typePage === 'top' || props.typePage === 'serial' || props.typePage === 'mult'
+            { allowedPagesShowPagination.includes(typePage)
                    ? ( 
                         <Stack spacing={2}>
                             <Pagination count={pagesCount} 
@@ -100,7 +112,7 @@ export const ListCardsU = (props) => {
                                         <PaginationItem                                     
                                             component={NavLink}
                                             onChange={handleChange}
-                                            to={`${props.path}${item.page}`}                                             
+                                            to={`${path}${item.page}`}                                             
                                             {...item}
                                             />   
                                         )

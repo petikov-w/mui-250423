@@ -12,10 +12,8 @@ export const PremierPage = (props) => {
         <>
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
-            </Helmet> */}           
-            {/* <h2>Премьеры этого месяца</h2>
-            <p>Это страница премьер фильмов</p>   */}
-            {/* <ListCardsNoPagination  />              */}
+            </Helmet> */}          
+                
             <ListCardsU query={query} typePage="premier"/>                
         </>
            
