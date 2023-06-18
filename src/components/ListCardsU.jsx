@@ -16,13 +16,13 @@ const allowedPagesShowPagination = ['top','serial','mult'];
 export const ListCardsU = (props) => { 
 
     const { typePage, path } = props;
-
+    // const sss =useContext(Genre); 
 
     const [searchParams] = useSearchParams();
     const [films, setFilms] = useState([]); 
     const [serials, setSerials] = useState([]); 
     const [mults, setMults] = useState([]); 
-    // const [genre, setGenre] = useContext(Genre);
+    const [genre, setGenre] = useContext(Genre);
 
     const [genres, setGenres] = useState([]);
     const [countries, setCountries] = useState([]);
@@ -41,7 +41,12 @@ export const ListCardsU = (props) => {
     if (typePage === 'top') { ssd = `${process.env.REACT_APP_API_TOP_PAGE}` + page};
     if (typePage === 'premier') { ssd = `${process.env.REACT_APP_API_PREMIERS}`};      
     if (typePage === 'serial') { ssd = `${process.env.REACT_APP_API_SERIALS}` + page};      
-    if (typePage === 'mult') { ssd = `${process.env.REACT_APP_API_MULTS}` + page};      
+    if (typePage === 'mult') { ssd = `${process.env.REACT_APP_API_MULTS}` + page};     
+    
+    
+    useEffect(() => {
+        console.log('sss-genre :>', genre);
+    }, [genre]);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_FILTERS}`, {

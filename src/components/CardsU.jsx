@@ -1,5 +1,5 @@
 import {Grid, Autocomplete, TextField, Stack } from '@mui/material';
-import { useContext } from 'react';
+import { useContext, useState, useEffect, useMemo } from 'react';
 
 // import { Card2 } from './Card2';
 import { CardU } from './CardU';
@@ -16,11 +16,25 @@ export const CardsU = (props) => {
   const widthLg = typePage !== 'premier' ?  3 : 2.4; 
 
   const [genre, setGenre] = useContext(Genre);
+  const [value,setValue]=useState({});
 
-  const genresBoom = genres.map((item, index) => ({
-    id: index,
-    genre: item.genre,
-  }));
+
+   const defprops = {
+        options: genres,
+        getOptionLabel: (options) => options.genre,
+    }
+    const getdata = (data) => {
+        setValue(data);
+        setGenre(data);
+        console.log('value :>> ', value);
+        console.log(data.id);
+        console.log(data.genre);
+    }
+
+    useEffect(() => {
+                      console.log('value :>> ', value);
+                    }, [value]);
+
 
   console.log('genres :>> ', genres);
 
@@ -38,11 +52,10 @@ export const CardsU = (props) => {
         { typePage !== 'premier' ? (
         <Grid  container direction="column" alignItems="center" sx={{ width: '20%', ml: 3, mb: 3 }}>   
           <Stack width={220}>
-              <Autocomplete sx={{mb: 2 }}
-                  value={genre}
-                  options={genresBoom}
-                  renderInput={(params)=><TextField {...params} label="Жанры" />}
-                  // onChange = {(event, newValue) => {setGenre(newValue);}}
+              <Autocomplete sx={{mb: 2 }}                  
+                  {...defprops}
+                  renderInput={(params)=><TextField {...params} label="Жанры" />}                  
+                  onChange={(event, value) => setValue(value)}
                 
               />    
               <Autocomplete sx={{mb: 3 }}
