@@ -1,11 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link as NavLink, useSearchParams} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {Stack, Pagination, PaginationItem} from '@mui/material';
 
 import { CardsU } from './CardsU';
 
 import {Genre} from './Context';
+
+
 // import {api_query} from '../components/Api';
 
 const requiredGenres = ['драма','боевик','мультфильм','военный','документальный'];
@@ -16,25 +19,28 @@ const allowedPagesShowPagination = ['top','serial','mult'];
 export const ListCardsU = (props) => { 
 
     const { typePage, path } = props;
-    // const sss =useContext(Genre); 
+
+    const genre_rx = useSelector(state => state.selectedGenre.genre);
+    const country_rx = useSelector(state => state.selectedCountrie.countrie);
+                                                 
 
     const [searchParams] = useSearchParams();
     const [films, setFilms] = useState([]); 
     const [serials, setSerials] = useState([]); 
     const [mults, setMults] = useState([]); 
-    const [genre, setGenre] = useContext(Genre);
+    // const [genre, setGenre] = useContext(Genre);
 
     const [genres, setGenres] = useState([]);
     const [countries, setCountries] = useState([]);
     const [filterGenres, setFilterGenres] = useState([]);
 
-    const filteredGenres = genres.filter((item) => requiredGenres.includes(item.genre));
+    // const filteredGenres = genres.filter((item) => requiredGenres.includes(item.genre));
     
     const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
     const [pagesCount, setPagesCount ] = useState(0); // общее количество страниц
     const handleChange = (event, p) => { setPage(p); };
-
-    // console.log('genre544 :>> ', genre);
+    const dispatch_genre_rx = useDispatch();
+    const dispatch_country_rx = useDispatch();
 
     let ssd = '';
 
@@ -45,8 +51,9 @@ export const ListCardsU = (props) => {
     
     
     useEffect(() => {
-        console.log('sss-genre :>', genre);
-    }, [genre]);
+        console.log('genre_rx+ :>> ', genre_rx);
+        console.log('country_rx+ :>> ', country_rx);
+    }, [genre_rx, country_rx]);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_FILTERS}`, {
@@ -54,6 +61,9 @@ export const ListCardsU = (props) => {
             .then((responce) => responce.json())     
             .then(data =>{ setGenres(data.genres);
                            setCountries(data.countries)});
+           dispatch_genre_rx({type:'UPDATE_GENRE', payload: {}}); 
+           dispatch_country_rx({type:'UPDATE_COUNTRIE', payload: {}}); 
+                           
     }, []);
   
     useEffect(()=>{fetch( ssd , {headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}` },
@@ -72,26 +82,23 @@ export const ListCardsU = (props) => {
                                                                 if (typePage === 'premier') {
                                                                     setFilms(data.items); 
                                                                 }    
-                                                              //  console.log('data :>> ', data);       
                                                     });}, [page]);
 
-    // console.log('page :>> ', page);       
-    // console.log('genres :>> ', genres);
-    // console.log('countries :>> ', countries);
-    // console.log('filteredGenres :>> ', filteredGenres);                                            
-
+                                            
     let sf;
  
     if (typePage === 'top' || typePage === 'premier') {
-       sf = films.length ? (<CardsU films={films} typePage={typePage} genres={filteredGenres}/>) : (<h3>Загрузка...</h3>); 
+       sf = films.length ? (<CardsU films={films} typePage={typePage} genres={genres}/>) : (<h3>Загрузка...</h3>); 
     }       
           
     if (typePage === 'serial') {
-       sf = serials.length ? (<CardsU films={serials} typePage={typePage} genres={genres}/>) : (<h3>Загрузка...</h3>); 
+       sf = serials.length ? (<CardsU films={serials} typePage={typePage} genres={genres} countries={countries} />) 
+                              : (<h3>Загрузка...</h3>); 
     }                                      
                         
     if (typePage === 'mult') {
-        sf = mults.length ? (<CardsU films={mults} typePage={typePage} genres={genres}/>) : (<h3>Загрузка...</h3>); 
+        sf = mults.length ? (<CardsU films={mults} typePage={typePage} genres={genres} countries={countries} />) 
+                              : (<h3>Загрузка...</h3>); 
      }            
 
     return (
