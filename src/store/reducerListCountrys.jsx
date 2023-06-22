@@ -1,9 +1,9 @@
 const defaultState = {
-    countrie: {},
+    country: {},   
  };
 
 
-export const reducerSelectedCountrie = (state = defaultState, action) =>{
+export const reducerListCountrys = (state = defaultState, action) =>{
             switch(action.type) {
                 case 'UPDATE_COUNTRIE':
                  return {...state, countrie: action.payload};

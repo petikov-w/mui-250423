@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Link as NavLink, useSearchParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -6,15 +6,13 @@ import {Stack, Pagination, PaginationItem} from '@mui/material';
 
 import { CardsU } from './CardsU';
 
-import {Genre} from './Context';
 
 
 // import {api_query} from '../components/Api';
+// const requiredGenres = ['драма','боевик','мультфильм','военный','документальный'];
 
-const requiredGenres = ['драма','боевик','мультфильм','военный','документальный'];
-const allowedPagesShowPagination = ['top','serial','mult'];
 // const allowedPages = ['','','','',''];
-
+const allowedPagesShowPagination = ['top','serial','mult'];
 
 export const ListCardsU = (props) => { 
 
@@ -31,16 +29,16 @@ export const ListCardsU = (props) => {
     // const [genre, setGenre] = useContext(Genre);
 
     const [genres, setGenres] = useState([]);
-    const [countries, setCountries] = useState([]);
-    const [filterGenres, setFilterGenres] = useState([]);
+    const [countrys, setCountrys] = useState([]);
+    // const [filterGenres, setFilterGenres] = useState([]);
 
     // const filteredGenres = genres.filter((item) => requiredGenres.includes(item.genre));
     
     const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
     const [pagesCount, setPagesCount ] = useState(0); // общее количество страниц
     const handleChange = (event, p) => { setPage(p); };
-    const dispatch_genre_rx = useDispatch();
-    const dispatch_country_rx = useDispatch();
+    const dispatch = useDispatch();
+    //const dispatch_country_rx = useDispatch();
 
     let ssd = '';
 
@@ -60,9 +58,9 @@ export const ListCardsU = (props) => {
             headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}`}})       
             .then((responce) => responce.json())     
             .then(data =>{ setGenres(data.genres);
-                           setCountries(data.countries)});
-           dispatch_genre_rx({type:'UPDATE_GENRE', payload: {}}); 
-           dispatch_country_rx({type:'UPDATE_COUNTRIE', payload: {}}); 
+                           setCountrys(data.countries)});
+           dispatch({type:'UPDATE_GENRE', payload: {}}); 
+           dispatch({type:'UPDATE_COUNTRIE', payload: {}}); 
                            
     }, []);
   
@@ -88,16 +86,16 @@ export const ListCardsU = (props) => {
     let sf;
  
     if (typePage === 'top' || typePage === 'premier') {
-       sf = films.length ? (<CardsU films={films} typePage={typePage} genres={genres}/>) : (<h3>Загрузка...</h3>); 
+       sf = films.length ? (<CardsU films={films} typePage={typePage} genres={genres} countrys={countrys}/>) : (<h3>Загрузка...</h3>); 
     }       
           
     if (typePage === 'serial') {
-       sf = serials.length ? (<CardsU films={serials} typePage={typePage} genres={genres} countries={countries} />) 
+       sf = serials.length ? (<CardsU films={serials} typePage={typePage} genres={genres} countrys={countrys} />) 
                               : (<h3>Загрузка...</h3>); 
     }                                      
                         
     if (typePage === 'mult') {
-        sf = mults.length ? (<CardsU films={mults} typePage={typePage} genres={genres} countries={countries} />) 
+        sf = mults.length ? (<CardsU films={mults} typePage={typePage} genres={genres} countrys={countrys} />) 
                               : (<h3>Загрузка...</h3>); 
      }            
 

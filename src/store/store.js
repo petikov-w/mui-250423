@@ -1,12 +1,12 @@
 import { createStore, combineReducers } from 'redux';
 
 import { reducerSelectedGenre } from './reducerSelectedGenre';
-import { reducerSelectedCountrie } from './reducerSelectedCountrie';
+import { reducerSelectedCountry } from './reducerSelectedCountry';
 
 const rootReduser = combineReducers(
     {
         selectedGenre: reducerSelectedGenre,
-        selectedCountrie: reducerSelectedCountrie,  
+        selectedCountrie: reducerSelectedCountry,  
     }
 );
 
