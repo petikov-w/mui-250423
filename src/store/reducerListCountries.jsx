@@ -1,12 +1,12 @@
 const defaultState = {
-    country: {},   
+    countrys: [],   
  };
 
 
 export const reducerListCountrys = (state = defaultState, action) =>{
             switch(action.type) {
-                case 'UPDATE_COUNTRIE':
-                 return {...state, countrie: action.payload};
+                case 'SET_LIST_COUNTRYS':
+                 return {...state, countrys: action.payload};
 
                 default:
                  return state;

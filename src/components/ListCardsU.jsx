@@ -20,6 +20,7 @@ export const ListCardsU = (props) => {
 
     const genre_rx = useSelector(state => state.selectedGenre.genre);
     const country_rx = useSelector(state => state.selectedCountrie.countrie);
+    const listCountries = useSelector(state => state.listCountries);
                                                  
 
     const [searchParams] = useSearchParams();
@@ -49,9 +50,10 @@ export const ListCardsU = (props) => {
     
     
     useEffect(() => {
-        console.log('genre_rx+ :>> ', genre_rx);
-        console.log('country_rx+ :>> ', country_rx);
-    }, [genre_rx, country_rx]);
+        // console.log('genre_rx+ :>> ', genre_rx);
+        // console.log('country_rx+ :>> ', country_rx);
+        console.log('listCountries +++ :>> ', listCountries);
+    }, [listCountries]);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_FILTERS}`, {
@@ -61,6 +63,7 @@ export const ListCardsU = (props) => {
                            setCountrys(data.countries)});
            dispatch({type:'UPDATE_GENRE', payload: {}}); 
            dispatch({type:'UPDATE_COUNTRIE', payload: {}}); 
+           dispatch({type:'SET_LIST_COUNTRYS', payload: {}}); 
                            
     }, []);
   
