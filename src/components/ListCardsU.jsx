@@ -53,6 +53,8 @@ export const ListCardsU = (props) => {
         // console.log('genre_rx+ :>> ', genre_rx);
         // console.log('country_rx+ :>> ', country_rx);
         console.log('listCountries +++ :>> ', listCountries);
+        console.log('genres +++ :>> ', genres);
+
     }, [listCountries]);
 
     useEffect(() => {
@@ -63,7 +65,8 @@ export const ListCardsU = (props) => {
                            setCountrys(data.countries)});
            dispatch({type:'UPDATE_GENRE', payload: {}}); 
            dispatch({type:'UPDATE_COUNTRIE', payload: {}}); 
-           dispatch({type:'SET_LIST_COUNTRYS', payload: {}}); 
+        //    dispatch({type:'SET_LIST_COUNTRYS', payload: {}}); 
+           dispatch({type:'CLICK'}); 
                            
     }, []);
   
@@ -89,16 +92,16 @@ export const ListCardsU = (props) => {
     let sf;
  
     if (typePage === 'top' || typePage === 'premier') {
-       sf = films.length ? (<CardsU films={films} typePage={typePage} genres={genres} countrys={countrys}/>) : (<h3>Загрузка...</h3>); 
+       sf = films.length ? (<CardsU films={films} typePage={typePage} genres={genres} countrys={listCountries}/>) : (<h3>Загрузка...</h3>); 
     }       
           
     if (typePage === 'serial') {
-       sf = serials.length ? (<CardsU films={serials} typePage={typePage} genres={genres} countrys={countrys} />) 
+       sf = serials.length ? (<CardsU films={serials} typePage={typePage} genres={genres} countrys={listCountries} />) 
                               : (<h3>Загрузка...</h3>); 
     }                                      
                         
     if (typePage === 'mult') {
-        sf = mults.length ? (<CardsU films={mults} typePage={typePage} genres={genres} countrys={countrys} />) 
+        sf = mults.length ? (<CardsU films={mults} typePage={typePage} genres={genres} countrys={listCountries} />) 
                               : (<h3>Загрузка...</h3>); 
      }            
 

@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga'
 import { reducerSelectedGenre } from './reducerSelectedGenre';
 import { reducerSelectedCountry } from './reducerSelectedCountry';
 import { reducerListCountrys } from './reducerListCountries';
-import  rootSaga  from './sagaCountries';
+import rootSaga from './sagaCountries';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,13 +13,16 @@ const sagaMiddleware = createSagaMiddleware();
 const rootReduser = combineReducers(
     {
         selectedGenre: reducerSelectedGenre,
-        selectedCountrie: reducerSelectedCountry, 
-        listCountries: reducerListCountrys, 
+        selectedCountrie: reducerSelectedCountry,
+        listCountries: reducerListCountrys,
 
     }
 );
 
-const store = createStore(rootReduser, applyMiddleware(sagaMiddleware));
+const store = createStore(rootReduser,
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+        (applyMiddleware(sagaMiddleware))
+);
 sagaMiddleware.run(rootSaga);
 
 export default store;
