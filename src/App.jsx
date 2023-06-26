@@ -1,4 +1,6 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ContactPage } from './pages/ContactPage';
 import { SinglePage } from './pages/SinglePage';
@@ -10,7 +12,11 @@ import { MultPage } from './pages/MultPage';
 import { TopPage } from './pages/TopPage';
 
 function App() {
+  const dispatch = useDispatch();
 
+  useEffect(() => {    
+       dispatch({type:'CLICK'});                        
+}, []);
  
   const router = createBrowserRouter(createRoutesFromElements(
       <Route path="/" element={<Layout />} >

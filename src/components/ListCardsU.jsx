@@ -53,7 +53,7 @@ export const ListCardsU = (props) => {
         // console.log('genre_rx+ :>> ', genre_rx);
         // console.log('country_rx+ :>> ', country_rx);
         console.log('listCountries +++ :>> ', listCountries);
-        console.log('genres +++ :>> ', genres);
+        // console.log('genres +++ :>> ', genres);
 
     }, [listCountries]);
 
@@ -64,9 +64,9 @@ export const ListCardsU = (props) => {
             .then(data =>{ setGenres(data.genres);
                            setCountrys(data.countries)});
            dispatch({type:'UPDATE_GENRE', payload: {}}); 
-           dispatch({type:'UPDATE_COUNTRIE', payload: {}}); 
+         //  dispatch({type:'UPDATE_COUNTRIE', payload: {}}); 
         //    dispatch({type:'SET_LIST_COUNTRYS', payload: {}}); 
-           dispatch({type:'CLICK'}); 
+        //    dispatch({type:'CLICK'}); 
                            
     }, []);
   

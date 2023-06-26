@@ -1,5 +1,5 @@
 import {Grid, Autocomplete, TextField, Stack } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { CardU } from './CardU';
 
@@ -7,6 +7,9 @@ export const CardsU = (props) => {
 
   
   const dispatch = useDispatch();
+
+  const listCountries = useSelector(state => state.listCountries);
+
   const { films, typePage, genres, countrys } = props;
 
   const widthPage = typePage !== 'premier' ? '80%' : '100%'; 
@@ -17,10 +20,10 @@ export const CardsU = (props) => {
           getOptionLabel: (options) => options.genre,
     };
 
-    const propsCountrys = {
-        options: countrys,
-        getOptionLabel: (options) => options.country,
-    };
+    // const propsCountrys = {
+    //     options: countrys.countrys,
+    //     getOptionLabel: (options) => options.country,
+    // };
   
   return (
     <Grid container  direction="row">
@@ -37,12 +40,14 @@ export const CardsU = (props) => {
         <Grid  container direction="column" alignItems="center" sx={{ width: '20%', ml: 3, mb: 3 }}>   
           <Stack width={220}>
               <Autocomplete sx={{mb: 2 }}                  
-                  {...propsGenres}
+                  {...propsGenres}                  
                   renderInput={(params)=><TextField {...params} label="Жанры" />}                  
                   onChange={(event, value) => dispatch({type:'UPDATE_GENRE', payload: value})}                
               />    
               <Autocomplete sx={{mb: 3 }}
-                  {...propsCountrys}
+                  // {...propsCountrys}
+                  options={listCountries.countrys}
+                  getOptionLabel= {(options) => options.country}
                   renderInput={(params)=><TextField {...params} label="Страны" />}
                   onChange={(event, value) => dispatch({type:'UPDATE_COUNTRIE', payload: value})}
               />    
