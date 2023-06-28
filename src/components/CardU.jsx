@@ -93,11 +93,11 @@ export const CardU = (props, bg) => {
                           boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
                   />
                    { typePage === 'top' ? ( 
-                      <BoxZ>                 
-                        <TypographyStl>
+                      <BoxZ>   
+                        <TypographyStl component={'span'}> 
                           <BoxStl>
-                            <Typography variant="s1" sx={{pl: 3}}>Рейтинг: {rating}</Typography>
-                            <Typography variant="s1" sx={{pl: 3, pb: 2}}>Время: {filmLength}</Typography> 
+                            <Typography  variant="s1" sx={{pl: 3}}>Рейтинг: {rating}</Typography>
+                            <Typography  variant="s1" sx={{pl: 3, pb: 2}}>Время: {filmLength}</Typography> 
                           </BoxStl>
                         </TypographyStl>
                       </BoxZ> ) : ('')}

@@ -1,17 +1,27 @@
 // import { Helmet } from 'react-helmet';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { ListCardsU } from '../components/ListCardsU';
 
 export const TopPage = (props) => { 
-
+const dispatch = useDispatch();
+const page = useSelector(state=>state=>state.pagination.page);
  const query = process.env.REACT_APP_API_TOP_PAGE;   
  const pathPage='/films?page=';
+
+ useEffect(()=>{ dispatch({type:'FILMS_TOP'});
+                 dispatch({type:'SET_PAGE', payload: 1});}, []);
+
+ useEffect(()=>{ dispatch({type:'FILMS_TOP'});}, [page]);
+
                 
-    
+   
     return (
         <>
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
-            </Helmet> */}           
+            </Helmet> */}      
             <ListCardsU query={query} path={pathPage} typePage="top"/>                      
         </>
            

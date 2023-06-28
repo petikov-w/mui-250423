@@ -1,5 +1,6 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {Box,  Button, Typography, CardMedia, Stack} from '@mui/material';
 
 import { useTheme } from 'styled-components';
@@ -16,6 +17,7 @@ export const Single = (props) => {
     // const preLoader = '';
     const preLoader = <h3>Загрузка...</h3>;
     const no_description = 'Описание отсутствует';
+    const dispatch = useDispatch();
     
     //const loc = useLocation();
     localStorage.setItem('isSingle', true);
