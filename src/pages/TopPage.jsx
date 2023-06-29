@@ -17,14 +17,14 @@ const pageLabel='top';
   const location = useLocation();
   
 
-//  useEffect(()=>{ 
-//                 dispatch({type:'FILMS_TOP'});
-//                  dispatch({type:'SET_PAGE_LABEL ', payload: 1});
-//                  dispatch({type:'SET_PAGE', payload: 1});
-//                 console.log('--->>> ',location);
-//                 }, []);
+ useEffect(()=>{ 
+                dispatch({type:'FILMS_TOP'});
+                //  dispatch({type:'SET_PAGE_LABEL ', payload: 1});
+                //  dispatch({type:'SET_PAGE', payload: 1});
+                console.log('--->>> ',location);
+                }, []);
 
- useEffect(()=>{ dispatch({type:'FILMS_TOP'});}, [page]);
+//  useEffect(()=>{ dispatch({type:'FILMS_TOP'});}, [useSelector(state=>state=>state.pagination.page)]);
 
                 
    
