@@ -13,6 +13,9 @@ export function* workerPremiers() {
     yield put({ type: 'SET_FILMS_PREMIER', payload: dataPremiers });
 }
 
+
+
+
 // export function* watchBasicData() {
 //     yield all([
 //         spawn(workerPremiersFromApi),

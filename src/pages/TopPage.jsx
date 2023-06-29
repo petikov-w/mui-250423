@@ -17,11 +17,12 @@ const pageLabel='top';
   const location = useLocation();
   
 
- useEffect(()=>{ dispatch({type:'FILMS_TOP'});
-                 dispatch({type:'SET_PAGE_LABEL ', payload: 1});
-                //  dispatch({type:'SET_PAGE', payload: 1});
-                console.log('--->>> ',location.key);
-                }, []);
+//  useEffect(()=>{ 
+//                 dispatch({type:'FILMS_TOP'});
+//                  dispatch({type:'SET_PAGE_LABEL ', payload: 1});
+//                  dispatch({type:'SET_PAGE', payload: 1});
+//                 console.log('--->>> ',location);
+//                 }, []);
 
  useEffect(()=>{ dispatch({type:'FILMS_TOP'});}, [page]);
 
@@ -32,7 +33,7 @@ const pageLabel='top';
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}      
-            <ListCardsU query={query} path={pathPage} typePage={pageLabel}/>                      
+            <ListCardsU  path={pathPage} typePage={pageLabel}/>                      
         </>
            
     );
