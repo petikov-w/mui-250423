@@ -2,19 +2,20 @@ import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 function* workerTop({ payload }) {
     // const { page } = payload;
+    const path = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/top?page=';
     const page = yield select(state => state.pagination.page);
     const fetchTopFromApi = async () => {
-        const request = await fetch(`${process.env.REACT_APP_API_TOP_PAGE}${page}`, {
+        const request = await fetch(`${path}${page}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-API-KEY': `${process.env.REACT_APP_API_KEY}`,
             },
         });
-        // console.log('query-0 :>> ', request.json());
+        // console.log('payload-page :>> ', page);
+        // console.log('query :>> ', `${path}${page}`)
         return await request.json();
     };
     const dataFilmsTop = yield call(fetchTopFromApi);
-    // yield (console.log('query :>> ', `${process.env.REACT_APP_API_TOP_PAGE}${page}`));
     // yield (console.log('dataFilmsTop :>> ', dataFilmsTop));
 
     yield put({ type: 'SET_FILMS_TOP', payload: dataFilmsTop.films });

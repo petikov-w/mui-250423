@@ -9,9 +9,9 @@ export default function* rootSaga() {
     // В этот массив добавляем все импортированные вотчеры
     const sagas = [
         watchBasicData,
-        watchFilmsPremier,
-        watchFilmsSerial,
         watchFilmsTop,
+        watchFilmsPremier,
+        watchFilmsSerial,       
     ];
 
     const retrySagas = yield sagas.map(saga => {

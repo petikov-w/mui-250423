@@ -14,7 +14,7 @@ export const SerialPage = () => {
 
     useEffect(()=>{ 
         // console.log('page---> ', page );
-        dispatch({type:'FILMS_SERIAL'});}, [page]);
+        dispatch({type:'FILMS_SERIAL', payload: {page}});}, [page]);
     
     return (
         <>
