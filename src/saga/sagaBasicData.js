@@ -1,6 +1,5 @@
 import { put, call, all, spawn } from 'redux-saga/effects';
 
-import { workerPremiers } from './sagaPremier'
 
 function* workerGenres() {
     //const requiredGenres = ['драма', 'боевик', 'мультфильм', 'военный', 'документальный'];
@@ -37,7 +36,6 @@ export function* watchBasicData() {
     yield all([
         spawn(workerGenres),
         spawn(workerCountries),
-        spawn(workerPremiers),
     ]);
 
 }

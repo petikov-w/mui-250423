@@ -9,6 +9,8 @@ import { ListCardsU } from '../components/ListCardsU';
 export const TopPage = (props) => { 
 const dispatch = useDispatch();
 const page = useSelector(state=>state.pagination.page);
+
+
 const query = process.env.REACT_APP_API_TOP_PAGE;   
 const pathPage='/films?page=';
 const pageLabel='top';
@@ -17,15 +19,17 @@ const pageLabel='top';
   const location = useLocation();
   
 
- useEffect(()=>{ 
-                console.log('page---> ',page);
-               dispatch({type:'FILMS_TOP', payload: page});
+ useEffect(()=>{                 
+                // console.log('page---> ',page);
+              // dispatch({type:'FILMS_TOP', payload: page});
                 //  dispatch({type:'SET_PAGE_LABEL ', payload: 1});
                 //dispatch({type:'SET_PAGE', payload: 1});
-                console.log('--->>> ',location);
+                // console.log('--->>> ',location);
                 }, []);
 
- useEffect(()=>{ dispatch({type:'FILMS_TOP', payload: page});}, [page]);
+ useEffect(()=>{ 
+                // console.log('page---> ', page );
+                dispatch({type:'FILMS_TOP'});}, [page]);
 
                 
    
@@ -34,7 +38,7 @@ const pageLabel='top';
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}      
-            <ListCardsU  path={pathPage} typePage={pageLabel}/>                      
+            <ListCardsU query={query} path={pathPage} typePage={pageLabel}/>                      
         </>
            
     );

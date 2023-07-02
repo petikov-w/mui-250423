@@ -10,6 +10,7 @@ import { reducerListCountrys } from './reducerListCountries';
 import { reducerListGenres } from './reducerListGenres';
 import { reducerPremier } from './reducerPremier';
 import { reducerTop } from './reducerTop';
+import { reducerSerial } from './reducerSerial';
 import { reducerPagination } from './reducerPagination';
 
 
@@ -24,6 +25,7 @@ const rootReduser = combineReducers(
         listGenres: reducerListGenres,
         listFilmsPremier: reducerPremier,
         listFilmsTop: reducerTop,
+        listFilmsSerial: reducerSerial,
         pagination: reducerPagination,
     }
 );

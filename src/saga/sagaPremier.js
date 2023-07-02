@@ -1,24 +1,20 @@
-import { put, call, all, spawn } from 'redux-saga/effects';
+import { put, call, takeEvery } from 'redux-saga/effects';
 
-export function* workerPremiers() {
+export function* workerPremier() {
+    const fetchPremierFromApi = async () => {
+        const request = await fetch(`${process.env.REACT_APP_API_PREMIERS}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-API-KEY': `${process.env.REACT_APP_API_KEY}`,
+            },
+        });
+        return await request.json();
+    };
+    const dataPremier = yield call(fetchPremierFromApi);
 
-    const fetchPremiersFromApi = async () => fetch(`${process.env.REACT_APP_API_PREMIERS}`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'X-API-KEY': `${process.env.REACT_APP_API_KEY}`,
-        },
-    }).then((responce) => responce.json()).then(data => data.items);
-
-    const dataPremiers = yield call(fetchPremiersFromApi);
-    yield put({ type: 'SET_FILMS_PREMIER', payload: dataPremiers });
+    yield put({ type: 'SET_FILMS_PREMIER', payload: dataPremier.items });
 }
 
-
-
-
-// export function* watchBasicData() {
-//     yield all([
-//         spawn(workerPremiersFromApi),
-//     ]);
-
-// }
+export function* watchFilmsPremier() {
+    yield takeEvery('FILMS_PREMIER', workerPremier);
+}
