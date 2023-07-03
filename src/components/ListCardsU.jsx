@@ -22,10 +22,10 @@ export const ListCardsU = (props) => {
 
     const [searchParams] = useSearchParams();
     // const [films, setFilms] = useState([]); 
-    const [serials, setSerials] = useState([]); 
+    // const [serials, setSerials] = useState([]); 
     const [mults, setMults] = useState([]);    
     const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
-    const [pagesCount, setPagesCount ] = useState(0); // общее количество страниц
+    // const [pagesCount, setPagesCount ] = useState(0); // общее количество страниц
     
     // const handleChange = (event, p) => { dispatch({type:'SET_PAGE', payload: p}); };
     const handleChange = (event, p) => { setPage(p); 
@@ -33,7 +33,7 @@ export const ListCardsU = (props) => {
                                        };
     
 
-    let ssd = '';
+    //let ssd = '';
 
     // if (typePage === 'top') { ssd = `${process.env.REACT_APP_API_TOP_PAGE}` + page};
     // if (typePage === 'serial') { ssd = `${process.env.REACT_APP_API_SERIALS}` + page};      
@@ -42,22 +42,22 @@ export const ListCardsU = (props) => {
      
     // useEffect(()=>{dispatch({type:'FILMS_TOP'})}, [page]);
 
-    useEffect(()=>{fetch( ssd , {headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}` },
-    }).then((responce) => responce.json()).then((data) => {  if (typePage === 'top') {  
-                                                                    // setFilms(data.films);
-                                                                    // setPagesCount(data.pagesCount);  
-                                                                }
-                                                                if (typePage === 'serial') {
-                                                                    // setSerials(data.items); 
-                                                                    // setPagesCount(data.totalPages); 
-                                                                }    
-                                                                if (typePage === 'mult') {
-                                                                    // setMults(data.items); 
-                                                                    // setPagesCount(data.totalPages); 
-                                                                }   
-                                                    });
-                                                //    dispatch({type:'FILMS_TOP'})
-                                                }, [page]);
+    // useEffect(()=>{fetch( ssd , {headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}` },
+    // }).then((responce) => responce.json()).then((data) => {  if (typePage === 'top') {  
+    //                                                                 setFilms(data.films);
+    //                                                                 setPagesCount(data.pagesCount);  
+    //                                                             }
+    //                                                             if (typePage === 'serial') {
+    //                                                                 setSerials(data.items); 
+    //                                                                 setPagesCount(data.totalPages); 
+    //                                                             }    
+    //                                                             if (typePage === 'mult') {
+    //                                                                 setMults(data.items); 
+    //                                                                 setPagesCount(data.totalPages); 
+    //                                                             }   
+    //                                                 });
+    //                                             //    dispatch({type:'FILMS_TOP'})
+    //                                             }, [page]);
 
                                             
     let sf;
@@ -69,11 +69,11 @@ export const ListCardsU = (props) => {
     if (typePage === 'premier') {
        sf = filmsPremier.length ? (<CardsU films={filmsPremier} typePage={typePage} />) : (<h3>Загрузка...</h3>); 
     }       
-          
+
     if (typePage === 'serial') {
-       sf = filmsSerial.length ? (<CardsU films={filmsSerial} typePage={typePage}  />) : (<h3>Загрузка...</h3>); 
-    }                                      
-                        
+        sf = filmsSerial.length ? (<CardsU films={filmsSerial} typePage={typePage}  />) : (<h3>Загрузка...</h3>);  
+    }       
+                         
     if (typePage === 'mult') {
         sf = mults.length ? (<CardsU films={mults} typePage={typePage}  />) 
                               : (<h3>Загрузка...</h3>); 

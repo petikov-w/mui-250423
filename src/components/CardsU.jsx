@@ -14,16 +14,18 @@ export const CardsU = (props) => {
   const widthPage = typePage !== 'premier' ? '80%' : '100%'; 
   const widthLg = typePage !== 'premier' ?  3 : 2.4; 
 
-
+  console.log('films.length :>> ', films.length);
   
   return (
     <Grid container  direction="row">
-        <Grid container spacing={3}  direction="row"  sx={{ width: widthPage }}>                   
-            {films.map((film, index) => (
+        <Grid container spacing={3}  direction="row"  sx={{ width: widthPage }}>    
+            { films.length !== 0  ?  films.map((film, index) => (
              <Grid item key={index} xs={12} sm={4} md={3} lg={widthLg}> 
                 <CardU key={index} {...film} typePage={props.typePage}/>
              </Grid> 
-            ))}                   
+            )) : <p>Фильмы не найдены...</p>  
+          }               
+                            
     </Grid>
         
 
@@ -38,7 +40,7 @@ export const CardsU = (props) => {
           />    
 
       {JSON.stringify(selectedCountrie) === '{}' ?
-          <Autocomplete sx={{ mb: 3 }} size="small" disableClearable="true"
+          <Autocomplete sx={{ mb: 3 }} size="small" disableClearable={true}
               options={listCountries.countrys}
               inputValue="" 
               getOptionLabel= {(options) => options.country}
