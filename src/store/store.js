@@ -12,6 +12,7 @@ import { reducerPremier } from './reducerPremier';
 import { reducerTop } from './reducerTop';
 import { reducerSerial } from './reducerSerial';
 import { reducerPagination } from './reducerPagination';
+import { reducerIsFetching } from './reducerIsFetching';
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -27,6 +28,7 @@ const rootReduser = combineReducers(
         listFilmsTop: reducerTop,
         listFilmsSerial: reducerSerial,
         pagination: reducerPagination,
+        isFetching: reducerIsFetching,
     }
 );
 
