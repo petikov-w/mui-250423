@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 
 
@@ -8,12 +8,11 @@ import {Box, AppBar, CssBaseline, Switch, Link,
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider } from '@mui/material/styles';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TypographyNavLinkStl } from '../styles/Nav.styled'; 
 import { ThemeMui } from '../styles/ThemeMui';
 import imageCinema from '../images/cinema_sm.png';
-
-import { MyContext } from './Context';
 
 const drawerWidth = 240;
 
@@ -24,10 +23,13 @@ const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/'},
                 ];
 
 export const Header_v2 = (props) => {
+
+  const dispatch = useDispatch();
+
+    const theme = useSelector(state=>state.settings.theme);
+    const checked = useSelector(state=>state.settings.checkedTheme);
     
-    const {theme, setTheme} = useContext(MyContext);
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [checked, setChecked] = useState(false);  
 
     const { window } = props;
     const handleDrawerToggle = () => {
@@ -35,11 +37,13 @@ export const Header_v2 = (props) => {
     };
     
     const handleChange = (event) => {
-        setChecked(event.target.checked);            
-        checked ? setTheme('light')  : setTheme('dark');
+        dispatch({type:'UPDATE_CHECKED_THEME', payload: event.target.checked});   
         }; 
 
-      
+        useEffect(()=>{ console.log('checked :>> ', checked);
+                       checked ? dispatch({type:'UPDATE_THEME', payload:'dark' }) 
+                                : dispatch({type:'UPDATE_THEME', payload: 'light'});
+         }, [checked]);      
     
         const drawer = (
             <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>

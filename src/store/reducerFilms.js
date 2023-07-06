@@ -3,9 +3,9 @@ const defaultState = {
 };
 
 
-export const reducerPremier = (state = defaultState, action) => {
+export const reducerFilms = (state = defaultState, action) => {
     switch (action.type) {
-        case 'SET_FILMS_PREMIER':
+        case 'SET_FILMS':
             return { ...state, films: action.payload };
 
         default:

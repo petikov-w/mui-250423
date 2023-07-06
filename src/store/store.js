@@ -4,15 +4,14 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from '../saga/sagaRoot';
 
-import { reducerSelectedGenre } from './reducerSelectedGenre';
-import { reducerSelectedCountry } from './reducerSelectedCountry';
+
 import { reducerListCountrys } from './reducerListCountries';
 import { reducerListGenres } from './reducerListGenres';
-import { reducerPremier } from './reducerPremier';
-import { reducerTop } from './reducerTop';
-import { reducerSerial } from './reducerSerial';
+import { reducerFilms } from './reducerFilms';
 import { reducerPagination } from './reducerPagination';
 import { reducerIsFetching } from './reducerIsFetching';
+import { reducerFilters } from './reducerFilters';
+import { reducerSettings } from './reducerSettings';
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -20,15 +19,13 @@ const sagaMiddleware = createSagaMiddleware();
 
 const rootReduser = combineReducers(
     {
-        selectedGenre: reducerSelectedGenre,
-        selectedCountrie: reducerSelectedCountry,
+        settings: reducerSettings,
         listCountries: reducerListCountrys,
         listGenres: reducerListGenres,
-        listFilmsPremier: reducerPremier,
-        listFilmsTop: reducerTop,
-        listFilmsSerial: reducerSerial,
         pagination: reducerPagination,
+        filters: reducerFilters,
         isFetching: reducerIsFetching,
+        listFilms: reducerFilms,
     }
 );
 

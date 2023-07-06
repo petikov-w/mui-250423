@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {Container} from '@mui/material';
 import styled from 'styled-components';
 import { ThemeProvider } from '@mui/material';
@@ -9,7 +10,6 @@ import { ThemeMui } from '../styles/ThemeMui';
 import { Header_v2 } from './Header_v2';
 // import { Header } from './Header';
 import { Footer } from './Footer';
-import { MyContext } from './Context';
 
 const Main = styled.div` 
      min-height: calc(91.3vh - 85px - 22px);
@@ -19,12 +19,10 @@ const Main = styled.div`
 
 const Layout = () => {
     
-    const [theme, setTheme] = useState('light');    
-    
+    const theme = useSelector(state=>state.settings.theme);
 
       return (
       <>    
-        <MyContext.Provider value={{theme, setTheme}} >   
             <ThemeProvider theme={ThemeMui(theme)}>   
                 <Header_v2 />     
                  <Container maxWidth="lg"  sx={{ mt: 12, mb: 5 }}>   
@@ -34,7 +32,6 @@ const Layout = () => {
                 </Container>
                 <Footer />                    
             </ThemeProvider>
-       </MyContext.Provider>
     </>
     );
 };

@@ -8,7 +8,9 @@ export const CardsU = (props) => {
   const dispatch = useDispatch();
   const listCountries = useSelector(state => state.listCountries);
   const listGenres = useSelector(state => state.listGenres);
-  const selectedCountrie= useSelector(state=>state.selectedCountrie.country);
+  const selectedGenre= useSelector(state=>state.filters.genre);
+  const selectedCountrie= useSelector(state=>state.filters.country);
+  // const selectedCountrie= useSelector(state=>state.selectedCountrie.country);
   const { films, typePage } = props;
 
   const widthPage = typePage !== 'premier' ? '80%' : '100%'; 
@@ -32,13 +34,14 @@ export const CardsU = (props) => {
     { typePage !== 'premier' ? (
     <Grid  container direction="column" alignItems="center" sx={{ width: '20%', ml: 3, mb: 3 }}>   
       <Stack width={220}>
-          <Autocomplete sx={{mb: 2 }} size="small"                 
+      {JSON.stringify(selectedGenre) === '{}' ?
+          <Autocomplete sx={{mb: 2 }} size="small" disableClearable={true}                
               options={listGenres.genres}
+              inputValue="" 
               getOptionLabel= {(options) => options.genre}         
               renderInput={(params)=><TextField {...params} label="Жанр" />}                  
               onChange={(event, value) => dispatch({type:'UPDATE_GENRE', payload: value})}                
-          />    
-
+          />  : '' }   
       {JSON.stringify(selectedCountrie) === '{}' ?
           <Autocomplete sx={{ mb: 3 }} size="small" disableClearable={true}
               options={listCountries.countrys}
@@ -51,8 +54,10 @@ export const CardsU = (props) => {
       </Stack>          
       <Stack width={220}>
               <Grid container spacing={1}  direction="row" justifyContent="center">                    
-                 {JSON.stringify(selectedCountrie) !== '{}' ? <Chip label={`Страна: ${selectedCountrie.country}`}
-                                                             onDelete={() => dispatch({type:'DELETE_COUNTRIE'})}/> : ''}
+                 {JSON.stringify(selectedGenre) !== '{}' ? <Chip label={`Жанр: ${selectedGenre.genre}`} sx={{mb: 2 }}
+                                                             onDelete={() => dispatch({type:'DELETE_GENRE'})}/> : ''}
+                 {JSON.stringify(selectedCountrie) !== '{}' ? <Chip label={`Страна: ${selectedCountrie.country}`} sx={{mb: 2 }}
+                                                             onDelete={() => dispatch({type:'DELETE_COUNTRIE'})}/> : ''}          
               </Grid>
       </Stack>      
           

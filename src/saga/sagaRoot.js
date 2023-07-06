@@ -1,17 +1,19 @@
 import { call, all, spawn } from 'redux-saga/effects';
 
 import { watchBasicData } from './sagaBasicData';
-import { watchFilmsPremier } from './sagaPremier';
+import { watchFilmsPremieres } from './sagaPremier';
 import { watchFilmsTop } from './sagaTop';
 import { watchFilmsSerial } from './sagaSerial';
+import { watchFilmsMult } from './sagaMult';
 
 export default function* rootSaga() {
     // В этот массив добавляем все импортированные вотчеры
     const sagas = [
         watchBasicData,
         watchFilmsTop,
-        watchFilmsPremier,
-        watchFilmsSerial,       
+        watchFilmsPremieres,
+        watchFilmsSerial,
+        watchFilmsMult,
     ];
 
     const retrySagas = yield sagas.map(saga => {

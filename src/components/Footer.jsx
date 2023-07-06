@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { ThemeProvider } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 
@@ -7,12 +7,11 @@ import {Box, Container, Typography, CardMedia, Link, AppBar} from '@mui/material
 import imageCinema from '../images/cinema_sm.png';
 import { ThemeMui } from '../styles/ThemeMui';
 
-import { MyContext } from './Context';
 
 
 export const Footer = () => {
 
-       const {theme} = useContext(MyContext);
+const theme = useSelector(state=>state.settings.theme);
     
     return (
     <>
