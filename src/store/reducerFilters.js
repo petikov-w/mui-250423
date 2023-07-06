@@ -1,11 +1,9 @@
-const listTop = [  {id: ' TOP_250_BEST_FILMS', top: 'Топ лучших фильмов'}, 
-                   {id: 'TOP_100_POPULAR_FILMS', top: 'Топ популярных фильмов'} , 
-                   {id: 'TOP_AWAIT_FILMS', top: 'Топ ожидаемых фильмов'}  ];
+
 
 const defaultState = {
     country: {},
     genre: {},
-    listTop: {listTop},
+    top_collection: {},
 };
 
 
@@ -20,6 +18,11 @@ export const reducerFilters = (state = defaultState, action) => {
             return { ...state, genre: action.payload };
         case 'DELETE_GENRE':
             return { ...state, genre: {} };
+        case 'UPDATE_TOP_COLLECTION':
+            return { ...state, top_collection: action.payload };
+        case 'DELETE_TOP_COLLECTION':
+            return { ...state, top_collection: {} };
+
 
         default:
             return state;
