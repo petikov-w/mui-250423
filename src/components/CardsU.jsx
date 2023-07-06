@@ -1,22 +1,17 @@
-import {Grid, Autocomplete, TextField, Stack, Chip } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { Grid } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 import { CardU } from './CardU';
+import { FilterSet } from './FilterSet';
 
 export const CardsU = (props) => {
   
-  const dispatch = useDispatch();
-  const listCountries = useSelector(state => state.listCountries);
-  const listGenres = useSelector(state => state.listGenres);
-  const selectedGenre= useSelector(state=>state.filters.genre);
-  const selectedCountrie= useSelector(state=>state.filters.country);
-  // const selectedCountrie= useSelector(state=>state.selectedCountrie.country);
-  const { films, typePage } = props;
+  const { typePage } = props;
+  const films = useSelector(state=>state.listFilms.films); 
 
   const widthPage = typePage !== 'premier' ? '80%' : '100%'; 
   const widthLg = typePage !== 'premier' ?  3 : 2.4; 
 
-  console.log('films.length :>> ', films.length);
   
   return (
     <Grid container  direction="row">
@@ -27,43 +22,8 @@ export const CardsU = (props) => {
              </Grid> 
             )) : <p>Фильмы не найдены...</p>  
           }               
-                            
-    </Grid>
-        
-
-    { typePage !== 'premier' ? (
-    <Grid  container direction="column" alignItems="center" sx={{ width: '20%', ml: 3, mb: 3 }}>   
-      <Stack width={220}>
-      {JSON.stringify(selectedGenre) === '{}' ?
-          <Autocomplete sx={{mb: 2 }} size="small" disableClearable={true}                
-              options={listGenres.genres}
-              inputValue="" 
-              getOptionLabel= {(options) => options.genre}         
-              renderInput={(params)=><TextField {...params} label="Жанр" />}                  
-              onChange={(event, value) => dispatch({type:'UPDATE_GENRE', payload: value})}                
-          />  : '' }   
-      {JSON.stringify(selectedCountrie) === '{}' ?
-          <Autocomplete sx={{ mb: 3 }} size="small" disableClearable={true}
-              options={listCountries.countrys}
-              inputValue="" 
-              getOptionLabel= {(options) => options.country}
-              renderInput={(params)=><TextField {...params} label="Страна" />}
-              onChange={(event, value) => dispatch({type:'UPDATE_COUNTRIE', payload: value}, )
-            }
-          />  : '' }
-      </Stack>          
-      <Stack width={220}>
-              <Grid container spacing={1}  direction="row" justifyContent="center">                    
-                 {JSON.stringify(selectedGenre) !== '{}' ? <Chip label={`Жанр: ${selectedGenre.genre}`} sx={{mb: 2 }}
-                                                             onDelete={() => dispatch({type:'DELETE_GENRE'})}/> : ''}
-                 {JSON.stringify(selectedCountrie) !== '{}' ? <Chip label={`Страна: ${selectedCountrie.country}`} sx={{mb: 2 }}
-                                                             onDelete={() => dispatch({type:'DELETE_COUNTRIE'})}/> : ''}          
-              </Grid>
-      </Stack>      
-          
-    </Grid>
-    )  : ('')}
-
+        </Grid>
+        <FilterSet  typePage={typePage}/>    
 </Grid>
   );
 };

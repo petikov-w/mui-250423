@@ -1,7 +1,13 @@
+const listTop = [  {id: ' TOP_250_BEST_FILMS', top: 'Топ лучших фильмов'}, 
+                   {id: 'TOP_100_POPULAR_FILMS', top: 'Топ популярных фильмов'} , 
+                   {id: 'TOP_AWAIT_FILMS', top: 'Топ ожидаемых фильмов'}  ];
+
 const defaultState = {
     country: {},
     genre: {},
+    listTop: {listTop},
 };
+
 
 
 export const reducerFilters = (state = defaultState, action) => {

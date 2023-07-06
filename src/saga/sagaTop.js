@@ -6,6 +6,10 @@ import { fetchQueryFromApi } from '../components/Api';
 const url_api = 'https://kinopoiskapiunofficial.tech/api/';
 const version_api = 'v2.1/films/';
 const dataset = 'top?';
+const listTop = [  {id: ' TOP_250_BEST_FILMS', top: 'Топ лучших фильмов'}, 
+                   {id: 'TOP_100_POPULAR_FILMS', top: 'Топ популярных фильмов'} , 
+                   {id: 'TOP_AWAIT_FILMS', top: 'Топ ожидаемых фильмов'}  ];
+
 
 function* workerTop({ payload }) {
     const { page } = payload;

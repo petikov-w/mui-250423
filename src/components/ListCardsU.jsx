@@ -12,12 +12,7 @@ const allowedPagesShowPagination = ['top','serial','mult'];
 export const ListCardsU = (props) => { 
     const dispatch = useDispatch();
 
-    // const filmsPremier = useSelector(state=>state.listFilmsPremier.films);
-    // const filmsTop = useSelector(state=>state.listFilmsTop.films);
-    // const filmsSerial = useSelector(state=>state.listFilmsSerial.films);
-    // const filmsMult = useSelector(state=>state.listMultfilms.films);
-
-    const films = useSelector(state=>state.listFilms.films);   
+    // const films = useSelector(state=>state.listFilms.films);   
     const totalPages = useSelector(state=>state.pagination.pagesCount);
     const page1 = useSelector(state=>state.pagination.page);
     const isFetching = useSelector(state=>state.isFetching.isFetching);    
@@ -29,37 +24,14 @@ export const ListCardsU = (props) => {
     const [page, setPage] = useState( parseInt(searchParams.get('page') || 1)); // текущая страница
     // ============================================================================================
     
-    const handleChange = (event, p) => { dispatch({type:'SET_PAGE', payload: p}); };
+    // const handleChange = (event, p) => { dispatch({type:'SET_PAGE', payload: p}); };
     
-    //let sf;
-    // if (typePage === 'top') {
-    //    sf = isFetching ? (<CardsU films={films} typePage={typePage}  />) : (<h3>Загрузка...</h3>);
-    // //    sf = isFetching ? (<CardsU films={filmsTop} typePage={typePage}  />) : (<h3>Загрузка...</h3>);
-    // }       
-    
-    // if (typePage === 'premier') {
-    //    sf = isFetching ? (<CardsU films={films} typePage={typePage}  />) : (<h3>Загрузка...</h3>);
-    // //    sf = isFetching ? (<CardsU films={filmsPremier} typePage={typePage}  />) : (<h3>Загрузка...</h3>);
-    // }       
-
-    // if (typePage === 'serial') {
-    //    sf = isFetching ? (<CardsU films={films} typePage={typePage}  />) : (<h3>Загрузка...</h3>);  
-    // //    sf = isFetching ? (<CardsU films={filmsSerial} typePage={typePage}  />) : (<h3>Загрузка...</h3>);  
-    // }       
-                         
-    // if (typePage === 'mult') {
-    //    sf = isFetching ? (<CardsU films={films} typePage={typePage}  />) : (<h3>Загрузка...</h3>);
-    // //    sf = isFetching ? (<CardsU films={filmsMult} typePage={typePage}  />) : (<h3>Загрузка...</h3>);
-    // }    
-
-    const sf = isFetching ? (<CardsU films={films} typePage={typePage}  />) : (<h3>Загрузка...</h3>);
-
     return (
         <>
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}
-            {sf}    
+            {isFetching ? (<CardsU typePage={typePage}  />) : (<h3>Загрузка...</h3>)}    
 
             { allowedPagesShowPagination.includes(typePage)
                    ? ( 
@@ -68,9 +40,9 @@ export const ListCardsU = (props) => {
                             <Pagination count={totalPages} 
                                     color="pagination"                             
                                     page={page1}  
-                                    // page={page}  
                                     // siblingCount={0}
-                                    onChange={handleChange}
+                                    onChange={(event, p) => { dispatch({type:'SET_PAGE', payload: p}); }}
+                                    // onChange={handleChange}
                                     sx={{marginY: 3,
                                         marginX: 'auto',
                                     }}
@@ -78,7 +50,7 @@ export const ListCardsU = (props) => {
                                         (item) =>(                                    
                                         <PaginationItem                                     
                                             component={NavLink}
-                                            onChange={handleChange}
+                                            // onChange={handleChange}
                                             to={`${path}${item.page}`}                                             
                                             {...item}
                                             />   
