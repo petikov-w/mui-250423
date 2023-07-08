@@ -1,6 +1,5 @@
 
-import {Grid, Autocomplete, TextField, Stack, Chip } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import {Grid, Stack, Chip } from '@mui/material';
 
 import { FilterTop } from './FilterTop'
 import { FilterSerial } from './FilterSerial';
@@ -14,10 +13,10 @@ export const FilterSet = (props) => {
     return (
     <>
          <Grid  container direction="column" alignItems="center" sx={{ width: '20%', ml: 3, mb: 3 }}>       
-            <Stack width={220}>            
+            {/* <Stack width={220}>             */}
+            <Stack sx={{ width: '100%'}}>            
                 <FilterTop typePage={typePage}/>
-                <FilterSerial typePage={typePage}/>              
-
+                <FilterSerial typePage={typePage}/>             
             </Stack>          
             {/* <Stack width={220}>
                     <Grid container spacing={1}  direction="row" justifyContent="center">                    
