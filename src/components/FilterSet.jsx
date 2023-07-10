@@ -1,5 +1,5 @@
 
-import {Grid, Stack, Chip } from '@mui/material';
+import {Grid, Stack } from '@mui/material';
 
 import { FilterTop } from './FilterTop'
 import { FilterSerial } from './FilterSerial';
@@ -14,10 +14,13 @@ export const FilterSet = (props) => {
     <>
          <Grid  container direction="column" alignItems="center" sx={{ width: '20%', ml: 3, mb: 3 }}>       
             {/* <Stack width={220}>             */}
-            <Stack sx={{ width: '100%'}}>            
-                <FilterTop typePage={typePage}/>
-                <FilterSerial typePage={typePage}/>             
-            </Stack>          
+          
+                 <Stack sx={{ width: '100%'}}>            
+                    <FilterTop typePage={typePage}/>
+                     <FilterSerial typePage={typePage}/>             
+            </Stack>     
+         
+                
             {/* <Stack width={220}>
                     <Grid container spacing={1}  direction="row" justifyContent="center">                    
                         {JSON.stringify(selectedGenre) !== '{}' ? <Chip label={`Жанр: ${selectedGenre.genre}`} sx={{mb: 2 }}

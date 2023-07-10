@@ -9,12 +9,15 @@ import { ListCardsU } from '../components/ListCardsU';
 export const TopPage = (props) => { 
 const dispatch = useDispatch();
 const page = useSelector(state=>state.pagination.page);
+const collection = useSelector(state=>state.filters.top_collection);
 // const pageCount = useSelector(state=>state.pagination.pageCount);
 
 
 const pathPage='/films?page=';
 
- useEffect(()=>{dispatch({type:'FILMS_TOP', payload: {page}});}, [page]);
+console.log('collection-top-page :>> ', collection);
+
+ useEffect(()=>{dispatch({type:'FILMS_TOP', payload: {page, collection}});}, [page, collection]);
                
     return (
         <>

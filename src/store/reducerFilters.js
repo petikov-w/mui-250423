@@ -4,6 +4,7 @@ const defaultState = {
     country: {},
     genre: {},
     top_collection: {},
+    years_collection: {},
 };
 
 
@@ -22,6 +23,10 @@ export const reducerFilters = (state = defaultState, action) => {
             return { ...state, top_collection: action.payload };
         case 'DELETE_TOP_COLLECTION':
             return { ...state, top_collection: {} };
+        case 'UPDATE_YEARS_COLLECTION':
+            return { ...state, years_collection: action.payload };
+        case 'DELETE_YEARS_COLLECTION':
+            return { ...state, years_collection: {} };
 
 
         default:

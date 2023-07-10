@@ -4,19 +4,24 @@ import { fetchQueryFromApi } from '../components/Api';
 
 
 const url_api = 'https://kinopoiskapiunofficial.tech/api/';
-const version_api = 'v2.1/films/';
+const version_api = 'v2.2/films/';
 const dataset = 'top?';
 
-function* workerTop({ payload }) {
-    const { page } = payload;
+// https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=1' \
 
+function* workerTop({ payload }) {
+    const { page, collection } = payload;
+    const scollection = JSON.stringify(collection) === '{}' ? 'TOP_250_BEST_FILMS' : `${collection.id}`;
     // Формирование поискового запроса
     const paramsQ = new URLSearchParams({
+        type: scollection,
         page: '',
     });
 
     // Сформированный запрос
     const query = `${url_api}${version_api}${dataset}${paramsQ}${page}`;
+
+    console.log('query-top :>> ', query);
 
     yield takeEvery('TOOGLE_ISFETCHING', false);
     const dataFilmsTop = yield call(fetchQueryFromApi, query);

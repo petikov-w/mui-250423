@@ -13,6 +13,7 @@ import { reducerIsFetching } from './reducerIsFetching';
 import { reducerFilters } from './reducerFilters';
 import { reducerSettings } from './reducerSettings';
 import { reducerListTopCollection } from './reducerListTopCollection ';
+import { reducerListYearsCollection } from './reducerListYearsCollection';
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -23,11 +24,13 @@ const rootReduser = combineReducers(
         settings: reducerSettings,
         listCountries: reducerListCountrys,
         listGenres: reducerListGenres,
+        listTopCollection: reducerListTopCollection,
+        listYearsCollection: reducerListYearsCollection,
         pagination: reducerPagination,
         filters: reducerFilters,
         isFetching: reducerIsFetching,
         listFilms: reducerFilms,
-        listTopCollection: reducerListTopCollection,
+        
     }
 );
 
