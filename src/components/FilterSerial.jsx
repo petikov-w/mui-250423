@@ -7,14 +7,15 @@ export const FilterSerial = (props) => {
        const { typePage } = props;
         
        const dispatch = useDispatch();      
-       const listCountries = useSelector(state => state.listCountries);
-       const listGenres = useSelector(state => state.listGenres);
+       const listCountries = useSelector(state => state.setLists.countrys);
+       const listGenres = useSelector(state => state.setLists.genres);
        const selectedGenre= useSelector(state=>state.filters.genre);
        const selectedCountrie= useSelector(state=>state.filters.country);  
-    
+      
+
        const ListGenres = () => JSON.stringify(listGenres) === '{}' ? '' : 
        <Autocomplete sx={{mb: 2 }} size="small" disableClearable={true}                
-                         options={listGenres.genres}
+                         options={listGenres}
                          inputValue="" 
                          getOptionLabel= {(options) => options.genre}         
                          renderInput={(params)=><TextField {...params} label="Жанр" />}                  
@@ -22,7 +23,7 @@ export const FilterSerial = (props) => {
 
        const ListCountries = () => JSON.stringify(listCountries) === '{}' ? '' : 
        <Autocomplete sx={{ mb: 3 }} size="small" disableClearable={true}
-                         options={listCountries.countrys}
+                         options={listCountries}
                          inputValue="" 
                          getOptionLabel= {(options) => options.country}
                          renderInput={(params)=><TextField {...params} label="Страна" />}

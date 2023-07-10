@@ -1,14 +1,14 @@
 const defaultState = {
-    genres: [],
- };
+    // genres: [],
+};
 
 
-export const reducerListGenres = (state = defaultState, action) =>{
-            switch(action.type) {
-                case 'SET_LIST_GENRES':
-                 return {...state, genres: action.payload};
+export const reducerListGenres = (state = defaultState, action) => {
+    switch (action.type) {
+        // case 'SET_LIST_GENRES':
+        //  return {...state, genres: action.payload};
 
-                default:
-                 return state;
-            }
+        default:
+            return state;
+    }
 };

@@ -7,12 +7,13 @@ export const FilterTop = (props) => {
        const { typePage } = props;
         
        const dispatch = useDispatch();      
-       const listTop = useSelector(state => state.listTopCollection);   
+     //   const listTop = useSelector(state => state.slistTopCollection);   
+       const listTop = useSelector(state => state.setLists.collectionsTop);   
        const selectedCollection= useSelector(state=>state.filters.top_collection);   
     
        const ListTopCollection = () => JSON.stringify(listTop) === '{}' ? '' : 
             <Autocomplete sx={{mb: 2 }} size="small" disableClearable={true}                
-            options={listTop.collectionsTop}
+            options={listTop}
             inputValue="" 
             getOptionLabel= {(options) => options.top}         
             renderInput={(params)=><TextField {...params} label="Коллекция" />}                  

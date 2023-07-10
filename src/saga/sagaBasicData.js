@@ -7,9 +7,9 @@ const listTop = [
 
 const listYears = [
     { from: '1900', to: '1930', range: '1900 - 1930' },
-    { from: '1930', to: '1950', range: '1930 - 1950' },    
+    { from: '1930', to: '1950', range: '1930 - 1950' },
     { from: '1950', to: '1970', range: '1950 - 1970' },
-    { from: '1970', to: '1980', range: '1970 - 1980' },  
+    { from: '1970', to: '1980', range: '1970 - 1980' },
     { from: '1980', to: '1990', range: '1980 - 1990' },
     { from: '1990', to: '2000', range: '1990 - 2000' },
     { from: '2000', to: '2010', range: '2000 - 2010' },
@@ -46,7 +46,7 @@ function* workerCountries() {
 
     const dataCountries = yield call(fetchCountriesFromApi);
     const filteredCountries = dataCountries.filter((item) => requiredCountries.includes(item.country));
-
+    // console.log('filteredCountries :>> ', filteredCountries);
     yield put({ type: 'SET_LIST_COUNTRYS', payload: filteredCountries });
 }
 
