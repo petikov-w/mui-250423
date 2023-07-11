@@ -9,7 +9,8 @@ export const FilterTop = (props) => {
        const dispatch = useDispatch();      
      //   const listTop = useSelector(state => state.slistTopCollection);   
        const listTop = useSelector(state => state.setLists.collectionsTop);   
-       const selectedCollection= useSelector(state=>state.filters.top_collection);   
+       const selectedCollection= useSelector(state=>state.filters.top_collection); 
+       const currentPage = useSelector(state=>state.settings.currentPage);  
     
        const ListTopCollection = () => JSON.stringify(listTop) === '{}' ? '' : 
             <Autocomplete sx={{mb: 2 }} size="small" disableClearable={true}                
@@ -26,7 +27,8 @@ export const FilterTop = (props) => {
     
        return (
             <>          
-            { typePage === 'top' ?  
+            {/* { typePage === 'top' ?   */}
+            { currentPage === 'top' ?  
                                  JSON.stringify(selectedCollection) === '{}' ? <ListTopCollection /> 
                                                                     : <ChipSelectedCollection /> 
                                  : ''}

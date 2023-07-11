@@ -10,6 +10,7 @@ export const TopPage = (props) => {
 const dispatch = useDispatch();
 const location = useLocation();
 const page = useSelector(state=>state.pagination.page);
+// const currentPage = useSelector(state=>state.settings.currentPage);
 const collection = useSelector(state=>state.filters.top_collection);
 // const pageCount = useSelector(state=>state.pagination.pageCount);
 
@@ -23,7 +24,8 @@ const pathPage='/films?page=';
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}      
-            <ListCardsU  path={pathPage} typePage="top"/>                      
+            {/* <ListCardsU  path={pathPage} typePage="top"/>                       */}
+            <ListCardsU  path={pathPage} />                      
         </>
            
     );

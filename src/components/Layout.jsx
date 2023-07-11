@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import React, { useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import {Container} from '@mui/material';
 import styled from 'styled-components';
 import { ThemeProvider } from '@mui/material';
@@ -18,11 +18,14 @@ const Main = styled.div`
 
 
 const Layout = () => {
-    
+    const dispatch = useDispatch();
     const theme = useSelector(state=>state.settings.theme);
     const location = useLocation();
 
-    useEffect(() => {console.log('location-layout :>> ', location);}, [location]);
+    useEffect(() => {      
+      const loc = location.state;     
+       if (loc!==null) { dispatch({type:'UPDATE_CURRENT_PAGE', payload: location.state.page},) }        
+    }, [location]);
 
       return (
       <>    

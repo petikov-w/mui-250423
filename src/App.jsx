@@ -15,7 +15,7 @@ function App() {
   const router = createBrowserRouter(createRoutesFromElements(
       <Route path="/" element={<Layout />} >
           <Route index element={<PremierPage />} />
-          <Route path="films" element={<TopPage />} />
+          <Route path="films"  element={<TopPage />} />
           <Route path="serials" element={<SerialPage />} />
           <Route path="mults" element={<MultPage />} />
           <Route path="contacts" element={<ContactPage />} />

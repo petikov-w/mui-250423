@@ -16,10 +16,10 @@ import imageCinema from '../images/cinema_sm.png';
 
 const drawerWidth = 240;
 
-const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/'},
-                  {id: 2, navItem: 'Топ фильмов', path: '/films?page=1'},
-                  {id: 3, navItem: 'Сериалы', path: '/serials'},
-                  {id: 4, navItem: 'Мультфильмы', path: '/mults'},
+const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/', state: { page: 'premier'}},
+                  {id: 2, navItem: 'Топ фильмов', path: '/films?page=1', state: { page: 'top'}},
+                  {id: 3, navItem: 'Сериалы', path: '/serials', state: { page: 'serial'}},
+                  {id: 4, navItem: 'Мультфильмы', path: '/mults', state: { page: 'mult'}},
                 ];
 
 export const Header_v2 = (props) => {
@@ -108,7 +108,7 @@ export const Header_v2 = (props) => {
                    
                       <Stack sx={{ display: { xs: 'none', sm: 'none', md: 'flex'}, ml:-16}} direction="row" spacing={4}  > 
                               {navItems.map((item) => (                                   
-                                  <Link color="inherit" underline="none" key={item.id} component={NavLink} 
+                                  <Link color="inherit" underline="none" key={item.id} component={NavLink} state={item.state} 
                                                                       to={item.path}>                                     
                                       <TypographyNavLinkStl>
                                           {item.navItem}

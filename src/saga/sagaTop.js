@@ -21,7 +21,7 @@ function* workerTop({ payload }) {
     // Сформированный запрос
     const query = `${url_api}${version_api}${dataset}${paramsQ}${page}`;
 
-    console.log('query-top :>> ', query);
+    // console.log('query-top :>> ', query);
 
     yield takeEvery('TOOGLE_ISFETCHING', false);
     const dataFilmsTop = yield call(fetchQueryFromApi, query);
