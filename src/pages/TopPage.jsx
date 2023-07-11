@@ -8,14 +8,13 @@ import { ListCardsU } from '../components/ListCardsU';
 
 export const TopPage = (props) => { 
 const dispatch = useDispatch();
+const location = useLocation();
 const page = useSelector(state=>state.pagination.page);
 const collection = useSelector(state=>state.filters.top_collection);
 // const pageCount = useSelector(state=>state.pagination.pageCount);
 
-
+console.log('location :>> ', location);
 const pathPage='/films?page=';
-
-console.log('collection-top-page :>> ', collection);
 
  useEffect(()=>{dispatch({type:'FILMS_TOP', payload: {page, collection}});}, [page, collection]);
                

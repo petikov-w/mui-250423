@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom';
-import React from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import React, { useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import {Container} from '@mui/material';
 import styled from 'styled-components';
@@ -20,6 +20,9 @@ const Main = styled.div`
 const Layout = () => {
     
     const theme = useSelector(state=>state.settings.theme);
+    const location = useLocation();
+
+    useEffect(() => {console.log('location-layout :>> ', location);}, [location]);
 
       return (
       <>    

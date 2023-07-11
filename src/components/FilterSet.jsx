@@ -3,6 +3,7 @@ import {Grid, Stack } from '@mui/material';
 
 import { FilterTop } from './FilterTop'
 import { FilterSerial } from './FilterSerial';
+import { FilterMult } from './FilterMult';
 
 
 
@@ -17,7 +18,8 @@ export const FilterSet = (props) => {
           
                  <Stack sx={{ width: '100%'}}>            
                     <FilterTop typePage={typePage}/>
-                     <FilterSerial typePage={typePage}/>             
+                    <FilterSerial typePage={typePage}/>      
+                    <FilterMult typePage={typePage} />       
             </Stack>     
          
                 
