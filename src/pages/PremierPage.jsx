@@ -19,7 +19,8 @@ useEffect(()=>{ dispatch({type:'FILMS_PREMIER'});}, []);
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}                          
-            <ListCardsU typePage="premier"/>                
+            {/* <ListCardsU typePage="premier"/>                 */}
+            <ListCardsU />                
         </>
            
     );

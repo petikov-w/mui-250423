@@ -6,11 +6,15 @@ import { FilterSet } from './FilterSet';
 
 export const CardsU = (props) => {
   
-  const { typePage } = props;
+  // const { typePage } = props;
   const films = useSelector(state=>state.listFilms.films); 
+  const currentPage = useSelector(state=>state.settings.currentPage); 
 
-  const widthPage = typePage !== 'premier' ? '80%' : '100%'; 
-  const widthLg = typePage !== 'premier' ?  3 : 2.4; 
+  const widthPage = currentPage !== 'premier' ? '80%' : '100%'; 
+  const widthLg = currentPage !== 'premier' ?  3 : 2.4; 
+
+  // const widthPage = typePage !== 'premier' ? '80%' : '100%'; 
+  // const widthLg = typePage !== 'premier' ?  3 : 2.4; 
 
   
   return (
@@ -23,7 +27,8 @@ export const CardsU = (props) => {
             )) : <p>Фильмы не найдены...</p>  
           }               
         </Grid>
-        <FilterSet  typePage={typePage}/>    
+        <FilterSet />    
+        {/* <FilterSet  typePage={typePage}/>     */}
 </Grid>
   );
 };

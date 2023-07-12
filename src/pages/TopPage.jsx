@@ -25,6 +25,7 @@ const pathPage='/films?page=';
                 <title>Cinema Box - Главная</title>
             </Helmet> */}      
             {/* <ListCardsU  path={pathPage} typePage="top"/>                       */}
+            {/* <ListCardsU  path={pathPage} />                       */}
             <ListCardsU  path={pathPage} />                      
         </>
            

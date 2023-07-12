@@ -25,7 +25,8 @@ return (
         {/* <Helmet>
             <title>Cinema Box - Главная</title>
         </Helmet> */}
-        <ListCardsU  path={pathPage} typePage="mult"/>      
+        {/* <ListCardsU  path={pathPage} typePage="mult"/>       */}
+        <ListCardsU  path={pathPage}/>      
     </>
            
     );

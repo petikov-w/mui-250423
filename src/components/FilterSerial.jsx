@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const FilterSerial = (props) => {
     
-       const { typePage } = props;
+      //  const { typePage } = props;
         
        const dispatch = useDispatch();      
        const listCountries = useSelector(state => state.setLists.countrys);
        const listGenres = useSelector(state => state.setLists.genres);
        const selectedGenre= useSelector(state=>state.filters.genre);
        const selectedCountrie= useSelector(state=>state.filters.country);  
+       const currentPage = useSelector(state=>state.settings.currentPage);  
       
 
        const ListGenres = () => JSON.stringify(listGenres) === '{}' ? '' : 
@@ -40,8 +41,14 @@ export const FilterSerial = (props) => {
     
        return (
             <>          
-               { typePage === 'serial' ?  JSON.stringify(selectedGenre) === '{}' ? <ListGenres /> : <ChipSelectedGenre />  : ''}
-               { typePage === 'serial' ?  JSON.stringify(selectedCountrie) === '{}' ? <ListCountries /> : <ChipSelectedCountrie />  : ''}  
+               { currentPage === 'serial' ?  JSON.stringify(selectedGenre) === '{}' 
+               ? <ListGenres /> : <ChipSelectedGenre />  : ''}
+               { currentPage === 'serial' ?  JSON.stringify(selectedCountrie) === '{}' 
+               ? <ListCountries /> : <ChipSelectedCountrie />  : ''}  
+               {/* { typePage === 'serial' ?  JSON.stringify(selectedGenre) === '{}' 
+               ? <ListGenres /> : <ChipSelectedGenre />  : ''}
+               { typePage === 'serial' ?  JSON.stringify(selectedCountrie) === '{}' 
+               ? <ListCountries /> : <ChipSelectedCountrie />  : ''}   */}
             </>
        );
 };

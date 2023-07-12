@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const FilterMult = (props) => {
     
-       const { typePage } = props;
+      //  const { typePage } = props;
         
        const dispatch = useDispatch();      
        const listCountries = useSelector(state => state.setLists.countrys);
        const listYearsCollection = useSelector(state => state.setLists.collectionsYears);
        const selectedYearsCollection= useSelector(state=>state.filters.years_collection);
        const selectedCountrie= useSelector(state=>state.filters.country);  
+       const currentPage = useSelector(state=>state.settings.currentPage); 
     
        const ListCountries = () => JSON.stringify(listCountries) === '{}' ? '' : 
        <Autocomplete sx={{ mb: 3 }} size="small" disableClearable={true}
@@ -40,9 +41,14 @@ export const FilterMult = (props) => {
     
        return (
             <>          
-               { typePage === 'mult' ?  JSON.stringify(selectedCountrie) === '{}' ? <ListCountries /> : <ChipSelectedCountrie />  : ''}  
-               { typePage === 'mult' ?  JSON.stringify(selectedYearsCollection) === '{}' ? <ListYears /> : <ChipSelectedYears />  : ''}
+               { currentPage === 'mult' ?  JSON.stringify(selectedCountrie) === '{}' ? <ListCountries /> : <ChipSelectedCountrie />  : ''}  
+               { currentPage === 'mult' ?  JSON.stringify(selectedYearsCollection) === '{}' ? <ListYears /> : <ChipSelectedYears />  : ''}
                
+               {/* { typePage === 'mult' ?  JSON.stringify(selectedCountrie) === '{}' ?
+                <ListCountries /> : <ChipSelectedCountrie />  : ''}  
+               { typePage === 'mult' ?  JSON.stringify(selectedYearsCollection) === '{}' ? 
+               <ListYears /> : <ChipSelectedYears />  : ''}
+                */}
             </>
        );
 };
