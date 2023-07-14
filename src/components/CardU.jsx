@@ -1,4 +1,5 @@
 import {CardMedia, Box, Typography} from '@mui/material';
+import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -67,14 +68,20 @@ const BoxStl = styled(Box)`
 // `;
 
 export const CardU = (props, bg) => {
-    const {filmId, kinopoiskId, posterUrl, rating, filmLength, typePage} = props;
+    const {filmId, kinopoiskId, posterUrl, rating, filmLength} = props;
+    const currentPage = useSelector(state=>state.settings.currentPage); 
+    
+    // const alloweвFilmkId = ['top'];
+    // const alloweвKinopoiskId = ['top','serial','mult'];
+
     let linkFilm = '';
 
-    if (typePage === 'top') {
+    if (currentPage === 'top') {
         linkFilm = `/films/${filmId}`;
     }
 
-    if (typePage === 'premier' || typePage === 'serial' || typePage === 'mult' ) {
+    
+    if (currentPage === 'premier' || currentPage === 'serial' || currentPage === 'mult' ) {
         linkFilm = `/films/${kinopoiskId}`;
     }
        
@@ -92,7 +99,7 @@ export const CardU = (props, bg) => {
                     sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px' ,maxWidth: '230px', 
                           boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
                   />
-                   { typePage === 'top' ? ( 
+                   { currentPage === 'top' ? ( 
                       <BoxZ>   
                         <TypographyStl component={'span'}> 
                           <BoxStl>
