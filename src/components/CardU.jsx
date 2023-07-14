@@ -71,19 +71,26 @@ export const CardU = (props, bg) => {
     const {filmId, kinopoiskId, posterUrl, rating, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
     
-    // const alloweвFilmkId = ['top'];
-    // const alloweвKinopoiskId = ['top','serial','mult'];
+    const allowedFilmkId = ['top'];
+    const allowedKinopoiskId = ['premier','serial','mult'];
 
     let linkFilm = '';
 
-    if (currentPage === 'top') {
+    // if (currentPage === 'top') {
+    //     linkFilm = `/films/${filmId}`;
+    // }
+
+    if (allowedFilmkId.includes(currentPage)) {
         linkFilm = `/films/${filmId}`;
     }
 
     
-    if (currentPage === 'premier' || currentPage === 'serial' || currentPage === 'mult' ) {
+    if ( allowedKinopoiskId.includes(currentPage)) {
         linkFilm = `/films/${kinopoiskId}`;
     }
+    // if (currentPage === 'premier' || currentPage === 'serial' || currentPage === 'mult' ) {
+    //     linkFilm = `/films/${kinopoiskId}`;
+    // }
        
     return (
         <>         
