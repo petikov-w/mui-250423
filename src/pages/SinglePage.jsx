@@ -1,36 +1,24 @@
-import { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Container } from '@mui/material';
 
-// import { Container } from '../components/styles/Container.styled';
 import { Single } from '../components/Single';
 
 
 const SinglePage = () => {
-   
-    const { id } = useParams();
-    const [film, setFilm] = useState([]);
-    // const [treiler, setTreiler] = useState([]);
+    const dispatch = useDispatch();
+    const { id } = useParams();    
     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { dispatch({type:'SINGLE', payload: {id}});}, [id]);
     
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_LIST}` + id, {
-            headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}`}})
-            .then((responce) => responce.json())
-            .then(data => setFilm(data));             
-        // fetch(`${process.env.REACT_APP_API_LIST}` + id +'/videos', {
-        //     headers: { 'Content-Type': 'application/json', 'X-API-KEY': `${process.env.REACT_APP_API_KEY}`}})
-        //     .then((responce) => responce.json())
-        //     .then(data => setTreiler(data));             
-    }, [id]);
-    
-    // console.log('treiler :>> ', treiler);
    return (
-        
-         <Container maxWidth="lg">
-             <Single film={film}/>    
-         </Container>    
-            
+        <>
+            <Container maxWidth="lg">
+                <Single />    
+            </Container>    
+        </>
     );
 };
 

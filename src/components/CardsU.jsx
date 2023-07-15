@@ -15,7 +15,7 @@ export const CardsU = (props) => {
 
   // const widthPage = typePage !== 'premier' ? '80%' : '100%'; 
   // const widthLg = typePage !== 'premier' ?  3 : 2.4; 
-
+  console.log('films09 :>> ', films);
   
   return (
     <Grid container  direction="row">

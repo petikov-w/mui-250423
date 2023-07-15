@@ -10,6 +10,7 @@ import { reducerFilters } from './reducerFilters';
 import { reducerSettings } from './reducerSettings';
 import { reducerPagination } from './reducerPagination';
 import { reducerIsFetching } from './reducerIsFetching';
+import { reducerSingle } from './reducerSingle';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,6 +22,8 @@ const rootReduser = combineReducers(
         settings: reducerSettings,
         pagination: reducerPagination,        
         isFetching: reducerIsFetching,
+        single: reducerSingle,
+
     }
 );
 

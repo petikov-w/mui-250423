@@ -5,6 +5,7 @@ import { watchFilmsPremieres } from './sagaPremier';
 import { watchFilmsTop } from './sagaTop';
 import { watchFilmsSerial } from './sagaSerial';
 import { watchFilmsMult } from './sagaMult';
+import { watchFilmSingle } from './sagaSingle';
 
 export default function* rootSaga() {
     // В этот массив добавляем все импортированные вотчеры
@@ -14,6 +15,7 @@ export default function* rootSaga() {
         watchFilmsPremieres,
         watchFilmsSerial,
         watchFilmsMult,
+        watchFilmSingle,
     ];
 
     const retrySagas = yield sagas.map(saga => {

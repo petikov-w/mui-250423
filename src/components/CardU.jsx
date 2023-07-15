@@ -76,27 +76,15 @@ export const CardU = (props, bg) => {
 
     let linkFilm = '';
 
-    // if (currentPage === 'top') {
-    //     linkFilm = `/films/${filmId}`;
-    // }
-
-    if (allowedFilmkId.includes(currentPage)) {
-        linkFilm = `/films/${filmId}`;
-    }
-
     
-    if ( allowedKinopoiskId.includes(currentPage)) {
-        linkFilm = `/films/${kinopoiskId}`;
-    }
-    // if (currentPage === 'premier' || currentPage === 'serial' || currentPage === 'mult' ) {
-    //     linkFilm = `/films/${kinopoiskId}`;
-    // }
+    if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }
+    
+    if ( allowedKinopoiskId.includes(currentPage)) { linkFilm = `/films/${kinopoiskId}`; }
+   
        
     return (
         <>         
-           <Link to={linkFilm} sx={{cursor: 'pointer'}}>    
-           {/* <Box sx={{ position: 'relative' }}> */}
-            {/* <CardBox > */}
+           <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
             <CardBox sx={{ position: 'relative', zIndex: 1, borderRadius: 2 }}>
                   <CardMedia                  
                     component="img"                    
@@ -106,7 +94,8 @@ export const CardU = (props, bg) => {
                     sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px' ,maxWidth: '230px', 
                           boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
                   />
-                   { currentPage === 'top' ? ( 
+                   {/* { currentPage === 'top' ? (  */}
+                   { allowedKinopoiskId.includes(currentPage) ? ( 
                       <BoxZ>   
                         <TypographyStl component={'span'}> 
                           <BoxStl>
@@ -116,11 +105,8 @@ export const CardU = (props, bg) => {
                         </TypographyStl>
                       </BoxZ> ) : ('')}
                   
-                  {/* { props.typePage === 'top' ? ( <Rating rating={rating} /> ) : ('')}                  */}
-             </CardBox>     
-           {/* </Box> */}
-             
-                               
+                  {/* { currentPage === 'top' ? ( <Rating rating={rating} /> ) : ('')}   */}
+             </CardBox>       
             </Link>          
         </>     
     );

@@ -6,13 +6,11 @@ import {Stack, Pagination, PaginationItem} from '@mui/material';
 
 import { CardsU } from './CardsU';
 
-// const allowedPages = ['','','','',''];
 const allowedPagesShowPagination = ['top','serial','mult'];
 
 export const ListCardsU = (props) => { 
     const dispatch = useDispatch();
 
-    // const films = useSelector(state=>state.listFilms.films);   
     const totalPages = useSelector(state=>state.pagination.pagesCount);
     const page1 = useSelector(state=>state.pagination.page);
     const isFetching = useSelector(state=>state.isFetching.isFetching);    
@@ -32,10 +30,7 @@ export const ListCardsU = (props) => {
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}
-            {isFetching ? (<CardsU />) : (<h3>Загрузка...</h3>)}    
-            {/* {isFetching ? (<CardsU typePage={typePage}  />) : (<h3>Загрузка...</h3>)}     */}
-
-            {/* { allowedPagesShowPagination.includes(typePage) */}
+            {isFetching ? (<CardsU />) : (<h3>Загрузка...</h3>)}              
             { allowedPagesShowPagination.includes(currentPage)
                    ? ( 
                         <Stack spacing={2}>

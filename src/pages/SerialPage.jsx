@@ -25,7 +25,6 @@ export const SerialPage = () => {
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}           
-            {/* <ListCardsU path={pathPage} typePage="serial"/>       */}
             <ListCardsU path={pathPage} />      
         </>
            
