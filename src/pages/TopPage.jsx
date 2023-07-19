@@ -10,22 +10,40 @@ export const TopPage = (props) => {
 const dispatch = useDispatch();
 const location = useLocation();
 const page = useSelector(state=>state.pagination.page);
-// const currentPage = useSelector(state=>state.settings.currentPage);
+// const currentPage = useSelector(state=>state.settings.currentPage); 
 const collection = useSelector(state=>state.filters.top_collection);
 // const pageCount = useSelector(state=>state.pagination.pageCount);
 
-console.log('location :>> ', location);
+console.log('location-top :> ', location,
+'  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+
 const pathPage='/films?page=';
 
- useEffect(()=>{dispatch({type:'FILMS_TOP', payload: {page, collection}});}, [page, collection]);
+ useEffect(()=>{
+    // dispatch({type:'SET_PAGE', payload: parseInt(location.search?.split('=')[1] || 1)});
+    console.log('location-top-01 :> ', location,
+'  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+   
+    dispatch(
+    //     {type:'FILMS_TOP', payload: {fgu, collection}},
+        {type:'FILMS_TOP', payload: {collection}}
+        
+        )
+        ;}, [page, collection]);
+
+ useEffect(()=>{   
+    console.log('location-top-02 :> ', location,
+'  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+    dispatch({type:'SET_PAGE', payload: parseInt(location.search?.split('=')[1] || 1)});
+    }, [location]);
                
+
+    
     return (
         <>
             {/* <Helmet>
                 <title>Cinema Box - Главная</title>
             </Helmet> */}      
-            {/* <ListCardsU  path={pathPage} typePage="top"/>                       */}
-            {/* <ListCardsU  path={pathPage} />                       */}
             <ListCardsU  path={pathPage} />                      
         </>
            

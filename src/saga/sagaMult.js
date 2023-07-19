@@ -1,4 +1,4 @@
-import { put, call, takeEvery } from 'redux-saga/effects';
+import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 import { fetchQueryFromApi } from '../components/Api';
 
@@ -10,6 +10,7 @@ const dataset = 'films?';
 
 function* workerMult({ payload }) {
     const { page, country } = payload;
+    const page22 = yield select((state)=> state.pagination.page);
 
     const scountry = JSON.stringify(country) === '{}' ? '33' : `${country.id}`;
     // Формирование поискового запроса
@@ -25,7 +26,7 @@ function* workerMult({ payload }) {
         page: '',
     });
     // Сформированный запрос
-    const query = `${url_api}${version_api}${dataset}${paramsQ}${page}`;
+    const query = `${url_api}${version_api}${dataset}${paramsQ}${page22}`;
 
     yield takeEvery('TOOGLE_ISFETCHING', false);
     const dataFilmsMult = yield call(fetchQueryFromApi, query);

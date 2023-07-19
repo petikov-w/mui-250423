@@ -11,6 +11,8 @@ const dataset = 'top?';
 
 function* workerTop({ payload }) {
     const { page, collection } = payload;
+
+    const page22 = yield select((state)=> state.pagination.page);
     const scollection = JSON.stringify(collection) === '{}' ? 'TOP_250_BEST_FILMS' : `${collection.id}`;
     // Формирование поискового запроса
     const paramsQ = new URLSearchParams({
@@ -19,7 +21,7 @@ function* workerTop({ payload }) {
     });
 
     // Сформированный запрос
-    const query = `${url_api}${version_api}${dataset}${paramsQ}${page}`;
+    const query = `${url_api}${version_api}${dataset}${paramsQ}${page22}`;
 
     // console.log('query-top :>> ', query);
 

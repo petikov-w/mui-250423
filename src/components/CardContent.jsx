@@ -67,10 +67,10 @@ const BoxStl = styled(Box)`
 //     right: 0;    
 // `;
 
-export const CardU = (props, bg) => {
+export const CardContent = (props, bg) => {
     const {filmId, kinopoiskId, posterUrl, rating, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
-    
+    // const films = useSelector(state=>state.listFilms.films); 
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
 
