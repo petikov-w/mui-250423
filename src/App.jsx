@@ -1,7 +1,6 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 
-import { ContactPage } from './pages/ContactPage';
 import { SinglePage } from './pages/SinglePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Layout } from './components/Layout';
@@ -18,7 +17,6 @@ function App() {
           <Route path="films"  element={<TopPage />} />
           <Route path="serials" element={<SerialPage />} />
           <Route path="mults" element={<MultPage />} />
-          <Route path="contacts" element={<ContactPage />} />
           <Route path="films/:id" element={<SinglePage />} />
           <Route path="*" element={<NotFoundPage />} />
       </Route>

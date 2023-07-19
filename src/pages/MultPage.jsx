@@ -17,17 +17,26 @@ export const MultPage = () => {
     const pathPage='/mults?page=';
 
     useEffect(()=>{ 
-            console.log('location-mult :> ', location,
+            console.log('location-mult-01 :> ', location,
             '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
             // eslint-disable-next-line react-hooks/exhaustive-deps
             dispatch({type:'FILMS_MULT', payload: {country}},);}, [page, country]);        
 
     useEffect(()=>{
-            console.log('location-mult :> ', location,
+           
+            if (parseInt(location.search?.split('=') !== page)) {
+                dispatch({type:'SET_PAGE', payload: parseInt(location.search?.split('=')[1] || 1)});
+                 console.log('location-mult-02 :> ', location,
             '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
-            dispatch({type:'SET_PAGE', payload: parseInt(location.search?.split('=')[1] || 1)});
+            }
+            
         }, [location]);           
 
+    useEffect(()=>{
+        return ()=>{
+            dispatch({type:'SET_PAGE', payload: 1});
+            console.log('+++0+++ :>> ')};
+    }, []);         
 
 return (
     <>

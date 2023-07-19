@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material';
 
 import { ThemeMui } from '../styles/ThemeMui';
 
-import { Header_v2 } from './Header_v2';
+import { Header } from './Header';
 // import { Header } from './Header';
 import { Footer } from './Footer';
 
@@ -30,7 +30,7 @@ const Layout = () => {
       return (
       <>    
             <ThemeProvider theme={ThemeMui(theme)}>   
-                <Header_v2 />     
+                <Header />     
                  <Container maxWidth="lg"  sx={{ mt: 12, mb: 5 }}>   
                 <Main>                               
                   <Outlet />                         

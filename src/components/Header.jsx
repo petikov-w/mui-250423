@@ -19,12 +19,10 @@ const drawerWidth = 240;
 const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/', state: { page: 'premier'}},
                   {id: 2, navItem: 'Топ фильмов', path: '/films?page=1', state: { page: 'top'}},
                   {id: 3, navItem: 'Сериалы', path: '/serials?page=1', state: { page: 'serial'}},
-                  // {id: 3, navItem: 'Сериалы', path: '/serials', state: { page: 'serial'}},
                   {id: 4, navItem: 'Мультфильмы', path: '/mults?page=1', state: { page: 'mult'}},
-                  // {id: 4, navItem: 'Мультфильмы', path: '/mults', state: { page: 'mult'}},
                 ];
 
-export const Header_v2 = (props) => {
+export const Header = (props) => {
 
   const dispatch = useDispatch();
 
