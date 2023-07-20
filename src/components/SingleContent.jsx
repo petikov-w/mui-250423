@@ -11,13 +11,13 @@ export const SingleContent = () => {
     // const preLoader = <h3>Загрузка-вах...</h3>;
     const no_description = 'Описание отсутствует';
     
-    localStorage.setItem('isSingle', true);
+    // localStorage.setItem('isSingle', true);
     const single = useSelector(state=>state.single);
 
 
 //     <Suspense fallback={<Loading />}>
-//     <Albums />
-// </Suspense>
+//        <Albums />
+//     </Suspense>
     return (
         <>         
                 <Typography variant="h4" sx={{mb:3}}>

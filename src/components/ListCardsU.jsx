@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { Paginations } from './Paginations';
 import { CardsU } from './CardsU';
+import { PreLoader } from './PreLoader';
 
 const allowedPagesShowPagination = ['top','serial','mult'];
 
@@ -16,7 +17,7 @@ export const ListCardsU = (props) => {
             {/* <Helmet>
                     <title>Cinema Box - Главная</title>
                 </Helmet> */}
-            {isFetching ? (<CardsU />) : (<h3>Загрузка...</h3>)}              
+            {isFetching ? (<PreLoader />) : (<CardsU />)}              
             { allowedPagesShowPagination.includes(currentPage)
                    ? ( <Paginations path={path} /> ) : ('')}   
         </>

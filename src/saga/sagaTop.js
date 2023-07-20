@@ -25,12 +25,11 @@ function* workerTop({ payload }) {
 
     // console.log('query-top :>> ', query);
 
-    yield takeEvery('TOOGLE_ISFETCHING', false);
+    yield put({ type: 'TOOGLE_ISFETCHING', payload: true });
     const dataFilmsTop = yield call(fetchQueryFromApi, query);
-    yield takeEvery('TOOGLE_ISFETCHING', true);
+    yield put({ type: 'TOOGLE_ISFETCHING', payload: false });
 
     yield put({ type: 'SET_FILMS', payload: dataFilmsTop.films });
-    // yield put({ type: 'SET_FILMS_TOP', payload: dataFilmsTop.films });
     yield put({ type: 'SET_PAGES_COUNT', payload: dataFilmsTop.pagesCount });
 }
 

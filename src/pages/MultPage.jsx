@@ -17,8 +17,8 @@ export const MultPage = () => {
     const pathPage='/mults?page=';
 
     useEffect(()=>{ 
-            console.log('location-mult-01 :> ', location,
-            '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+            // console.log('location-mult-01 :> ', location,
+            // '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
             // eslint-disable-next-line react-hooks/exhaustive-deps
             dispatch({type:'FILMS_MULT', payload: {country}},);}, [page, country]);        
 
@@ -26,8 +26,8 @@ export const MultPage = () => {
            
             if (parseInt(location.search?.split('=') !== page)) {
                 dispatch({type:'SET_PAGE', payload: parseInt(location.search?.split('=')[1] || 1)});
-                 console.log('location-mult-02 :> ', location,
-            '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+            //      console.log('location-mult-02 :> ', location,
+            // '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
             }
             
         }, [location]);           

@@ -28,9 +28,9 @@ function* workerSerial({ payload }) {
     // Сформированный запрос
     const query = `${url_api}${version_api}${dataset}${paramsQ}${page22}`;
 
-    yield takeEvery('TOOGLE_ISFETCHING', false);
+    yield put({ type: 'TOOGLE_ISFETCHING', payload: true });
     const dataFilmsSerial = yield call(fetchQueryFromApi, query);
-    yield takeEvery('TOOGLE_ISFETCHING', true);
+    yield put({ type: 'TOOGLE_ISFETCHING', payload: false });
 
     yield put({ type: 'SET_FILMS', payload: dataFilmsSerial.items });
     // yield put({ type: 'SET_FILMS_SERIAL', payload: dataFilmsSerial.items });

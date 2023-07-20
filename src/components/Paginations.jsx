@@ -9,10 +9,12 @@ export const Paginations = (props) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const totalPages = useSelector(state=>state.pagination.pagesCount);
+    const isFetching = useSelector(state=>state.isFetching.isFetching); 
 
     return (
         <>
-            <Stack spacing={2}>
+        {isFetching ? ('') : ( 
+        <Stack spacing={2}>
             <Pagination count={totalPages} 
                     color="pagination"                             
                     page={parseInt(location.search?.split('=')[1] || 1)}  
@@ -30,6 +32,7 @@ export const Paginations = (props) => {
                     }
             />                               
             </Stack>
+            )}            
         </>
          );
     };

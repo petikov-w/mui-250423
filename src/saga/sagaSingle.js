@@ -13,9 +13,9 @@ function* workerSingle({ payload }) {
     // Сформированный запрос
     const query = `${url_api}${version_api}${dataset}${id}`;
 
-    yield takeEvery('TOOGLE_ISFETCHING', false);
+    yield put({ type: 'TOOGLE_ISFETCHING', payload: true });
     const data = yield call(fetchQueryFromApi, query);
-    yield takeEvery('TOOGLE_ISFETCHING', true);
+    yield put({ type: 'TOOGLE_ISFETCHING', payload: false });
 
     yield put({ type: 'FILM_SINGLE', payload: data });
   

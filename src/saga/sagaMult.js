@@ -28,11 +28,10 @@ function* workerMult({ payload }) {
     // Сформированный запрос
     const query = `${url_api}${version_api}${dataset}${paramsQ}${page22}`;
 
-    yield takeEvery('TOOGLE_ISFETCHING', false);
+    yield put({ type: 'TOOGLE_ISFETCHING', payload: true });
     const dataFilmsMult = yield call(fetchQueryFromApi, query);
-    yield takeEvery('TOOGLE_ISFETCHING', true);
+    yield put({ type: 'TOOGLE_ISFETCHING', payload: false });
 
-    // yield put({ type: 'SET_MULT_FILMS', payload: dataFilmsMult.items });
     yield put({ type: 'SET_FILMS', payload: dataFilmsMult.items });
     yield put({ type: 'SET_PAGES_COUNT', payload: dataFilmsMult.totalPages });
 }

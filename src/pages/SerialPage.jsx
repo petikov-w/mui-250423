@@ -14,12 +14,11 @@ export const SerialPage = () => {
     const country= useSelector(state=>state.filters.country);
     // ====================================================================
     
-
     const pathPage='/serials?page=';   
    
     useEffect(()=>{ 
-        console.log('location-serial-01 :> ', location,
-    '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+    //     console.log('location-serial-01 :> ', location,
+    // '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
         dispatch({type:'FILMS_SERIAL', payload: {country, genre}},);}, [page, country, genre]);        
@@ -27,8 +26,8 @@ export const SerialPage = () => {
     useEffect(()=>{
         if (parseInt(location.search?.split('=') !== page))  {
              dispatch({type:'SET_PAGE', payload: parseInt(location.search?.split('=')[1] || 1)});
-               console.log('location-serial-02 :> ', location,
-    '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+    //            console.log('location-serial-02 :> ', location,
+    // '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
         }
       
 

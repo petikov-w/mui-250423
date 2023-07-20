@@ -14,15 +14,15 @@ const page = useSelector(state=>state.pagination.page);
 const collection = useSelector(state=>state.filters.top_collection);
 // const pageCount = useSelector(state=>state.pagination.pageCount);
 
-console.log('location-top :> ', location,
-'  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+// console.log('location-top :> ', location,
+// '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
 
 const pathPage='/films?page=';
 
  useEffect(()=>{
     // dispatch({type:'SET_PAGE', payload: parseInt(location.search?.split('=')[1] || 1)});
-    console.log('location-top-01 :> ', location,
-'  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+//     console.log('location-top-01 :> ', location,
+// '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
    
     dispatch(
     //     {type:'FILMS_TOP', payload: {fgu, collection}},
@@ -34,8 +34,8 @@ const pathPage='/films?page=';
  useEffect(()=>{   
     if (parseInt(location.search?.split('=') !== page)) {
          dispatch({type:'SET_PAGE', payload: parseInt(location.search?.split('=')[1] || 1)});
-          console.log('location-top-02 :> ', location,
-'  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
+//           console.log('location-top-02 :> ', location,
+// '  location-search :>> ', parseInt(location.search?.split('=')[1] || 1) , ' page :>>> ', page );
     }
     }, [location]);
                
