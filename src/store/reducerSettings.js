@@ -2,6 +2,7 @@ const defaultState = {
     theme: 'light',
     checkedTheme: null,
     currentPage: 'premier',
+    currentPath: '',
 };
 
 
@@ -13,6 +14,8 @@ export const reducerSettings = (state = defaultState, action) => {
             return { ...state, checkedTheme: action.payload };
         case 'UPDATE_CURRENT_PAGE':
             return { ...state, currentPage: action.payload };
+        case 'UPDATE_CURRENT_PATH':
+            return { ...state, currentPath: action.payload };
 
 
         default:

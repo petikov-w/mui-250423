@@ -11,7 +11,8 @@ const SinglePage = () => {
     const { id } = useParams();    
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { dispatch({type:'SINGLE', payload: {id}});}, [id]);
+    useEffect(() => {  dispatch({type:'SINGLE', payload: {id}});
+                    }, [id]);
     
    return (
         <>

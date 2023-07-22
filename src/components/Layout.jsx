@@ -24,8 +24,10 @@ const Layout = () => {
 
     useEffect(() => {      
       const loc = location.state;     
-       if (loc!==null) { dispatch({type:'UPDATE_CURRENT_PAGE', payload: location.state.page},) }        
-    }, [location]);
+       if (loc!==null) { 
+        dispatch({type:'UPDATE_CURRENT_PAGE', payload: location.state.page});
+        dispatch({type:'UPDATE_CURRENT_PATH', payload: location.state.path});}
+      }, [location]);
 
       return (
       <>    

@@ -16,9 +16,9 @@ function* workerSingle({ payload }) {
     yield put({ type: 'TOOGLE_ISFETCHING', payload: true });
     const data = yield call(fetchQueryFromApi, query);
     yield put({ type: 'TOOGLE_ISFETCHING', payload: false });
-
+    yield put({ type: 'TOOGLE_SINGLE_PAGE', payload: true });
     yield put({ type: 'FILM_SINGLE', payload: data });
-  
+
 }
 
 

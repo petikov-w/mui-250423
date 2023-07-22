@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {Stack, Pagination, PaginationItem} from '@mui/material';
 
-export const Paginations = (props) => { 
+export const Paginations = () => { 
 
-    const { path } = props;
     const dispatch = useDispatch();
     const location = useLocation();
     const totalPages = useSelector(state=>state.pagination.pagesCount);
     const isFetching = useSelector(state=>state.isFetching.isFetching); 
+    const currentPath = useSelector(state=>state.settings.currentPath); 
 
     return (
         <>
@@ -25,7 +25,7 @@ export const Paginations = (props) => {
                         (item) =>(           
                         <PaginationItem                                     
                             component={NavLink}            
-                            to={`${path}${item.page}`}                                             
+                            to={`${currentPath}${item.page}`}                                             
                             {...item}
                             />   
                         )

@@ -1,4 +1,3 @@
-// import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -13,9 +12,6 @@ export const NotFoundPage = () => {
 
     return (
         <>
-            {/* <Helmet>
-                <title>Cinema Box - 404 - Страница не найдена</title>
-            </Helmet> */}
             <h2>404 - страница не найдена</h2>
             <LinkStyled to="/">
                 <Button sx={{ color: '#303891',

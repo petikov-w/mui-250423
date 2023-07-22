@@ -16,10 +16,10 @@ import imageCinema from '../images/cinema_sm.png';
 
 const drawerWidth = 240;
 
-const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/', state: { page: 'premier'}},
-                  {id: 2, navItem: 'Топ фильмов', path: '/films?page=1', state: { page: 'top'}},
-                  {id: 3, navItem: 'Сериалы', path: '/serials?page=1', state: { page: 'serial'}},
-                  {id: 4, navItem: 'Мультфильмы', path: '/mults?page=1', state: { page: 'mult'}},
+const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/', state: { page: 'premier', path: ''}},
+                  {id: 2, navItem: 'Топ фильмов', path: '/films?page=1', state: { page: 'top', path: '/films?page='}},
+                  {id: 3, navItem: 'Сериалы', path: '/serials?page=1', state: { page: 'serial', path: '/serials?page='}},
+                  {id: 4, navItem: 'Мультфильмы', path: '/mults?page=1', state: { page: 'mult', path: '/mults?page='}},
                 ];
 
 export const Header = (props) => {
@@ -36,14 +36,11 @@ export const Header = (props) => {
       setMobileOpen((prevState) => !prevState);
     };
     
-    const handleChange = (event) => {
-        dispatch({type:'UPDATE_CHECKED_THEME', payload: event.target.checked});   
-        }; 
+    const handleChange = (event) => {dispatch({type:'UPDATE_CHECKED_THEME', payload: event.target.checked});}; 
 
-        useEffect(()=>{ console.log('checked :>> ', checked);
-                       checked ? dispatch({type:'UPDATE_THEME', payload:'dark' }) 
+        useEffect(()=>{ checked ? dispatch({type:'UPDATE_THEME', payload:'dark' }) 
                                 : dispatch({type:'UPDATE_THEME', payload: 'light'});
-         }, [checked]);      
+        }, [checked]);      
     
         const drawer = (
             <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
