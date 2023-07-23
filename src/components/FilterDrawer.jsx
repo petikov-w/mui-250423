@@ -3,12 +3,12 @@ import MenuIcon from '@mui/icons-material/Search';
 import {Button, Drawer, Box, Typography, IconButton, Divider } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FilterTop } from './FilterTop'
+import { FilterTop } from './FilterTop';
 import { FilterSerial } from './FilterSerial';
 import { FilterMult } from './FilterMult';
 
 export const FilterDrawer = () => {
-     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
      
        return (
             <>          

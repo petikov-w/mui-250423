@@ -3,6 +3,7 @@ const defaultState = {
     checkedTheme: null,
     currentPage: 'premier',
     currentPath: '',
+    mobileOpen: false,
 };
 
 
@@ -16,7 +17,8 @@ export const reducerSettings = (state = defaultState, action) => {
             return { ...state, currentPage: action.payload };
         case 'UPDATE_CURRENT_PATH':
             return { ...state, currentPath: action.payload };
-
+        case 'TOOGLE_MOBILE_OPEN':
+            return { ...state, mobileOpen: action.payload };
 
         default:
             return state;
