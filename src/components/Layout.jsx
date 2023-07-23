@@ -26,7 +26,10 @@ const Layout = () => {
       const loc = location.state;     
        if (loc!==null) { 
         dispatch({type:'UPDATE_CURRENT_PAGE', payload: location.state.page});
-        dispatch({type:'UPDATE_CURRENT_PATH', payload: location.state.path});}
+        dispatch({type:'UPDATE_CURRENT_PATH', payload: location.state.path});
+      console.log('location.state.page :>> ', location.state.page);
+      }
+        
       }, [location]);
 
       return (

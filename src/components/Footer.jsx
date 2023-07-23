@@ -7,8 +7,6 @@ import {Box, Container, Typography, CardMedia, Link, AppBar} from '@mui/material
 import imageCinema from '../images/cinema_sm.png';
 import { ThemeMui } from '../styles/ThemeMui';
 
-
-
 export const Footer = () => {
 
 const theme = useSelector(state=>state.settings.theme);

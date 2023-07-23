@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 
 import {Box, AppBar, CssBaseline, Switch, Link,
@@ -11,16 +11,19 @@ import { ThemeProvider } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { TypographyNavLinkStl } from '../styles/Nav.styled'; 
+
 import { ThemeMui } from '../styles/ThemeMui';
 import imageCinema from '../images/cinema_sm.png';
 
+import {Navigations} from './Navigations';
+import { FilterDrawer } from './FilterDrawer';
 const drawerWidth = 240;
 
-const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/', state: { page: 'premier', path: ''}},
-                  {id: 2, navItem: 'Топ фильмов', path: '/films?page=1', state: { page: 'top', path: '/films?page='}},
-                  {id: 3, navItem: 'Сериалы', path: '/serials?page=1', state: { page: 'serial', path: '/serials?page='}},
-                  {id: 4, navItem: 'Мультфильмы', path: '/mults?page=1', state: { page: 'mult', path: '/mults?page='}},
-                ];
+// const navItems = [{id: 1, navItem: 'Кинопремьеры', path: '/', state: { page: 'premier', path: ''}},
+//                   {id: 2, navItem: 'Топ фильмов', path: '/films?page=1', state: { page: 'top', path: '/films?page='}},
+//                   {id: 3, navItem: 'Сериалы', path: '/serials?page=1', state: { page: 'serial', path: '/serials?page='}},
+//                   {id: 4, navItem: 'Мультфильмы', path: '/mults?page=1', state: { page: 'mult', path: '/mults?page='}},
+//                 ];
 
 export const Header = (props) => {
 
@@ -28,6 +31,7 @@ export const Header = (props) => {
 
     const theme = useSelector(state=>state.settings.theme);
     const checked = useSelector(state=>state.settings.checkedTheme);
+    const location = useLocation();
     
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -37,6 +41,8 @@ export const Header = (props) => {
     };
     
     const handleChange = (event) => {dispatch({type:'UPDATE_CHECKED_THEME', payload: event.target.checked});}; 
+    const handleChangeFilter = (event) => {console.log('locate1111 :>> ', location);}; 
+    const handleChangeFilter2 = (event) => {console.log('locate1111 :>> ', location);}; 
 
         useEffect(()=>{ checked ? dispatch({type:'UPDATE_THEME', payload:'dark' }) 
                                 : dispatch({type:'UPDATE_THEME', payload: 'light'});
@@ -48,18 +54,9 @@ export const Header = (props) => {
                 Кино
               </Typography>
               <Divider />
-              <List >
-                {navItems.map((item) => (
-                  <ListItem key={item.id}  component={NavLink} 
-                                          to={item.path} disablePadding>
-                    <ListItemButton color="inherit" sx={{ textAlign: 'center' }}>
-                      <TypographyNavLinkStl color2={theme}>
-                         {item.navItem} 
-                      </TypographyNavLinkStl>      
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
+              <Stack sx={{pl:2, pt:2 }} direction="column" alignItems="flex-start" spacing={2}  >                  
+                   <Navigations />
+              </Stack>
             </Box>
           );
 
@@ -103,20 +100,14 @@ export const Header = (props) => {
                         </Box> 
                       </Link>
                    
-                      <Stack sx={{ display: { xs: 'none', sm: 'none', md: 'flex'}, ml:-16}} direction="row" spacing={4}  > 
-                              {navItems.map((item) => (                                   
-                                  <Link color="inherit" underline="none" key={item.id} component={NavLink} state={item.state} 
-                                                                      to={item.path}>                                     
-                                      <TypographyNavLinkStl>
-                                          {item.navItem}
-                                      </TypographyNavLinkStl>
-                                  </Link>    
-                              ))}
-
+                      <Stack sx={{ display: { xs: 'none', sm: 'none', md: 'flex'}, ml:-16}} 
+                            direction="row" spacing={4}  >                             
+                              <Navigations />
                       </Stack>                    
 
                       <Box sx={{ mr: -3, display: 'inline-flex'}}>
-                          <FormControlLabel  
+                      <FilterDrawer onChange={handleChangeFilter} />
+                          <FormControlLabel sx={{ pl: 3}} 
                                   control={<Switch size="small" 
                                   color="default"
                                   checked={checked}
@@ -125,6 +116,7 @@ export const Header = (props) => {
                       </Box>        
                     </Container>   
                 </AppBar>  
+                
                 <Box component="nav">
                     <Drawer
                     container={container}                    
