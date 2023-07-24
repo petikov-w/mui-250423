@@ -20,28 +20,32 @@ export const SingleContent = () => {
 //     </Suspense>
     return (
         <>         
-                <Typography variant="h4" sx={{mb:3}}>
+                <Typography variant="h4" sx={{mb:3, fontSize: { xs: '1.5rem', md: '1.7rem'}}}>
                     {single.film.nameRu}
                 </Typography>
-                <Stack direction={'row'} spacing={7}>
+                <Stack direction={{ xs: 'column', md: 'row' }} spacing={7} >              
                   <Box >
                     <Box>
                         <CardMedia 
                             component="img"        
                             image={single.film.posterUrl}                    
                             alt="poster"
-                            sx={{ borderRadius: 2,  width: 'auto', height: '32rem' }}
+                            sx={{ borderRadius: 2, 
+                                  width: {xs: 'auto', md: 'auto'},
+                                  height: {xs: 450, md: 550},
+                                }}
                         />
                     </Box>
-                    <Box>
+                    <Box sx={{ display: {xs: 'none', md: 'block'}}}>
                         <Button color="inherit" onClick={goBack}>Назад</Button>
                     </Box>
                   </Box>  
-                  <Stack direction={'column'} spacing={2} sx={{width: '70%'}}>
+                  <Stack direction={'column'} spacing={2} sx={{width: {xs: '100%', md: '70%'}}}>
                      <Typography  sx={{fontSize: '20px', fontWeight: '800'}}>
                         Краткое содержание:
                      </Typography>
-                     <Typography paragraph variant="subtitle1">
+                     {/* <Typography paragraph variant="subtitle1"> */}
+                     <Typography paragraph sx={{fontSize: {xs: '1rem', md: '1.2rem'}, fontWeight: '400'}} >
                        { single.film.description === null ? (no_description) : (single.film.description)}
                      </Typography>
                    
@@ -57,6 +61,9 @@ export const SingleContent = () => {
                         </Typography>
                      </Typography>
                   </Stack> 
+                  <Box sx={{ display: {xs: 'block', md: 'none'}}}>
+                        <Button color="inherit" onClick={goBack}>Назад</Button>
+                  </Box>
                 </Stack>               
         </>      
           

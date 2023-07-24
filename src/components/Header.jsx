@@ -31,25 +31,33 @@ export const Header = (props) => {
         <>
           <ThemeProvider theme={ThemeMui(theme)}>
             <Box sx={{ display: 'flex', flexDirection: 'row'}}>
-              <CssBaseline />    
               
-                <AppBar component="nav" position="fixed" sx={{ pt: 1, pb: 1 }}>           
+              <CssBaseline />    
+               
+                <AppBar component="nav" position="fixed" sx={{ display: 'flex', 
+                                                     flexDirection: 'row',  pt: 1, pb: 1 }}>    
+                        <NavigationDrawer  />
                       <Container maxWidth="lg" sx={{ display: 'flex', 
                                                      flexDirection: 'row',
                                                      alignItems: 'center',
                                                      justifyContent: 'space-between',
                                                    }}>    
-                      <NavigationDrawer />                                
+                                                    
                       <Link color="inherit" underline="none" component={NavLink} to={'/'}>                     
                         <Box sx={{ display: 'flex', 
                                    flexDirection: 'row',
                                    alignItems: 'center'}}>
-                            <CardMedia sx={{ mr: 2 }} 
+                            <CardMedia sx={{ mr: 2, height: {xs: 40,
+                                                             md: 60 } }} 
                                     component="img"
-                                    height="60"
-                                    width= "60"
+                                    // height="60"
                                     image={imageCinema}
-                                    alt="cinema" >                                
+                                    alt="cinema" >                 
+{/* 
+sx: 1.0, // 100%
+      sm: 250,
+      md: 350, */}
+
                             </CardMedia>
                             <Typography  variant="logo_header" >Кино</Typography>      
                         </Box> 

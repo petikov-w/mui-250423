@@ -91,8 +91,11 @@ export const CardContent = (props, bg) => {
                     height="350"
                     image={posterUrl}                    
                     alt="poster"
-                    sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px' ,maxWidth: '230px', 
-                          boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
+                    sx={{ borderRadius: 2, objectFit: 'fill',  
+                          boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)',
+                          width: {xs: 160, md: 210},
+                          height: {xs: 230, md: 325},
+                        }} 
                   />
                    {/* { currentPage === 'top' ? (  */}
                    { allowedKinopoiskId.includes(currentPage) ? ( 

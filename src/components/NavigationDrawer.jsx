@@ -25,7 +25,8 @@ export const NavigationDrawer = () => {
                     onClick={handleDrawerToggle}
                     sx={{ display: { xs: 'inline', 
                                      sm: 'inline', 
-                                     md: 'none'} }} 
+                                     md: 'none'},
+                          ml: 1, mt: 0.7           }} 
                     >
                     <MenuIcon />
            </IconButton>    
