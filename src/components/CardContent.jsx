@@ -1,4 +1,4 @@
-import {CardMedia, Box, Typography} from '@mui/material';
+import {CardMedia, Box, Typography, Stack} from '@mui/material';
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
@@ -6,14 +6,14 @@ import styled from 'styled-components';
 import { Rating } from './Rating';
 
 
-const CardBox = styled(Box)`    
-    :hover {  
-      transition: 0.8s;
-      transform: scale(1.1);     
-      box-shadow: none;
-      /* background-color: rgb(139, 129, 129, 0.7); */
-  }
-`;
+// const CardBox = styled(Box)`    
+//     :hover {  
+//       transition: 0.8s;
+//       transform: scale(1.1);     
+//       box-shadow: none;
+//       /* background-color: rgb(139, 129, 129, 0.7); */
+//   }
+// `;
 
 const BoxZ = styled(Box)`
     /* padding: 0 10px; */
@@ -68,7 +68,7 @@ const BoxStl = styled(Box)`
 // `;
 
 export const CardContent = (props, bg) => {
-    const {filmId, kinopoiskId, posterUrl, rating, filmLength} = props;
+    const {filmId, kinopoiskId, posterUrl, nameRu, rating, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
     // const films = useSelector(state=>state.listFilms.films); 
     const allowedFilmkId = ['top'];
@@ -84,30 +84,84 @@ export const CardContent = (props, bg) => {
        
     return (
         <>         
-           <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
-            <CardBox sx={{ position: 'relative', zIndex: 1, borderRadius: 2 }}>
-                  <CardMedia                  
-                    component="img"                    
-                    height="350"
-                    image={posterUrl}                    
-                    alt="poster"
-                    sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px' ,maxWidth: '230px', 
-                          boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
-                  />
-                   {/* { currentPage === 'top' ? (  */}
-                   { allowedKinopoiskId.includes(currentPage) ? ( 
-                      <BoxZ>   
-                        <TypographyStl component={'span'}> 
-                          <BoxStl>
-                            <Typography  variant="s1" sx={{pl: 3}}>Рейтинг: {rating}</Typography>
-                            <Typography  variant="s1" sx={{pl: 3, pb: 2}}>Время: {filmLength}</Typography> 
-                          </BoxStl>
-                        </TypographyStl>
-                      </BoxZ> ) : ('')}
+          <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
+            {/* <CardBox sx={{ position: 'relative', zIndex: 1, borderRadius: 2,
+                           boxShadow:' 0 5px 10px rgba(0, 0, 0, .2)' }}> */}
+            <Box sx={{ position: 'relative', 
+                           zIndex: '1', 
+                           width: '220px',
+                           height:'350px',
+                           borderRadius: 2,
+                           overflow: 'hidden',
+                           background: '#000',
+                           boxShadow:' 0 5px 10px rgba(0, 0, 0, .2)',    
+                           '&:hover': {
+                             bottom: 0,                    
+                           },                          
+                           }}>
+                  <Box sx={{
+                       position: 'relative',
+                       top: 0,
+                       left: 0,
+                       width: '100%',
+                       height: '100%',
+                       overflow: 'hidden',   
+                       '&:hover': {
+                         bottom: -20,
+                       },                               
+                       '&.Mui-selected::before': {
+                        content: '""',
+                        position: 'absolute',
+                        bottom: '-10%',
+                        // bottom: '-45%',
+                        left: 50,
+                        width: '40%',
+                        height: '100%',
+                        zIndex: 1,
+                        transition: '.3s', 
+                        '&:hover': {
+                          bottom: 0,                     
+                         },                    
+                       },
+                  }}>
+                        <CardMedia    
+                        position="absolute"             
+                        component="img"                    
+                        image={posterUrl}                    
+                        alt="poster"
+                        sx={{ top: 0, left: 0, width: '100%', height: '100%', objectFit: 'fill', 
+                        transition: '.3s',
+                        '&:hover': {
+                          transform: 'scale(1.1)',  
+                        }}} 
+                      />
+                  </Box>          
                   
-                  {/* { currentPage === 'top' ? ( <Rating rating={rating} /> ) : ('')}   */}
-             </CardBox>       
-            </Link>          
+                  <Box sx={{
+                    position: 'absolute',
+                    // bottom: '-100%',
+                    bottom: '30%',
+                    left: 0,
+                    width: '100%',
+                    height: 'auto',
+                    padding: '1.5em 1.5em 2em',
+                    background: '#000a',
+                    /*прозрачность шторки */
+                    backdropFilter: 'blur(16px) saturate(120%)',
+                    /*скорость наезда шторки */
+                    transition: '.3s',
+                    color: '#fff',
+                    zIndex: 2,
+                    '&:hover': {
+                       bottom: 20,  
+                     },
+                  }}
+                  >
+                    <Typography>{nameRu}</Typography>
+                  </Box>
+                 
+            </Box>       
+          </Link>          
         </>     
     );
   };
