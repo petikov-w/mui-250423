@@ -85,7 +85,7 @@ export const CardContent = (props, bg) => {
     return (
         <>         
            <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
-            <CardBox sx={{ position: 'relative', zIndex: 1, borderRadius: 2 }}>
+            <Box sx={{ position: 'relative', zIndex: 1, borderRadius: 2 }}>
                   <CardMedia                  
                     component="img"                    
                     height="350"
@@ -95,15 +95,7 @@ export const CardContent = (props, bg) => {
                           boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
                   />
                    {/* { currentPage === 'top' ? (  */}
-                   { allowedKinopoiskId.includes(currentPage) ? ( 
-                      <BoxZ>   
-                        <TypographyStl component={'span'}> 
-                          <BoxStl>
-                            <Typography  variant="s1" sx={{pl: 3}}>Рейтинг: {rating}</Typography>
-                            <Typography  variant="s1" sx={{pl: 3, pb: 2}}>Время: {filmLength}</Typography> 
-                          </BoxStl>
-                        </TypographyStl>
-                      </BoxZ> ) : ('')}
+                  
                   
                   <Box sx={{
                     position: 'absolute',
@@ -128,7 +120,7 @@ export const CardContent = (props, bg) => {
                     <Typography>{nameRu}</Typography>
                   </Box>
                  
-            </Box>       
+                  </Box>
           </Link>          
         </>     
     );
