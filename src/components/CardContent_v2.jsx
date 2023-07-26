@@ -22,30 +22,60 @@ export const CardContent_v2 = (props) => {
                    height: '350px',
                    background: '#000',
                    overflow: 'hidden',
-                   boxShadow: '0 5px 10px rgba(0, 0, 0, .2)',                  
+                   boxShadow: '0 5px 10px rgba(0, 0, 0, .2)',  
+                   '&:hover': {
+                    bottom: 0,  
+                  },
+                              
                  };
 
+    // const poster = { 
+    //                 position: 'relative',
+    //                 top: 0,
+    //                 left: 0,
+    //                 width: '100%',
+    //                 height: '100%',
+    //                 overflow: 'hidden', 
+    //                 '&:hover::before': {
+    //                   // eslint-disable-next-line quotes
+    //                   content: `""`,
+    //                   position: 'absolute',
+    //                   backgroundColor: 'red',
+    //                   bottom: '-45%',
+    //                   left: 0,
+    //                   width: '100%',
+    //                   height: '100%',
+    //                   zIndex: 1,
+    //                   transition: '.3s',
+    //                   // '&::before': {
+    //                   //   bottom: 0,  
+    //                   //   // backgroundColor: 'blue',
+    //                   // },
+    //                },                 
+    //                };
+    
     const poster = { 
                     position: 'relative',
                     top: 0,
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    overflow: 'hidden', 
-                    '&::before': {
+                    overflow: 'hidden',                         
+                    '&::before': {                     
                       // eslint-disable-next-line quotes
-                      content: `" "`,
-                      position: 'absolute',
-                      bottom: '-45%',
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
-                      zIndex: 1,
-                      transition: '.3s',
-                      '&:hover': {
-                        bottom: 20,  
-                      },
-                   },                 
+                        content: `" "`,
+                        position: 'absolute',
+                        backgroundColor: 'red',
+                        bottom: '-45%',
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        zIndex: 1,
+                        transition: '.3s',      
+                        },       
+                    '&:hover::before': {
+                        bottom: 0,            
+                        },         
                    };
 
     const posterImage = { 
@@ -64,8 +94,8 @@ export const CardContent_v2 = (props) => {
                         
     const details = {
                       position: 'absolute',
-                      // bottom: '-100%',
-                      bottom: '0%',
+                      bottom: '-100%',
+                      // bottom: '0%',
                       left: 0,
                       width: '100%',
                       height: 'auto',
@@ -77,9 +107,9 @@ export const CardContent_v2 = (props) => {
                       transition: '.3s',
                       color: '#fff',
                       zIndex: 2,
-                      '&:hover': {
-                        bottom: 20,  
-                      },
+                      // '&:hover': {
+                      //   bottom: 0,  
+                      // },
                     };
         
     return (
