@@ -84,58 +84,26 @@ export const CardContent = (props, bg) => {
        
     return (
         <>         
-          <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
-            {/* <CardBox sx={{ position: 'relative', zIndex: 1, borderRadius: 2,
-                           boxShadow:' 0 5px 10px rgba(0, 0, 0, .2)' }}> */}
-            <Box sx={{ position: 'relative', 
-                           zIndex: '1', 
-                           width: '220px',
-                           height:'350px',
-                           borderRadius: 2,
-                           overflow: 'hidden',
-                           background: '#000',
-                           boxShadow:' 0 5px 10px rgba(0, 0, 0, .2)',    
-                           '&:hover': {
-                             bottom: 0,                    
-                           },                          
-                           }}>
-                  <Box sx={{
-                       position: 'relative',
-                       top: 0,
-                       left: 0,
-                       width: '100%',
-                       height: '100%',
-                       overflow: 'hidden',   
-                       '&:hover': {
-                         bottom: -20,
-                       },                               
-                       '&.Mui-selected::before': {
-                        content: '""',
-                        position: 'absolute',
-                        bottom: '-10%',
-                        // bottom: '-45%',
-                        left: 50,
-                        width: '40%',
-                        height: '100%',
-                        zIndex: 1,
-                        transition: '.3s', 
-                        '&:hover': {
-                          bottom: 0,                     
-                         },                    
-                       },
-                  }}>
-                        <CardMedia    
-                        position="absolute"             
-                        component="img"                    
-                        image={posterUrl}                    
-                        alt="poster"
-                        sx={{ top: 0, left: 0, width: '100%', height: '100%', objectFit: 'fill', 
-                        transition: '.3s',
-                        '&:hover': {
-                          transform: 'scale(1.1)',  
-                        }}} 
-                      />
-                  </Box>          
+           <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
+            <CardBox sx={{ position: 'relative', zIndex: 1, borderRadius: 2 }}>
+                  <CardMedia                  
+                    component="img"                    
+                    height="350"
+                    image={posterUrl}                    
+                    alt="poster"
+                    sx={{ borderRadius: 2, objectFit: 'fill', minWidth: '210px' ,maxWidth: '230px', 
+                          boxShadow: '4px 4px 16px 0px rgba(34, 60, 80, 0.2)'}} 
+                  />
+                   {/* { currentPage === 'top' ? (  */}
+                   { allowedKinopoiskId.includes(currentPage) ? ( 
+                      <BoxZ>   
+                        <TypographyStl component={'span'}> 
+                          <BoxStl>
+                            <Typography  variant="s1" sx={{pl: 3}}>Рейтинг: {rating}</Typography>
+                            <Typography  variant="s1" sx={{pl: 3, pb: 2}}>Время: {filmLength}</Typography> 
+                          </BoxStl>
+                        </TypographyStl>
+                      </BoxZ> ) : ('')}
                   
                   <Box sx={{
                     position: 'absolute',
