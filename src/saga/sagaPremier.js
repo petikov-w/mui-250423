@@ -11,7 +11,7 @@ export function* workerPremieres() {
     // Формирование поискового запроса
     const paramsQ = new URLSearchParams({
         year: '2023',
-        month: 'JUNE',
+        month: 'JULY',
     });
     // Сформированный запрос
     const query = `${url_api}${version_api}${dataset}${paramsQ}`;
