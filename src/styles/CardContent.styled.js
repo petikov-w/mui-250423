@@ -68,7 +68,26 @@ export const Card = styled.div`
                 `;
 
   export const DetailsTitle = styled.h4`
+              font-family: "Inter";
               font-size: 1rem;
-              font-weight: 700;
+              font-weight: 600;
               letter-spacing: 1.2px;
+          `;   
+
+  export const DetailsYear = styled.h5`
+              font-family: "Inter";
+              font-size: 1rem;
+              font-weight: 600;
+              /* letter-spacing: 1.2px; */
+              opacity: 0.7;
+              &::after {                     
+                    content: "\201c";
+                    font-size: 1rem;
+                    font-weight: 800;
+                    color: yellow;
+              }                    
           `;                
+          
+          
+          
+          // content: "•";

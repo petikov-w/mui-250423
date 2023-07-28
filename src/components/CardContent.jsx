@@ -2,9 +2,9 @@ import {Typography} from '@mui/material';
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {Card, Poster, PosterImage, Details, DetailsTitle} from '../styles/CardContent.styled'
+import {Card, Poster, PosterImage, Details, DetailsTitle, DetailsYear} from '../styles/CardContent.styled';
 export const CardContent = (props) => {
-    const {filmId, kinopoiskId, posterUrl, nameRu, rating, filmLength} = props;
+    const {filmId, kinopoiskId, posterUrl, nameRu, year, rating, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
@@ -23,6 +23,7 @@ export const CardContent = (props) => {
                   </Poster>                                    
                   <Details>
                     <DetailsTitle>{nameRu}</DetailsTitle>
+                    <DetailsYear>{year}</DetailsYear>
                   </Details>                 
             </Card>
           </Link>          
