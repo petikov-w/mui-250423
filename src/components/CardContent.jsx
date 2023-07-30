@@ -1,8 +1,9 @@
-import {Rating} from '@mui/material';
+import {Rating, Typography, Box,  Stack} from '@mui/material';
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {Card, Poster, PosterImage, Details, DetailTitle, DetailYear, DetailPremier} from '../styles/CardContent.styled';
+import {Card, Poster, PosterImage, Details, 
+        DetailTitle, DetailYear, DetailPremier, DetailRating} from '../styles/CardContent.styled';
 export const CardContent = (props) => {
     const {filmId, kinopoiskId, posterUrl, nameRu, year, premiereRu, rating, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
@@ -25,8 +26,11 @@ export const CardContent = (props) => {
                     <DetailTitle>{nameRu}</DetailTitle>
                     <DetailYear>{year}&nbsp;&nbsp;</DetailYear>
                     <DetailPremier>&nbsp;&nbsp;{premiereRu}</DetailPremier>
-                    <Rating name="read-only" value={8.6} precision={0.5} readOnly />
-
+                    <Box display="flex" alignItems="center" sx={{mt: -1.4}}>
+                      <Rating  name="read-only" size="small" value={rating*0.4} readOnly />
+                      <DetailRating>{rating} / 10</DetailRating>
+                    </Box>
+                    
                   </Details>                 
             </Card>
           </Link>          
