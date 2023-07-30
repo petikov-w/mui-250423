@@ -5,13 +5,16 @@ import { fetchQueryFromApi } from '../components/Api';
 const url_api = 'https://kinopoiskapiunofficial.tech/api/';
 const version_api = 'v2.2/films/';
 const dataset = 'premieres?';
+const months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 
+                'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().getMonth();
 
 export function* workerPremieres() {
-
     // Формирование поискового запроса
     const paramsQ = new URLSearchParams({
-        year: '2023',
-        month: 'JULY',
+        year: currentYear,
+        month: months[currentMonth],
     });
     // Сформированный запрос
     const query = `${url_api}${version_api}${dataset}${paramsQ}`;

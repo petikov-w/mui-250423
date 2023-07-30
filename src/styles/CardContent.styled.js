@@ -6,7 +6,7 @@ export const Details = styled.div`
                   left: 0;
                   width: 100%;
                   height: auto;
-                  padding: 0.5rem 0.5rem 1rem;
+                  padding: 0 20px 30px;
                   background: #000a;
                   // прозрачность шторки 
                   backdrop-filter:  blur(16px) saturate(120%);
@@ -67,27 +67,37 @@ export const Card = styled.div`
                       } 
                 `;
 
-  export const DetailsTitle = styled.h4`
+  export const DetailTitle = styled.h4`
               font-family: "Inter";
-              font-size: 1rem;
+              font-size: 0.95rem;
               font-weight: 600;
-              letter-spacing: 1.2px;
+              letter-spacing: 1.1px;
+              line-height: 1.15rem;
+              margin-top: 10px;
+              margin-bottom: 10px;
           `;   
 
-  export const DetailsYear = styled.h5`
+  export const DetailYear = styled.h5`
+              display: inline;
               font-family: "Inter";
-              font-size: 1rem;
+              font-size: 0.8rem;
               font-weight: 600;
               /* letter-spacing: 1.2px; */
               opacity: 0.7;
               &::after {                     
-                    content: "\201c";
+                    content: "•";
                     font-size: 1rem;
                     font-weight: 800;
                     color: yellow;
               }                    
           `;                
-          
-          
+  
+  export const DetailPremier = styled.h5`
+              display: inline;
+              font-family: "Inter";
+              font-size: 0.8rem;
+              font-weight: 600;
+              opacity: 0.7;                 
+          `;                
           
           // content: "•";

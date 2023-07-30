@@ -1,10 +1,10 @@
-import {Typography} from '@mui/material';
+import {Rating} from '@mui/material';
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {Card, Poster, PosterImage, Details, DetailsTitle, DetailsYear} from '../styles/CardContent.styled';
+import {Card, Poster, PosterImage, Details, DetailTitle, DetailYear, DetailPremier} from '../styles/CardContent.styled';
 export const CardContent = (props) => {
-    const {filmId, kinopoiskId, posterUrl, nameRu, year, rating, filmLength} = props;
+    const {filmId, kinopoiskId, posterUrl, nameRu, year, premiereRu, rating, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
@@ -22,8 +22,11 @@ export const CardContent = (props) => {
                     <PosterImage src={posterUrl} alt="poster"/>
                   </Poster>                                    
                   <Details>
-                    <DetailsTitle>{nameRu}</DetailsTitle>
-                    <DetailsYear>{year}</DetailsYear>
+                    <DetailTitle>{nameRu}</DetailTitle>
+                    <DetailYear>{year}&nbsp;&nbsp;</DetailYear>
+                    <DetailPremier>&nbsp;&nbsp;{premiereRu}</DetailPremier>
+                    <Rating name="read-only" value={8.6} precision={0.5} readOnly />
+
                   </Details>                 
             </Card>
           </Link>          
