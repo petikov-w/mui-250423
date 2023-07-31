@@ -12,7 +12,7 @@ export const CardContent = (props) => {
     let linkFilm = '';    
     if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }    
     if ( allowedKinopoiskId.includes(currentPage)) { linkFilm = `/films/${kinopoiskId}`; }   
-
+    const sjs = (currentPage !== 'premier' ? <Rating name="read-only" value={8.6} precision={0.5} readOnly /> : <></>);
          
     return (
         <>         
@@ -25,8 +25,7 @@ export const CardContent = (props) => {
                     <DetailTitle>{nameRu}</DetailTitle>
                     <DetailYear>{year}&nbsp;&nbsp;</DetailYear>
                     <DetailPremier>&nbsp;&nbsp;{premiereRu}</DetailPremier>
-                    <Rating name="read-only" value={8.6} precision={0.5} readOnly />
-
+                   {sjs }
                   </Details>                 
             </Card>
           </Link>          
