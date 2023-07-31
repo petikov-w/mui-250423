@@ -67,7 +67,7 @@ export const Card = styled.div`
                       } 
                 `;
 
-  export const DetailTitle = styled.h4`
+export const DetailTitle = styled.h4`
               font-family: "Inter";
               font-size: 0.95rem;
               font-weight: 600;
@@ -75,9 +75,9 @@ export const Card = styled.div`
               line-height: 1.15rem;
               margin-top: 10px;
               margin-bottom: 10px;
-          `;   
+          `;
 
-  export const DetailYear = styled.h5`
+export const DetailYear = styled.h5`
               display: inline;
               font-family: "Inter";
               font-size: 0.8rem;
@@ -90,14 +90,22 @@ export const Card = styled.div`
                     font-weight: 800;
                     color: yellow;
               }                    
-          `;                
-  
-  export const DetailPremier = styled.h5`
+          `;
+
+export const DetailPremier = styled.h5`
               display: inline;
               font-family: "Inter";
               font-size: 0.8rem;
               font-weight: 600;
               opacity: 0.7;                 
-          `;                
-          
+          `;
+
+export const DetailRating = styled.h5`
+              display: inline;
+              font-family: "Inter";
+              font-size: 0.8rem;
+              font-weight: 600;
+              opacity: 0.7;                           
+`;
+
           // content: "•";
