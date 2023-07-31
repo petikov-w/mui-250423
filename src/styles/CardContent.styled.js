@@ -1,3 +1,4 @@
+import { Chip } from '@mui/material';
 import styled from 'styled-components';
 
 export const Details = styled.div`
@@ -106,6 +107,10 @@ export const DetailRating = styled.h5`
               font-size: 0.8rem;
               font-weight: 600;
               opacity: 0.7;                           
+`;
+
+export const DetailCountries = styled(Chip)`
+              opacity: 0.8;                                        */
 `;
 
           // content: "•";

@@ -7,6 +7,10 @@ export const ThemeMui = (theme) => createTheme({
         primary: {   
              main: '#ffa500',              
         },
+        chips: {          
+          main: '#ffffff',
+          contrastText: '#000000',
+        },
         pagination: {                
             main: theme==='light' ? '#ffa500' : '#a39c9c', 
             contrastText: theme==='light' ? '#1c0dba' : '#ffffff',            
