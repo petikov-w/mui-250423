@@ -108,6 +108,13 @@ export const DetailRating = styled.h5`
               font-weight: 600;
               opacity: 0.7;                           
 `;
+export const DetailDuration = styled.h5`
+              display: inline;
+              font-family: "Inter";
+              font-size: 0.8rem;
+              font-weight: 600;
+              opacity: 0.7;                           
+`;
 
 export const DetailCountries = styled(Chip)`
               opacity: 0.8;                                        */

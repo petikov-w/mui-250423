@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {Card, Poster, PosterImage, Details, 
-        DetailTitle, DetailYear, DetailPremier, DetailRating, DetailCountries} from '../styles/CardContent.styled';
+        DetailTitle, DetailYear, DetailPremier, DetailRating, DetailCountries, DetailDuration} from '../styles/CardContent.styled';
 export const CardContent = (props) => {
-    const {filmId, kinopoiskId, posterUrl, nameRu, year, premiereRu, rating, countries, filmLength} = props;
+    const {filmId, kinopoiskId, posterUrl, nameRu, year, duration, 
+           premiereRu, rating, countries, ratingKinopoisk, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
@@ -13,30 +14,45 @@ export const CardContent = (props) => {
     let linkFilm = '';    
     if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }    
     if ( allowedKinopoiskId.includes(currentPage)) { linkFilm = `/films/${kinopoiskId}`; }   
-    // const sjs = (currentPage !== 'premier' ? <Rating name="read-only" value={8.6} precision={0.5} readOnly /> : <></>);
-         
+        
+    const ratingFilm = (currentPage === 'top'
+                       ? <><Rating name="read-only" size="small" value={rating * 0.4} readOnly />
+                         <DetailRating>{rating} / 10</DetailRating></>
+                       : <><Rating name="read-only" size="small" value={ratingKinopoisk * 0.4} readOnly />    
+                         <DetailRating>{ratingKinopoisk} / 10</DetailRating></>);
+
+
     return (
         <>         
            <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
             <Card>
                   <Poster>
                     <PosterImage src={posterUrl} alt="poster"/>
-                  </Poster>                                    
+                  </Poster>    
+                  {/* Краткая детальная информация о фильме отображаемая на шторке */}
                   <Details>
+                    {/* Название фильма */}
                     <DetailTitle>{nameRu}</DetailTitle>
+                    {/* Год выхода фильма на экраны */}
                     <Tooltip title="Год выхода фильма на экраны" placement="left" arrow>
                       <DetailYear>{year}&nbsp;&nbsp;</DetailYear>
                     </Tooltip>
+                    {currentPage === 'premier' ? <DetailDuration> &nbsp;&nbsp;{duration}&nbsp;&nbsp;</DetailDuration> : <></>}
+
+                    {/* Дата премьеры фильма в России (отображается только на странице "Кинопримьеры") */}
                     {currentPage === 'premier' ?
                     <Tooltip title="Дата премьеры фильма в России" placement="right" arrow>
                       <DetailPremier>&nbsp;&nbsp;{premiereRu}</DetailPremier>
                     </Tooltip>  : <></>}
+                    {/* Рейтинг фильма по версии Кинопоиска (отображается на всех страницах,
+                       кроме страницы "Кинопримьеры") */}
                     {currentPage !== 'premier' ?
                     <Tooltip title="Рейтинг фильма" placement="left" arrow>
-                    <Box display="flex" alignItems="center" sx={{mt: -1.7 }}>
-                      <Rating  name="read-only" size="small" value={rating*0.4} readOnly />
-                      <DetailRating>{rating} / 10</DetailRating>
-                    </Box></Tooltip> : <></>}
+                      <Box display="flex" alignItems="center" sx={{mt: -1.7 }}>
+                          { ratingFilm }                     
+                      </Box>
+                    </Tooltip> : <></>}
+                    {/* Список стран учавствовавших в производстве фильма */}
                     <Grid container spacing={1}  direction="row" sx={{mt: 1}}>
                       { countries.length !== 0  ? countries.map((item, index) => (
                       <Grid item key={index}  > 
@@ -49,14 +65,7 @@ export const CardContent = (props) => {
                       )) : <></>}  
                     </Grid>
                                  
-                  {/* <Grid container spacing={3}  direction="row" >    
-                      { films.length !== 0  ?  films.map((film, index) => (
-                      <Grid item key={index} xs={6} sm={4} md={2.4} > 
-                          <CardContent key={index} {...film} />
-                      </Grid> 
-                      )) : <p>Фильмы не найдены...</p>  
-                    }               
-                  </Grid> */}
+                
                   </Details>                 
             </Card>
           </Link>          
