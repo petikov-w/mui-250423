@@ -10,6 +10,7 @@ const dataset = 'films?';
 function* workerSerial({ payload }) {
     const { page, country, genre } = payload;
     const page22 = yield select((state)=> state.pagination.page);
+    const currentYear = new Date().getFullYear();
 
     const scountry = JSON.stringify(country) === '{}' ? '34' : `${country.id}`;
     const sgenre = JSON.stringify(genre) === '{}' ? '2' : `${genre.id}`;
@@ -22,7 +23,7 @@ function* workerSerial({ payload }) {
         ratingFrom: '0',
         ratingTo: '10',
         yearFrom: '2000',
-        yearTo: '2023',
+        yearTo: currentYear,
         page: '',
     });
     // Сформированный запрос

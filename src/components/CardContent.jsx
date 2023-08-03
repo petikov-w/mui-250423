@@ -11,6 +11,25 @@ export const CardContent = (props) => {
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
 
+    function padTo2Digits(num) {
+      return num.toString().padStart(2, '0');
+    }
+
+    function toHoursAndMinutes(totalMinutes) {
+      const minutes = totalMinutes % 60;
+      const hours = Math.floor(totalMinutes / 60);
+    
+      return `${hours} ч  ${minutes} мин`;
+      // return `${padTo2Digits(hours)}ч ${padTo2Digits(minutes)}мин`;
+    }
+
+    function toHoursAndMinutes_2(total) {
+
+      const hm = total.split(':');
+    
+      return `${Number(hm[0])} ч  ${Number(hm[1])} мин`;
+    }
+
     let linkFilm = '';    
     if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }    
     if ( allowedKinopoiskId.includes(currentPage)) { linkFilm = `/films/${kinopoiskId}`; }   
@@ -20,8 +39,18 @@ export const CardContent = (props) => {
                          <DetailRating>{rating} / 10</DetailRating></>
                        : <><Rating name="read-only" size="small" value={ratingKinopoisk * 0.4} readOnly />    
                          <DetailRating>{ratingKinopoisk} / 10</DetailRating></>);
+    const durationFilm = (page) => {
+                                  if ( page === 'premier') {
+                                  return <DetailDuration>&nbsp;&nbsp;{toHoursAndMinutes(duration)}&nbsp;&nbsp;</DetailDuration>;}
+                                  if ( page === 'top') 
+                                  {return <DetailDuration>&nbsp;&nbsp;{toHoursAndMinutes_2(filmLength)}&nbsp;&nbsp;</DetailDuration>;}
+                                  if ( page === 'serial' || page === 'mult') 
+                                  {return <></>;}  
+                                };
+    
+    
 
-
+ 
     return (
         <>         
            <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
@@ -33,17 +62,24 @@ export const CardContent = (props) => {
                   <Details>
                     {/* Название фильма */}
                     <DetailTitle>{nameRu}</DetailTitle>
+
                     {/* Год выхода фильма на экраны */}
                     <Tooltip title="Год выхода фильма на экраны" placement="left" arrow>
                       <DetailYear>{year}&nbsp;&nbsp;</DetailYear>
                     </Tooltip>
-                    {currentPage === 'premier' ? <DetailDuration> &nbsp;&nbsp;{duration}&nbsp;&nbsp;</DetailDuration> : <></>}
+
+                    {/* Продолжительность фильма */}
+                    
+                    <Tooltip title="Продолжительность фильма" placement="right" arrow> 
+                       {durationFilm(currentPage)} 
+                    </Tooltip>  
 
                     {/* Дата премьеры фильма в России (отображается только на странице "Кинопримьеры") */}
                     {currentPage === 'premier' ?
-                    <Tooltip title="Дата премьеры фильма в России" placement="right" arrow>
-                      <DetailPremier>&nbsp;&nbsp;{premiereRu}</DetailPremier>
+                    <Tooltip title="Дата премьеры фильма в России" placement="left" arrow>
+                      <DetailPremier>{premiereRu}</DetailPremier>
                     </Tooltip>  : <></>}
+
                     {/* Рейтинг фильма по версии Кинопоиска (отображается на всех страницах,
                        кроме страницы "Кинопримьеры") */}
                     {currentPage !== 'premier' ?
@@ -52,6 +88,7 @@ export const CardContent = (props) => {
                           { ratingFilm }                     
                       </Box>
                     </Tooltip> : <></>}
+
                     {/* Список стран учавствовавших в производстве фильма */}
                     <Grid container spacing={1}  direction="row" sx={{mt: 1}}>
                       { countries.length !== 0  ? countries.map((item, index) => (

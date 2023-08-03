@@ -94,11 +94,12 @@ export const DetailYear = styled.h5`
           `;
 
 export const DetailPremier = styled.h5`
-              display: inline;
+              display: block;
               font-family: "Inter";
               font-size: 0.8rem;
               font-weight: 600;
-              opacity: 0.7;                 
+              opacity: 0.7;            
+              margin-top: 10px;     
           `;
 
 export const DetailRating = styled.h5`
