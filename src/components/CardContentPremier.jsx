@@ -6,36 +6,72 @@ import {Card, Poster, PosterImage, Details,
         DetailTitle, DetailYear, DetailPremier, 
         DetailRating, DetailCountries, DetailDuration} from '../styles/CardContent.styled';
 
-import {formatDuration, formatDuration2, formatPremierData} from './Duration';        
-export const CardContent = (props) => {
+import {formatDuration, formatDuration2, formatPremierData} from './Duration'; 
+
+export const CardContentPremier = (props) => {
+
     const {filmId, kinopoiskId, posterUrl, nameRu, year, duration, 
            premiereRu, rating, countries, ratingKinopoisk, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
+    const films = useSelector(state=>state.listFilms.films);  
+
+    // console.log('films-premier :>> ', films);
+    
+    const filmsToData = (films, year) => { 
+      let result=[];
+      for ( const film of films) {
+        if(film.year <= year) result.push(film);
+      };
+      return result;
+    };  
+    // console.log('films-ru2 :>> ', filmsToData(films, 2015));
+
+
+
+    
+
+
+
+
+
+    // const filmsRu = films.filter(element => element.countries.country === 'Россия');
+    // console.log('films-ru :>> ', filmsRu);  
+    // const myAwesomeArray = [
+    //   { id: 1, name: "john" },
+    //   { id: 2, name: "Ali" },
+    //   { id: 3, name: "Mass" },
+    //   { id: 4, name: "Mass" },
+    // ]
+    
+    // myAwesomeArray.filter(element => element.name === "Mass")
+    // // [ {id: 3, name: "Mass"}, {id: 4, name: "Mass"} ]
+
+
 
 
     let linkFilm = '';    
     if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }    
-    if ( allowedKinopoiskId.includes(currentPage)) { linkFilm = `/films/${kinopoiskId}`; }   
+    if ( allowedKinopoiskId.includes(currentPage)) { linkFilm = `/films/${kinopoiskId}`; } 
         
     const ratingFilm = (currentPage === 'top'
-                       ? <><Rating name="read-only" size="small" value={rating} max="1" readOnly />
-                         <DetailRating>&nbsp;&nbsp;{rating} / 10</DetailRating></>
-                       : <><Rating name="read-only" size="small" value={ratingKinopoisk} max="1" readOnly />    
-                         <DetailRating>&nbsp;&nbsp;{ratingKinopoisk} / 10</DetailRating></>);
+                       ? <><Rating name="read-only" size="small" value={rating * 0.4} readOnly />
+                         <DetailRating>{rating} / 10</DetailRating></>
+                       : <><Rating name="read-only" size="small" value={ratingKinopoisk * 0.4} readOnly />    
+                         <DetailRating>{ratingKinopoisk} / 10</DetailRating></>);
     const durationFilm = (page) => {
-                                  if ( page === 'premier') {
-                                  return <DetailDuration>&nbsp;&nbsp;{formatDuration(duration)}&nbsp;&nbsp;</DetailDuration>;}
-                                  if ( page === 'top') 
-                                  {return <DetailDuration>&nbsp;&nbsp;{formatDuration2(filmLength)}&nbsp;&nbsp;</DetailDuration>;}
-                                  if ( page === 'serial' || page === 'mult') 
-                                  {return <></>;}  
-                                };
+      if ( page === 'premier') {
+      return <DetailDuration>&nbsp;&nbsp;{formatDuration(duration)}&nbsp;&nbsp;</DetailDuration>;}
+      if ( page === 'top') 
+      {return <DetailDuration>&nbsp;&nbsp;{formatDuration2(filmLength)}&nbsp;&nbsp;</DetailDuration>;}
+      if ( page === 'serial' || page === 'mult') 
+      {return <></>;}  
+    };
     
-    return (
+      return (
         <>         
-           <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
+            <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
             <Card>
                   <Poster>
                     <PosterImage src={posterUrl} alt="poster"/>
@@ -53,7 +89,7 @@ export const CardContent = (props) => {
                     {/* Продолжительность фильма */}
                     
                     <Tooltip title="Продолжительность фильма" placement="right" arrow> 
-                       {durationFilm(currentPage)} 
+                        {durationFilm(currentPage)} 
                     </Tooltip>  
 
                     {/* Дата премьеры фильма в России (отображается только на странице "Кинопримьеры") */}
@@ -63,7 +99,7 @@ export const CardContent = (props) => {
                     </Tooltip>  : <></>}
 
                     {/* Рейтинг фильма по версии Кинопоиска (отображается на всех страницах,
-                       кроме страницы "Кинопримьеры") */}
+                        кроме страницы "Кинопримьеры") */}
                     {currentPage !== 'premier' ?
                     <Tooltip title="Рейтинг фильма" placement="left" arrow>
                       <Box display="flex" alignItems="center" sx={{mt: -1.7 }}>
@@ -83,7 +119,7 @@ export const CardContent = (props) => {
                       </Grid>
                       )) : <></>}  
                     </Grid>
-                                 
+                                  
                 
                   </Details>                 
             </Card>
