@@ -26,30 +26,7 @@ export const CardContentPremier = (props) => {
       };
       return result;
     };  
-    // console.log('films-ru2 :>> ', filmsToData(films, 2015));
-
-
-
-    
-
-
-
-
-
-    // const filmsRu = films.filter(element => element.countries.country === 'Россия');
-    // console.log('films-ru :>> ', filmsRu);  
-    // const myAwesomeArray = [
-    //   { id: 1, name: "john" },
-    //   { id: 2, name: "Ali" },
-    //   { id: 3, name: "Mass" },
-    //   { id: 4, name: "Mass" },
-    // ]
-    
-    // myAwesomeArray.filter(element => element.name === "Mass")
-    // // [ {id: 3, name: "Mass"}, {id: 4, name: "Mass"} ]
-
-
-
+   
 
     let linkFilm = '';    
     if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }    
