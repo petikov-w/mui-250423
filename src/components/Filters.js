@@ -1,5 +1,16 @@
 
-// Функция добавляющяя ноль впереди изображения часа или минуты, если они содержат только один знак
+// Функция фильтрующая список фильмов по году выхода на экраны
+const filmsToData = (films, year) => { 
+  let result=[];
+  for ( const film of films) {
+    if(film.year <= year) result.push(film);
+  };
+  return result;
+};  
+
+
+
+// Функция фильтрующая список фильмов по стране
 export const filmsToCountry = (films, country) => { 
   let result=[];
   for ( const film of films) {
@@ -11,6 +22,7 @@ export const filmsToCountry = (films, country) => {
   return result;
 };  
 
+// Функция фильтрующая список фильмов по стране и по жанру
 export const filmsToCountryAndGenre = (films, country, genre) => { 
   let result=[];
  
@@ -27,3 +39,5 @@ export const filmsToCountryAndGenre = (films, country, genre) => {
   };
   return result;
 };  
+
+
