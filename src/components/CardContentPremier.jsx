@@ -17,6 +17,7 @@ export const CardContentPremier = (props) => {
     const allowedKinopoiskId = ['premier','serial','mult'];
     // const films = useSelector(state=>state.listFilms.films);  
 
+    //  console.log('films-premier :>> ', films);
     // console.log('films-premier :>> ', films);
     
     // const filmsToData = (films, year) => { 

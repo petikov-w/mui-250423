@@ -14,6 +14,8 @@ export const CardContent = (props) => {
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
 
+    console.log('props :>> ', props);
+
 
     let linkFilm = '';    
     if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }    
