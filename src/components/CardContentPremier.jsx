@@ -15,19 +15,7 @@ export const CardContentPremier = (props) => {
     const currentPage = useSelector(state=>state.settings.currentPage); 
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
-    // const films = useSelector(state=>state.listFilms.films);  
-
-    //  console.log('films-premier :>> ', films);
-    // console.log('films-premier :>> ', films);
-    
-    // const filmsToData = (films, year) => { 
-    //   let result=[];
-    //   for ( const film of films) {
-    //     if(film.year <= year) result.push(film);
-    //   };
-    //   return result;
-    // };  
-   
+     
 
     let linkFilm = '';    
     if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }    

@@ -24,14 +24,17 @@ export const CardsU = () => {
     
         <Swiper
         spaceBetween={50}
-        slidesPerView={2}
+        slidesPerView={3}
         // onSlideChange={() => console.log('slide change')}
         // onSwiper={(swiper) => console.log(swiper)}
         >
-           <SwiperSlide>
-                  <CardContentPremier key={index} {...props} />
-           </SwiperSlide>             
+          {/* <Grid item key={index} >  */}
+            <SwiperSlide>
+                    <CardContentPremier key={index} {...props} />
+            </SwiperSlide>             
+          {/* </Grid> */}
         </Swiper>
+        
       </>
     );    
   };
@@ -54,13 +57,13 @@ export const CardsU = () => {
    
   return (
     <>
-      <Grid container  direction="row">
+      {/* <Grid container  direction="row"> */}
           <Grid container spacing={3}  direction="row" >    
               { filmsU.length !== 0  ?  filmsU.map((film, index) => (
                     currentPage === 'premier' ? filterFilm(index, {...film}) : Film(index, {...film})                 
               )) : filmsNotFound }               
           </Grid>
-      </Grid> 
+      {/* </Grid>  */}
     </>
   );
 };
