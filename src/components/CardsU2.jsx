@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { CardContent } from './CardContent';
 import { CardContentPremier} from './CardContentPremier';
+import { CardsSortedByFilter } from './CardsSortedByFilter';
 import * as filter from './Filters';
 
 
@@ -18,65 +19,101 @@ export const CardsU2 = () => {
 
   // const filmsU = currentPage === 'premier' ? filmsUF : films;
 
-  const filterFilm = (index, {...props}) => {    
-    // console.log('---- ', {...props});
-    return (
-      <>
-    
-        <Swiper
-        spaceBetween={50}
-        slidesPerView={3}
-        // onSlideChange={() => console.log('slide change')}
-        // onSwiper={(swiper) => console.log(swiper)}
-        >
-          {/* <Grid item key={index} >  */}
-            <SwiperSlide>
-                    <CardContentPremier key={index} {...props} />
-            </SwiperSlide>             
-          {/* </Grid> */}
-        </Swiper>
-        
-      </>
-    );    
+  const filterInfoRussia = {
+        'title' : 'Российские примьеры',
+        'value' : 'Россия',
   };
+
+  const filterInfoUsa = {
+    'title' : 'Американские примьеры',
+    'value' : 'США',
+};
+
+  // const filterFilm = (index, {...props}) => {    
+  //   // console.log('---- ', {...props});
+  //   return (
+  //     <>
+    
+  //       <Swiper
+  //       spaceBetween={50}
+  //       slidesPerView={3}
+  //       // onSlideChange={() => console.log('slide change')}
+  //       // onSwiper={(swiper) => console.log(swiper)}
+  //       >
+  //         {/* <Grid item key={index} >  */}
+  //           <SwiperSlide>
+  //                   <CardContentPremier key={index} {...props} />
+  //           </SwiperSlide>             
+  //         {/* </Grid> */}
+  //       </Swiper>
+        
+  //     </>
+  //   );    
+  // };
   // ------------------------------------- Premier -----------------------------------------------------
-  const filterFilm_2 = (index, {...props}) => {
-      return (
-        <>
-            <SwiperSlide>
-              <CardContentPremier key={index} {...props} /> 
-            </SwiperSlide>            
-        </>
-      );       
-   };   
+
+  const FilmPremier = (
+    <>
+      <CardsSortedByFilter filterInfo={filterInfoRussia}/>
+      <CardsSortedByFilter filterInfo={filterInfoUsa}/>
+    </>
+    
+  );
+
+  // const filterFilm_2 = (index, {...props}) => {
+  //     return (
+  //       <>
+  //           <SwiperSlide>
+  //             <CardContentPremier key={index} {...props} /> 
+  //           </SwiperSlide>            
+  //       </>
+  //     );       
+  //  };   
   
-  const FilmPremier = () => {
-    const films = useSelector(state=>state.listFilms.films); 
+  // const FilmPremier = () => {
+  //   const films = useSelector(state=>state.listFilms.films); 
 
-    const filmsUF = filter.filmsToCountry(films, 'Россия');
-    const filmsUF2 = filter.filmsToCountry(films, 'США');
+  //   const films1 = filter.filmsToCountry(films, 'Россия');
+  //   const films2 = filter.filmsToCountry(films, 'США');
 
-    return (
-      <>
-          { filmsU.length !== 0  ?  
+  //   return (
+  //     <>
+  //         { films1.length !== 0  ?  
               
-              <Grid container spacing={2}  direction="row" alignItems="center" >               
-                  <Grid item xs={4}>
-                      <Typography sx={{ mt:3, ml:3, fontSize:24, fontWeight: 600 }}>
-                              Российские примьеры</Typography>
-                  </Grid>
-                  <Grid item xs={8}>
-                      <Swiper  slidesPerView={3}>                   
-                            { filmsUF.map((film, index) => ( filterFilm_2(index, {...film})))}           
-                      </Swiper>   
-                  </Grid>    
-              </Grid>
+  //             <Grid container spacing={2}  direction="row" alignItems="center" >               
+  //                 <Grid item xs={4}>
+  //                     <Typography sx={{ mt:3, ml:3, fontSize:24, fontWeight: 600 }}>
+  //                             Российские примьеры</Typography>
+  //                 </Grid>
+  //                 <Grid item xs={8}>
+  //                     <Swiper  slidesPerView={3}>                   
+  //                           { films1.map((film, index) => ( filterFilm_2(index, {...film})))}           
+  //                     </Swiper>   
+  //                 </Grid>    
+  //             </Grid>
                   
                      
-          : filmsNotFound } 
-      </>
-    );
-  };
+  //         : filmsNotFound } 
+  //         { films2.length !== 0  ?  
+              
+  //             <Grid container spacing={2}  direction="row" alignItems="center" >               
+  //                 <Grid item xs={4}>
+  //                     <Typography sx={{ mt:3, ml:3, fontSize:24, fontWeight: 600 }}>
+  //                             Американские примьеры</Typography>
+  //                 </Grid>
+  //                 <Grid item xs={8}>
+  //                     <Swiper  slidesPerView={3}>                   
+  //                           { films2.map((film, index) => ( filterFilm_2(index, {...film})))}           
+  //                     </Swiper>   
+  //                 </Grid>    
+  //             </Grid>
+                  
+                     
+  //         : filmsNotFound } 
+
+  //     </>
+  //   );
+  // };
   // ------------------------------------------------------------------------------------------------------
   // ------------------------------------- No Premier -----------------------------------------------------
 
@@ -97,7 +134,7 @@ export const CardsU2 = () => {
     return (
       <>
         <Grid container spacing={3}  direction="row" > 
-          { filmsU.length !== 0  ?  films.map((film, index) => ( Film(index, {...film}))) : filmsNotFound }          
+          { films.length !== 0  ?  films.map((film, index) => ( Film(index, {...film}))) : filmsNotFound }          
         </Grid>         
       </>
     );
@@ -111,7 +148,8 @@ export const CardsU2 = () => {
    
   return (
     <>     
-      {currentPage === 'premier' ? FilmPremier(filmsU) :  FilmNotPremier(filmsU)}      
+      {/* {currentPage === 'premier' ? FilmPremier() :  FilmNotPremier()}       */}
+      {currentPage === 'premier' ? FilmPremier :  FilmNotPremier()}      
     </>
   );
 };
