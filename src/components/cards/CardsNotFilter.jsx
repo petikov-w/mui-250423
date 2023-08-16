@@ -11,7 +11,8 @@ export const CardsNotFilter = () => {
     const Film = (index, {...props}) => {
         return (
             <>
-                <Grid item key={index} xs={6} sm={4} md={2.4} > 
+                {/* <Grid item key={index} xs={6} sm={4} md={2.4} >  */}
+                <Grid item key={index} xs={6} sm={3} md={2} > 
                     <CardContent key={index} {...props} />                            
                 </Grid>
             </>

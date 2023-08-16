@@ -68,6 +68,22 @@ export const Card = styled.div`
                       } 
                 `;
 
+export const CardF = styled.div`
+                  position: relative;
+                  border-radius: 18px;
+                  width: 170px;
+                  height: 260px;
+                  background: #fff;
+                  overflow: hidden;
+                  box-shadow: '0 5px 10px rgba(0, 0, 0, .2)'; 
+                      &:hover ${Details} {  
+                        bottom: 0;
+                      }
+                      &:hover ${PosterImage} {  
+                        transform: scale(1.2);
+                      } 
+                `;                
+
 export const DetailTitle = styled.h4`
               font-family: "Inter";
               font-size: 0.95rem;
@@ -77,6 +93,17 @@ export const DetailTitle = styled.h4`
               margin-top: 10px;
               margin-bottom: 10px;
           `;
+
+export const DetailTitleF = styled.h4`
+              font-family: "Inter";
+              font-size: 0.85rem;
+              font-weight: 600;
+              letter-spacing: 1.1px;
+              line-height: 1.15rem;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              width: 140px;
+          `;          
 
 export const DetailYear = styled.h5`
               display: inline;
@@ -93,6 +120,22 @@ export const DetailYear = styled.h5`
               }                    
           `;
 
+export const DetailYearF = styled.h5`
+              display: inline;
+              font-family: "Inter";
+              font-size: 0.7rem;
+              font-weight: 600;
+              /* letter-spacing: 1.2px; */
+              opacity: 0.7;
+              &::after {                     
+                    content: "•";
+                    font-size: 1rem;
+                    font-weight: 800;
+                    color: yellow;
+              }                    
+          `;
+
+
 export const DetailPremier = styled.h5`
               display: block;
               font-family: "Inter";
@@ -102,6 +145,15 @@ export const DetailPremier = styled.h5`
               margin-top: 10px;     
           `;
 
+export const DetailPremierF = styled.h5`
+              display: block;
+              font-family: "Inter";
+              font-size: 0.7rem;
+              font-weight: 600;
+              opacity: 0.7;            
+              margin-top: 10px;     
+          `;          
+
 export const DetailRating = styled.h5`
               display: inline;
               font-family: "Inter";
@@ -109,6 +161,15 @@ export const DetailRating = styled.h5`
               font-weight: 600;
               opacity: 0.7;                           
 `;
+
+export const DetailRatingF = styled.h5`
+              display: inline;
+              font-family: "Inter";
+              font-size: 0.7rem;
+              font-weight: 600;
+              opacity: 0.7;    
+        `;      
+        
 export const DetailDuration = styled.h5`
               display: inline;
               font-family: "Inter";
@@ -117,8 +178,16 @@ export const DetailDuration = styled.h5`
               opacity: 0.7;                           
 `;
 
+export const DetailDurationF = styled.h5`
+              display: inline;
+              font-family: "Inter";
+              font-size: 0.7rem;
+              font-weight: 600;
+              opacity: 0.7;                           
+`;
+
 export const DetailCountries = styled(Chip)`
-              opacity: 0.8;                                        */
+              opacity: 0.8;                                    
 `;
 
           // content: "•";

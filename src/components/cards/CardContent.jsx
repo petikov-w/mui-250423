@@ -2,9 +2,9 @@ import {Rating, Chip, Box,  Tooltip, Grid, Typography} from '@mui/material';
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {Card, Poster, PosterImage, Details, 
-        DetailTitle, DetailYear, DetailPremier, 
-        DetailRating, DetailCountries, DetailDuration} from '../../styles/CardContent.styled';
+import {Card, CardF, Poster, PosterImage, Details, 
+        DetailTitle, DetailTitleF, DetailYear, DetailYearF, DetailPremier, DetailPremierF,
+        DetailRating,DetailRatingF, DetailCountries, DetailDuration, DetailDurationF} from '../../styles/CardContent.styled';
 
 import {formatDuration, formatPremierData} from '../Duration';        
 
@@ -24,14 +24,14 @@ export const CardContent = (props) => {
         
     const ratingFilm = (currentPage === 'top'
                        ? <><Rating name="read-only" size="small" value={rating} max="1" readOnly />
-                         <DetailRating>&nbsp;&nbsp;{rating} / 10</DetailRating></>
+                         <DetailRatingF>&nbsp;&nbsp;{rating} / 10</DetailRatingF></>
                        : <><Rating name="read-only" size="small" value={ratingKinopoisk} max="1" readOnly />    
-                         <DetailRating>&nbsp;&nbsp;{ratingKinopoisk} / 10</DetailRating></>);
+                         <DetailRatingF>&nbsp;&nbsp;{ratingKinopoisk} / 10</DetailRatingF></>);
     const durationFilm = (page) => {
                                   if ( page === 'premier') {
-                                  return <DetailDuration>&nbsp;&nbsp;{formatDuration(duration)}&nbsp;&nbsp;</DetailDuration>;}
+                                  return <DetailDurationF>&nbsp;&nbsp;{formatDuration(duration)}&nbsp;&nbsp;</DetailDurationF>;}
                                   if ( page === 'top') 
-                                  {return <DetailDuration>&nbsp;&nbsp;{formatDuration(filmLength)}&nbsp;&nbsp;</DetailDuration>;}
+                                  {return <DetailDurationF>&nbsp;&nbsp;{formatDuration(filmLength)}&nbsp;&nbsp;</DetailDurationF>;}
                                   if ( page === 'serial' || page === 'mult') 
                                   {return <></>;}  
                                 };
@@ -39,18 +39,18 @@ export const CardContent = (props) => {
     return (
         <>         
            <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
-            <Card>
+            <CardF>
                   <Poster>
                     <PosterImage src={posterUrl} alt="poster"/>
                   </Poster>    
                   {/* Краткая детальная информация о фильме отображаемая на шторке */}
                   <Details>
                     {/* Название фильма */}
-                    <DetailTitle>{nameRu}</DetailTitle>
+                    <DetailTitleF>{nameRu}</DetailTitleF>
 
                     {/* Год выхода фильма на экраны */}
                     <Tooltip title="Год выхода фильма на экраны" placement="left" arrow>
-                      <DetailYear>{year}&nbsp;&nbsp;</DetailYear>
+                      <DetailYearF>{year}&nbsp;&nbsp;</DetailYearF>
                     </Tooltip>
 
                     {/* Продолжительность фильма */}
@@ -62,7 +62,7 @@ export const CardContent = (props) => {
                     {/* Дата премьеры фильма в России (отображается только на странице "Кинопримьеры") */}
                     {currentPage === 'premier' ?
                     <Tooltip title="Дата премьеры фильма в России" placement="left" arrow>
-                      <DetailPremier>{formatPremierData(premiereRu)}</DetailPremier>
+                      <DetailPremierF>{formatPremierData(premiereRu)}</DetailPremierF>
                     </Tooltip>  : <></>}
 
                     {/* Рейтинг фильма по версии Кинопоиска (отображается на всех страницах,
@@ -75,13 +75,13 @@ export const CardContent = (props) => {
                     </Tooltip> : <></>}
 
                     {/* Список стран учавствовавших в производстве фильма */}
-                    <Grid container spacing={1}  direction="row" sx={{mt: 1}}>
+                    <Grid container spacing={1}  direction="row" wrap="wrap" sx={{mt: 1, width: '140px'}}>
                       { countries.length !== 0  ? countries.map((item, index) => (
                       <Grid item key={index}  > 
-                        <DetailCountries label={<Typography fontSize={12}                                                     
+                        <DetailCountries label={<Typography fontSize={10}                                                     
                                                             color="#605b5b"
                                                             fontWeight={600}>{item.country}
-                                                </Typography>} sx={{border: '3px solid #FFA500' }}
+                                                </Typography>} sx={{border: '2px solid #FFA500'}}
                         color="chips" size="small" />
                       </Grid>
                       )) : <></>}  
@@ -89,7 +89,7 @@ export const CardContent = (props) => {
                                  
                 
                   </Details>                 
-            </Card>
+            </CardF>
           </Link>          
         </>     
     );

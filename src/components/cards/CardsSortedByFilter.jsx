@@ -32,13 +32,13 @@ export const CardsSortedByFilter = (props) => {
         <>
           { films1.length !== 0  ?  
             
-            <Grid container spacing={2}  direction="row" alignItems="center" >               
+            <Grid container spacing={2}  sx={{mt: 3}} direction="row" alignItems="center" >               
                 <Grid item xs={4}>
                     <Typography sx={{ mt:3, ml:3, fontSize:24, fontWeight: 600 }}>
                             {filterInfo.title}</Typography>
                 </Grid>
                 <Grid item xs={8}>
-                    <Swiper  slidesPerView={3}>                   
+                    <Swiper  slidesPerView={4}>                   
                           { films1.map((film, index) => ( filterFilm(index, {...film})))}           
                     </Swiper>   
                 </Grid>    
