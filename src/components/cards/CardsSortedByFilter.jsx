@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import { CardContentPremier} from './CardContentPremier';
-import * as filter from './Filters';
+import * as filter from '../filters/Filters';
 
+import { CardContent} from './CardContent';
 
 
 export const CardsSortedByFilter = (props) => {
@@ -15,12 +15,11 @@ export const CardsSortedByFilter = (props) => {
 
     const films1 = filter.filmsToCountry(films, filterInfo.value);
    
-
     const filterFilm = (index, {...props}) => {
         return (
         <>
             <SwiperSlide>
-                <CardContentPremier key={index} {...props} /> 
+                <CardContent key={index} {...props} /> 
             </SwiperSlide>            
         </>
         );       

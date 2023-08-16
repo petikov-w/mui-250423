@@ -4,22 +4,28 @@ function padTo2Digits(num) {
   return num.toString().padStart(2, '0');
 }
 
-// Функция извлекающая из общего количества минут, отдельно часы и минуты, 
-// и конвертирующая полученный результат в строку типа "Х ч  Х мин"
-export const formatDuration = (totalMinutes) => {
-  const minutes = totalMinutes % 60;
-  const hours = Math.floor(totalMinutes / 60);
+// Функция форматирующая строку продолжительности фильма
+export const formatDuration = (value) => {
+ 
+  if (typeof(value) === 'number') {
+    // Извлекаем из общего количества минут, отдельно часы и минуты, 
+    // и конвертируем полученный результат в строку типа "Х ч  Х мин"
+    const minutes = value % 60;
+    const hours = Math.floor(value / 60);  
+    
+    return (hours === 0 ? `${minutes} мин` : `${hours} ч  ${minutes} мин`);
+  }
 
-  return `${hours} ч  ${minutes} мин`;
+  if (typeof(value) === 'string') {
+    // Извлекаем из строки вида "ХХ:ХХ", отдельно часы и минуты, 
+    // и конвертируем полученный результат в строку типа "Х ч  Х мин"
+    const hm = value.split(':');
+    return (Number(hm[0]) === 0 ? `${Number(hm[1])} мин` : `${Number(hm[0])} ч  ${Number(hm[1])} мин`);;
+  }
+
+  if ( value === null) return '';
 };
 
-// Функция извлекающая из строки вида "ХХ:ХХ", отдельно часы и минуты, 
-// и конвертирующая полученный результат в строку типа "Х ч  Х мин"
-export const formatDuration2 = (strTime) => {
-  const hm = strTime.split(':');
-
-  return `${Number(hm[0])} ч  ${Number(hm[1])} мин`;
-};
 
 // Функция извлекающая из строки вида "ХХXX-XX-ХХ", отдельно день, месяц, год 
 // и конвертирующая полученный результат в строку

@@ -4,12 +4,17 @@ import { NavLink } from 'react-router-dom';
 
 import {Box, Container, Typography, CardMedia, Link, AppBar} from '@mui/material';
 
-import imageCinema from '../images/cinema_sm.png';
-import { ThemeMui } from '../styles/ThemeMui';
+import imageCinema from '../../images/cinema_sm.png';
+import { ThemeMui } from '../../styles/ThemeMui';
 
 export const Footer = () => {
 
 const theme = useSelector(state=>state.settings.theme);
+
+ const stateLogo = { 
+      page: 'premier', 
+      path: '',
+    };
     
     return (
     <>
@@ -21,7 +26,7 @@ const theme = useSelector(state=>state.settings.theme);
                                                    justifyContent: 'space-between',
                                                  }}>    
                                                  
-                       <Link color="inherit" underline="none" component={NavLink} to={'/'}>                                     
+                       <Link color="inherit" underline="none" component={NavLink} to={'/'} state={stateLogo}> 
                         <Box sx={{ display: 'flex', 
                                    flexDirection: 'row',
                                    alignItems: 'center'}}>

@@ -3,7 +3,7 @@ import { useParams} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Container } from '@mui/material';
 
-import { Single } from '../components/Single';
+import { Single } from '../components/single/Single';
 
 
 const SinglePage = () => {

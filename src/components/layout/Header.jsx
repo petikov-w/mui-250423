@@ -6,12 +6,12 @@ import {Box, AppBar, CssBaseline, Switch, Link,
 import { ThemeProvider } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ThemeMui } from '../styles/ThemeMui';
-import imageCinema from '../images/cinema_sm.png';
+import { ThemeMui } from '../../styles/ThemeMui';
+import imageCinema from '../../images/cinema_sm.png';
 
-import {Navigations} from './Navigations';
-import { FilterDrawer } from './FilterDrawer';
-import { NavigationDrawer } from './NavigationDrawer';
+import {Navigations} from '../navigations/Navigations';
+import { FilterDrawer } from '../filters/FilterDrawer';
+import { NavigationDrawer } from '../navigations/NavigationDrawer';
 // const drawerWidth = 240;
 
 export const Header = (props) => {
@@ -20,6 +20,11 @@ export const Header = (props) => {
 
     const theme = useSelector(state=>state.settings.theme);
     const checked = useSelector(state=>state.settings.checkedTheme);
+
+    const stateLogo = { 
+      page: 'premier', 
+      path: '',
+    };
         
     const handleChange = (event) => {dispatch({type:'UPDATE_CHECKED_THEME', payload: event.target.checked});}; 
 
@@ -27,6 +32,8 @@ export const Header = (props) => {
                             : dispatch({type:'UPDATE_THEME', payload: 'light'});
     }, [checked]);      
     
+ 
+
     return (
         <>
           <ThemeProvider theme={ThemeMui(theme)}>
@@ -43,7 +50,7 @@ export const Header = (props) => {
                                                      justifyContent: 'space-between',
                                                    }}>    
                                                     
-                      <Link color="inherit" underline="none" component={NavLink} to={'/'}>                     
+                      <Link color="inherit" underline="none" component={NavLink} to={'/'} state={stateLogo}>                     
                         <Box sx={{ display: 'flex', 
                                    flexDirection: 'row',
                                    alignItems: 'center'}}>

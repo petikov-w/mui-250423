@@ -5,7 +5,7 @@ import {Container} from '@mui/material';
 import styled from 'styled-components';
 import { ThemeProvider } from '@mui/material';
 
-import { ThemeMui } from '../styles/ThemeMui';
+import { ThemeMui } from '../../styles/ThemeMui';
 
 import { Header } from './Header';
 // import { Header } from './Header';
@@ -28,6 +28,8 @@ const Layout = () => {
         dispatch({type:'UPDATE_CURRENT_PAGE', payload: location.state.page});
         dispatch({type:'UPDATE_CURRENT_PATH', payload: location.state.path});
       console.log('location.state.page :>> ', location.state.page);
+      console.log('location.state.path :>> ', location.state.path);
+      
       }
         
       }, [location]);

@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import {Link } from '@mui/material';
 
-import { TypographyNavLinkStl } from '../styles/Nav.styled'; 
+import { TypographyNavLinkStl } from '../../styles/Nav.styled'; 
 
 import { NavigationList } from './NavigationList';
 

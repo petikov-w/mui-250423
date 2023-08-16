@@ -3,7 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 
 import { SinglePage } from './pages/SinglePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { Layout } from './components/Layout';
+import { Layout } from './components/layout/Layout';
 import { PremierPage } from './pages/PremierPage';
 import { SerialPage } from './pages/SerialPage';
 import { MultPage } from './pages/MultPage';

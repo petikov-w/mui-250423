@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { PreLoader } from '../PreLoader';
+
 import { SingleContent } from './SingleContent';
-import { PreLoader } from './PreLoader';
+
 
 export const Single = () => {
 

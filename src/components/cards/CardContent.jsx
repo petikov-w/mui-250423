@@ -4,40 +4,41 @@ import {Link} from 'react-router-dom';
 
 import {Card, Poster, PosterImage, Details, 
         DetailTitle, DetailYear, DetailPremier, 
-        DetailRating, DetailCountries, DetailDuration} from '../styles/CardContent.styled';
+        DetailRating, DetailCountries, DetailDuration} from '../../styles/CardContent.styled';
 
-import {formatDuration, formatDuration2, formatPremierData} from './Duration'; 
+import {formatDuration, formatPremierData} from '../Duration';        
 
-export const CardContentPremier = (props) => {
-
+export const CardContent = (props) => {
     const {filmId, kinopoiskId, posterUrl, nameRu, year, duration, 
            premiereRu, rating, countries, ratingKinopoisk, filmLength} = props;
     const currentPage = useSelector(state=>state.settings.currentPage); 
     const allowedFilmkId = ['top'];
     const allowedKinopoiskId = ['premier','serial','mult'];
-     
+
+    // console.log('props :>> ', props);
+
 
     let linkFilm = '';    
     if (allowedFilmkId.includes(currentPage)) { linkFilm = `/films/${filmId}`; }    
-    if ( allowedKinopoiskId.includes(currentPage)) { linkFilm = `/films/${kinopoiskId}`; } 
+    if ( allowedKinopoiskId.includes(currentPage)) { linkFilm = `/films/${kinopoiskId}`; }   
         
     const ratingFilm = (currentPage === 'top'
-                       ? <><Rating name="read-only" size="small" value={rating * 0.4} readOnly />
-                         <DetailRating>{rating} / 10</DetailRating></>
-                       : <><Rating name="read-only" size="small" value={ratingKinopoisk * 0.4} readOnly />    
-                         <DetailRating>{ratingKinopoisk} / 10</DetailRating></>);
+                       ? <><Rating name="read-only" size="small" value={rating} max="1" readOnly />
+                         <DetailRating>&nbsp;&nbsp;{rating} / 10</DetailRating></>
+                       : <><Rating name="read-only" size="small" value={ratingKinopoisk} max="1" readOnly />    
+                         <DetailRating>&nbsp;&nbsp;{ratingKinopoisk} / 10</DetailRating></>);
     const durationFilm = (page) => {
-      if ( page === 'premier') {
-      return <DetailDuration>&nbsp;&nbsp;{formatDuration(duration)}&nbsp;&nbsp;</DetailDuration>;}
-      if ( page === 'top') 
-      {return <DetailDuration>&nbsp;&nbsp;{formatDuration2(filmLength)}&nbsp;&nbsp;</DetailDuration>;}
-      if ( page === 'serial' || page === 'mult') 
-      {return <></>;}  
-    };
+                                  if ( page === 'premier') {
+                                  return <DetailDuration>&nbsp;&nbsp;{formatDuration(duration)}&nbsp;&nbsp;</DetailDuration>;}
+                                  if ( page === 'top') 
+                                  {return <DetailDuration>&nbsp;&nbsp;{formatDuration(filmLength)}&nbsp;&nbsp;</DetailDuration>;}
+                                  if ( page === 'serial' || page === 'mult') 
+                                  {return <></>;}  
+                                };
     
-      return (
+    return (
         <>         
-            <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
+           <Link to={linkFilm} sx={{cursor: 'pointer'}}>             
             <Card>
                   <Poster>
                     <PosterImage src={posterUrl} alt="poster"/>
@@ -55,7 +56,7 @@ export const CardContentPremier = (props) => {
                     {/* Продолжительность фильма */}
                     
                     <Tooltip title="Продолжительность фильма" placement="right" arrow> 
-                        {durationFilm(currentPage)} 
+                       {durationFilm(currentPage)} 
                     </Tooltip>  
 
                     {/* Дата премьеры фильма в России (отображается только на странице "Кинопримьеры") */}
@@ -65,7 +66,7 @@ export const CardContentPremier = (props) => {
                     </Tooltip>  : <></>}
 
                     {/* Рейтинг фильма по версии Кинопоиска (отображается на всех страницах,
-                        кроме страницы "Кинопримьеры") */}
+                       кроме страницы "Кинопримьеры") */}
                     {currentPage !== 'premier' ?
                     <Tooltip title="Рейтинг фильма" placement="left" arrow>
                       <Box display="flex" alignItems="center" sx={{mt: -1.7 }}>
@@ -85,7 +86,7 @@ export const CardContentPremier = (props) => {
                       </Grid>
                       )) : <></>}  
                     </Grid>
-                                  
+                                 
                 
                   </Details>                 
             </Card>

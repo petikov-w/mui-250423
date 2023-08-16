@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ListCardsU } from '../components/ListCardsU';
+// import { ListCardsU } from '../components/ListCardsU';
+import { Cards } from '../components/cards/Cards';
 
 export const MultPage = () => { 
     // Блок Redux 
@@ -22,7 +23,8 @@ export const MultPage = () => {
     
 return (
     <>      
-        <ListCardsU />      
+        <Cards />      
+        {/* <ListCardsU />       */}
     </>
            
     );
