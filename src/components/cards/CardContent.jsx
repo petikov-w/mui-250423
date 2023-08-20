@@ -6,7 +6,8 @@ import {Card, CardF, Poster, PosterImage, Details,
         DetailTitle, DetailTitleF, DetailYear, DetailYearF, DetailPremier, DetailPremierF,
         DetailRating,DetailRatingF, DetailCountries, DetailDuration, DetailDurationF} from '../../styles/CardContent.styled';
 
-import {formatDuration, formatPremierData} from '../Duration';        
+import {formatDuration, formatPremierData} from '../Duration';       
+
 
 export const CardContent = (props) => {
     const {filmId, kinopoiskId, posterUrl, nameRu, year, duration, 

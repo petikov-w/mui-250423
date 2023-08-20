@@ -5,6 +5,7 @@ import { PreLoader } from '../PreLoader';
 
 import { CardsSortedByFilter } from './CardsSortedByFilter';
 import { CardsNotFilter } from './CardsNotFilter';
+import { BoxHero } from './BoxHero';
 
 const allowedPagesShowPagination = ['top','serial','mult'];
 
@@ -26,6 +27,8 @@ export const Cards = () => {
 
   const FilmPremier = (
     <>
+
+      <BoxHero></BoxHero>
       <CardsSortedByFilter filterInfo={filterInfoRussia}/>
       <CardsSortedByFilter filterInfo={filterInfoUsa}/>
     </>    
